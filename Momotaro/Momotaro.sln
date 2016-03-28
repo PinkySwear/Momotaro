@@ -1,0 +1,23 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{BC8681A9-3C75-530F-0D17-76DF91C23319}") = "Momotaro", "Assembly-CSharp.csproj", "{F48626D3-4185-0E2C-6666-6C924282EE62}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F48626D3-4185-0E2C-6666-6C924282EE62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F48626D3-4185-0E2C-6666-6C924282EE62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F48626D3-4185-0E2C-6666-6C924282EE62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F48626D3-4185-0E2C-6666-6C924282EE62}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
