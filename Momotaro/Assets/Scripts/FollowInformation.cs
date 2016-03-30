@@ -47,7 +47,7 @@ public class FollowInformation : MonoBehaviour {
 	}
 
 
-	public Queue infoQueue;
+//	public Queue infoQueue;
 
 
 
@@ -56,7 +56,7 @@ public class FollowInformation : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 //		infoMap = new Dictionary<Tuple<int, int>, MovementInfo> ();
-		infoQueue = new Queue();
+//		infoQueue = new Queue();
 	
 	}
 	

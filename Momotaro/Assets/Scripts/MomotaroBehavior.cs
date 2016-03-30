@@ -17,10 +17,24 @@ public class MomotaroBehavior : MonoBehaviour {
 	public GameObject followInformationObject;
 	public FollowInformation followInfo;
 
+	public GameObject[] followerObjects;
+	public DogFollow[] followers;
+
 	// Use this for initialization
 	void Start () {
 
+
+
 		followInfo = followInformationObject.GetComponent<FollowInformation> ();
+
+
+		followers = new DogFollow[followerObjects.Length];
+		for (int i = 0; i < followerObjects.Length; i++) {
+			followers [i] = followerObjects [i].GetComponent<DogFollow> ();
+			followers [i].commandDelay = 7 * (i + 1);
+		}
+
+
 		velocity = 10f;
 		jumpForce = 1000f;
 		myRb = GetComponent<Rigidbody> ();
@@ -60,6 +74,8 @@ public class MomotaroBehavior : MonoBehaviour {
 			transform.localScale = s;
 		}
 
+
+
 		if (Input.GetKeyDown(KeyCode.Space) && onSomething && !crouching) {
 			jump = true;
 		}
@@ -81,10 +97,18 @@ public class MomotaroBehavior : MonoBehaviour {
 //		FollowInformation.Tuple<int, int> t = new FollowInformation.Tuple<int, int> (Mathf.RoundToInt(transform.position.x * 100f), Mathf.RoundToInt(transform.position.y * 100f));
 //		followInfo.infoMap.Remove (t);
 //		followInfo.infoMap.Add (t, mi);
-		if (movingLeft || movingRight) {
-			FollowInformation.MovementInfo mi = new FollowInformation.MovementInfo(movingRight, movingLeft, jump, crouching);
-			followInfo.infoQueue.Enqueue (mi);
+
+
+//		if (movingLeft || movingRight) {
+//			FollowInformation.MovementInfo mi = new FollowInformation.MovementInfo(movingRight, movingLeft, jump, crouching);
+//			followInfo.infoQueue.Enqueue (mi);
+//		}
+
+		FollowInformation.MovementInfo mi = new FollowInformation.MovementInfo(movingRight, movingLeft, jump, crouching);
+		foreach (DogFollow df in followers) {
+			df.infoQueue.Enqueue (mi);
 		}
+//		followInfo.infoQueue.Enqueue (mi);
 
 
 		if (movingLeft) {
@@ -106,7 +130,7 @@ public class MomotaroBehavior : MonoBehaviour {
 			velocity = 10f;
 		}
 
-		if (jump) {
+		if (jump && onSomething) {
 			myRb.AddForce (Vector3.up * jumpForce);
 			jump = false;
 		}

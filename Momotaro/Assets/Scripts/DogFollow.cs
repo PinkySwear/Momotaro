@@ -24,13 +24,14 @@ public class DogFollow : MonoBehaviour {
 
 	public int commandDelay;
 
-
+	public Queue infoQueue;
 
 
 	// Use this for initialization
 	void Start () {
 		momo = leader.GetComponent<MomotaroBehavior> ();
-		followInfo = followInformationObject.GetComponent<FollowInformation> ();
+//		followInfo = followInformationObject.GetComponent<FollowInformation> ();
+		infoQueue = new Queue();
 		velocity = 10f;
 		jumpForce = 1000f;
 		myRb = GetComponent<Rigidbody> ();
@@ -67,9 +68,9 @@ public class DogFollow : MonoBehaviour {
 
 	void FixedUpdate () {
 
-		if (followInfo.infoQueue.Count > commandDelay) {
+		if (infoQueue.Count > commandDelay) {
 			FollowInformation.MovementInfo mi;
-			mi = (FollowInformation.MovementInfo)followInfo.infoQueue.Dequeue ();
+			mi = (FollowInformation.MovementInfo)infoQueue.Dequeue ();
 			movingLeft = mi.movingLeft;
 			movingRight = mi.movingRight;
 			jump = mi.jump;
