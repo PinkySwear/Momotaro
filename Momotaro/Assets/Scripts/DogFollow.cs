@@ -22,6 +22,9 @@ public class DogFollow : MonoBehaviour {
 	private bool jump = false;
 	private bool crouching = false;
 
+	public bool controlling;
+	public bool inParty;
+
 	public int commandDelay;
 
 	public Queue infoQueue;
@@ -36,12 +39,68 @@ public class DogFollow : MonoBehaviour {
 		jumpForce = 1000f;
 		myRb = GetComponent<Rigidbody> ();
 		myRb.freezeRotation = true;
+		inParty = true;
 
 	
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+//		if (controlling && Vector3.Distance (leader.transform.position, transform.position) > 4f) {
+//			inParty = false;
+//		}
+
+		if (!controlling && !inParty && Vector3.Distance (leader.transform.position, transform.position) < 1f) {
+			transform.position = leader.transform.position;
+			inParty = true;
+			infoQueue.Clear ();
+		}
+		Vector3 right = transform.position + Vector3.right * transform.lossyScale.x * 0.5f;
+		Vector3 left = transform.position - Vector3.right * transform.lossyScale.x * 0.5f;
+
+		Debug.DrawLine (right, right + (Vector3.down * transform.lossyScale.y * 1));
+		Debug.DrawLine (left, left + (Vector3.down * transform.lossyScale.y * 1));
+		Debug.DrawLine (right, right + (Vector3.up * 1));
+		Debug.DrawLine (left, left + (Vector3.up * 1));
+
+		onSomething = Physics.Linecast (right, right + (Vector3.down * transform.lossyScale.y * 1), 1 << LayerMask.NameToLayer ("Obstacle")) 
+			|| Physics.Linecast (left, left + (Vector3.down * transform.lossyScale.y * 1), 1 << LayerMask.NameToLayer ("Obstacle"));
+
+		underSomething = Physics.Linecast (right, right + (Vector3.up * 1), 1 << LayerMask.NameToLayer ("Obstacle")) 
+			|| Physics.Linecast (left, left + (Vector3.up * 1), 1 << LayerMask.NameToLayer ("Obstacle"));
+
+		movingLeft = false;
+		movingRight = false;
+		if (controlling) {
+			Camera.main.transform.position = new Vector3 (transform.position.x, transform.position.y, -10f);
+			if (Input.GetKey (KeyCode.A)) {
+				movingLeft = true;
+				Vector3 s = transform.localScale;
+				s.x = -1;
+				transform.localScale = s;
+				inParty = false;
+			}
+			if (Input.GetKey (KeyCode.D)) {
+				movingRight = true;
+				Vector3 s = transform.localScale;
+				s.x = 1;
+				transform.localScale = s;
+				inParty = false;
+			}
+
+
+
+			if (Input.GetKeyDown (KeyCode.Space) && onSomething && !crouching) {
+				jump = true;
+			}
+			if (Input.GetKey (KeyCode.S)) {
+				crouching = true;
+			}
+			if (!Input.GetKey (KeyCode.S) && !underSomething) {
+				crouching = false;
+			}
+		}
 
 //		FollowInformation.Tuple<int, int> t = new FollowInformation.Tuple<int, int> (Mathf.RoundToInt(transform.position.x * 100f), Mathf.RoundToInt(transform.position.y * 100f));
 //
@@ -61,6 +120,10 @@ public class DogFollow : MonoBehaviour {
 //			crouching = false;
 //		}
 
+//		Vector3 right = transform.position + Vector3.right * transform.lossyScale.x * 0.5f;
+//		Vector3 left = transform.position - Vector3.right * transform.lossyScale.x * 0.5f;
+//		onSomething = Physics.Linecast (right, right + (Vector3.down * transform.lossyScale.y * 1), 1 << LayerMask.NameToLayer ("Obstacle")) 
+//			|| Physics.Linecast (left, left + (Vector3.down * transform.lossyScale.y * 1), 1 << LayerMask.NameToLayer ("Obstacle"));
 
 	}
 
@@ -68,19 +131,21 @@ public class DogFollow : MonoBehaviour {
 
 	void FixedUpdate () {
 
-		if (infoQueue.Count > commandDelay) {
-			FollowInformation.MovementInfo mi;
-			mi = (FollowInformation.MovementInfo)infoQueue.Dequeue ();
-			movingLeft = mi.movingLeft;
-			movingRight = mi.movingRight;
-			jump = mi.jump;
-			crouching = mi.crouching;
-		}
-		else {
-			movingLeft = false;
-			movingRight = false;
-			jump = false;
-			crouching = false;
+		if (!controlling  && inParty) {
+			if (infoQueue.Count > commandDelay) {
+				FollowInformation.MovementInfo mi;
+				mi = (FollowInformation.MovementInfo)infoQueue.Dequeue ();
+				movingLeft = mi.movingLeft;
+				movingRight = mi.movingRight;
+				jump = mi.jump;
+				crouching = mi.crouching;
+			}
+			else {
+				movingLeft = false;
+				movingRight = false;
+				jump = false;
+				crouching = false;
+			}
 		}
 
 

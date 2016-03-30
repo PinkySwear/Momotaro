@@ -14,6 +14,8 @@ public class MomotaroBehavior : MonoBehaviour {
 	private bool jump = false;
 	private bool crouching = false;
 
+	public bool controlling;
+
 	public GameObject followInformationObject;
 	public FollowInformation followInfo;
 
@@ -22,16 +24,12 @@ public class MomotaroBehavior : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
-
-
 		followInfo = followInformationObject.GetComponent<FollowInformation> ();
-
 
 		followers = new DogFollow[followerObjects.Length];
 		for (int i = 0; i < followerObjects.Length; i++) {
 			followers [i] = followerObjects [i].GetComponent<DogFollow> ();
-			followers [i].commandDelay = 7 * (i + 1);
+			followers [i].commandDelay = 6 * (i + 1) + i;
 		}
 
 
@@ -41,6 +39,7 @@ public class MomotaroBehavior : MonoBehaviour {
 		myRb.freezeRotation = true;
 		Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Interactable"));
 		Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Player"));
+
 	}
 
 	void Update() {
@@ -60,30 +59,32 @@ public class MomotaroBehavior : MonoBehaviour {
 
 		movingLeft = false;
 		movingRight = false;
+		if (controlling) {
+			Camera.main.transform.position = new Vector3 (transform.position.x, transform.position.y, -10f);
+			if (Input.GetKey (KeyCode.A)) {
+				movingLeft = true;
+				Vector3 s = transform.localScale;
+				s.x = -1;
+				transform.localScale = s;
+			}
+			if (Input.GetKey (KeyCode.D)) {
+				movingRight = true;
+				Vector3 s = transform.localScale;
+				s.x = 1;
+				transform.localScale = s;
+			}
 
-		if (Input.GetKey (KeyCode.A)) {
-			movingLeft = true;
-			Vector3 s = transform.localScale;
-			s.x = -1;
-			transform.localScale = s;
-		}
-		if (Input.GetKey (KeyCode.D)) {
-			movingRight = true;
-			Vector3 s = transform.localScale;
-			s.x = 1;
-			transform.localScale = s;
-		}
 
 
-
-		if (Input.GetKeyDown(KeyCode.Space) && onSomething && !crouching) {
-			jump = true;
-		}
-		if (Input.GetKey (KeyCode.S)) {
-			crouching = true;
-		}
-		if (!Input.GetKey (KeyCode.S) && !underSomething) {
-			crouching = false;
+			if (Input.GetKeyDown (KeyCode.Space) && onSomething && !crouching) {
+				jump = true;
+			}
+			if (Input.GetKey (KeyCode.S)) {
+				crouching = true;
+			}
+			if (!Input.GetKey (KeyCode.S) && !underSomething) {
+				crouching = false;
+			}
 		}
 
 
@@ -103,11 +104,21 @@ public class MomotaroBehavior : MonoBehaviour {
 //			FollowInformation.MovementInfo mi = new FollowInformation.MovementInfo(movingRight, movingLeft, jump, crouching);
 //			followInfo.infoQueue.Enqueue (mi);
 //		}
+//		if (movingLeft || movingRight || jump || crouching || (!onSomething && (movingLeft || movingRight))) {
+//			FollowInformation.MovementInfo mi = new FollowInformation.MovementInfo(movingRight, movingLeft, jump, crouching);
+//			foreach (DogFollow df in followers) {
+//				df.infoQueue.Enqueue (mi);
+//			}
+//		}
 
-		FollowInformation.MovementInfo mi = new FollowInformation.MovementInfo(movingRight, movingLeft, jump, crouching);
-		foreach (DogFollow df in followers) {
-			df.infoQueue.Enqueue (mi);
-		}
+
+
+//		if (controlling) {
+			FollowInformation.MovementInfo mi = new FollowInformation.MovementInfo (movingRight, movingLeft, jump, crouching);
+			foreach (DogFollow df in followers) {
+				df.infoQueue.Enqueue (mi);
+			}
+//		}
 //		followInfo.infoQueue.Enqueue (mi);
 
 

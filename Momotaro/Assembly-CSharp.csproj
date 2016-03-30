@@ -45,8 +45,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
      <Compile Include="Assets\Scripts\DigBehavior.cs" />
      <Compile Include="Assets\Scripts\DogBehavior.cs" />
+=======
+     <Compile Include="Assets\Scripts\CameraControl.cs" />
+     <Compile Include="Assets\Scripts\CharacterManager.cs" />
+>>>>>>> origin/master
      <Compile Include="Assets\Scripts\DogFollow.cs" />
      <Compile Include="Assets\Scripts\FollowInformation.cs" />
      <Compile Include="Assets\Scripts\FriskControl.cs" />
