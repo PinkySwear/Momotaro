@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\DogFollow.cs" />
+     <Compile Include="Assets\Scripts\FollowInformation.cs" />
      <Compile Include="Assets\Scripts\MomotaroBehavior.cs" />
      <Compile Include="Assets\Scripts\MonkeyFollow.cs" />
      <Compile Include="Assets\Scripts\PheasantFollow.cs" />

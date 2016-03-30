@@ -14,13 +14,19 @@ public class MomotaroBehavior : MonoBehaviour {
 	private bool jump = false;
 	private bool crouching = false;
 
+	public GameObject followInformationObject;
+	public FollowInformation followInfo;
+
 	// Use this for initialization
 	void Start () {
+
+		followInfo = followInformationObject.GetComponent<FollowInformation> ();
 		velocity = 10f;
 		jumpForce = 1000f;
 		myRb = GetComponent<Rigidbody> ();
 		myRb.freezeRotation = true;
 		Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Interactable"));
+		Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Player"));
 	}
 
 	void Update() {
@@ -63,10 +69,24 @@ public class MomotaroBehavior : MonoBehaviour {
 		if (!Input.GetKey (KeyCode.S) && !underSomething) {
 			crouching = false;
 		}
+
+
+
 	}
 
 	// Update is called once per frame
 	void FixedUpdate () {
+
+//		FollowInformation.MovementInfo mi = new FollowInformation.MovementInfo(movingRight, movingLeft, jump, crouching);
+//		FollowInformation.Tuple<int, int> t = new FollowInformation.Tuple<int, int> (Mathf.RoundToInt(transform.position.x * 100f), Mathf.RoundToInt(transform.position.y * 100f));
+//		followInfo.infoMap.Remove (t);
+//		followInfo.infoMap.Add (t, mi);
+		if (movingLeft || movingRight) {
+			FollowInformation.MovementInfo mi = new FollowInformation.MovementInfo(movingRight, movingLeft, jump, crouching);
+			followInfo.infoQueue.Enqueue (mi);
+		}
+
+
 		if (movingLeft) {
 			//restrict movement to one plane
 			transform.position = new Vector3 (transform.position.x, transform.position.y, 0f);
