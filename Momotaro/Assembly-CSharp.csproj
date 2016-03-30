@@ -45,6 +45,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\DigBehavior.cs" />
+     <Compile Include="Assets\Scripts\DogBehavior.cs" />
      <Compile Include="Assets\Scripts\DogFollow.cs" />
      <Compile Include="Assets\Scripts\FollowInformation.cs" />
      <Compile Include="Assets\Scripts\FriskControl.cs" />
