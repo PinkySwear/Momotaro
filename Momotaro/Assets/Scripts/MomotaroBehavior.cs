@@ -20,7 +20,7 @@ public class MomotaroBehavior : MonoBehaviour {
 	public FollowInformation followInfo;
 
 	public GameObject[] followerObjects;
-	public DogFollow[] followers;
+	public CharacterBehavior[] followers;
 
 	public CapsuleCollider myCollider;
 
@@ -34,11 +34,17 @@ public class MomotaroBehavior : MonoBehaviour {
 		followInfo = followInformationObject.GetComponent<FollowInformation> ();
 		myCollider = this.gameObject.GetComponent<CapsuleCollider> ();
 		fullHeight = myCollider.bounds.extents.y;
-		followers = new DogFollow[followerObjects.Length];
+		followers = new CharacterBehavior[followerObjects.Length];
 		for (int i = 0; i < followerObjects.Length; i++) {
-			followers [i] = followerObjects [i].GetComponent<DogFollow> ();
+			followers [i] = followerObjects [i].GetComponent<CharacterBehavior> ();
 			followers [i].commandDelay = 7 * (i + 1) + i;
 		}
+//		for (int i = 0; i < followerObjects.Length; i++) {
+//			followers [i].commandDelay = 7 * (i + 1) + i;
+//		}
+//		followers [0] = followerObjects [0].GetComponent<DogFollow> ();
+//		followers [1] = followerObjects [1].GetComponent<MonkeyFollow> ();
+//		followers [2] = followerObjects [2].GetComponent<PheasantFollow> ();
 
 
 		velocity = 10f;
@@ -69,7 +75,7 @@ public class MomotaroBehavior : MonoBehaviour {
 		movingLeft = false;
 		movingRight = false;
 		if (controlling) {
-			Camera.main.transform.position = new Vector3 (transform.position.x, transform.position.y, -10f);
+//			Camera.main.transform.position = new Vector3 (transform.position.x, transform.position.y, -10f);
 			if (Input.GetKey(KeyCode.LeftArrow)) {
 				movingLeft = true;
 			}
@@ -118,7 +124,7 @@ public class MomotaroBehavior : MonoBehaviour {
 
 //		if (controlling) {
 			FollowInformation.MovementInfo mi = new FollowInformation.MovementInfo (movingRight, movingLeft, jump, crouching);
-			foreach (DogFollow df in followers) {
+			foreach (CharacterBehavior df in followers) {
 				df.infoQueue.Enqueue (mi);
 			}
 //		}
