@@ -74,14 +74,14 @@ public class DogFollow : MonoBehaviour {
 		movingRight = false;
 		if (controlling) {
 			Camera.main.transform.position = new Vector3 (transform.position.x, transform.position.y, -10f);
-			if (Input.GetKey (KeyCode.A)) {
+			if (Input.GetKey(KeyCode.LeftArrow)) {
 				movingLeft = true;
 				Vector3 s = transform.localScale;
 				s.x = -1;
 				transform.localScale = s;
 				inParty = false;
 			}
-			if (Input.GetKey (KeyCode.D)) {
+			if (Input.GetKey(KeyCode.RightArrow)) {
 				movingRight = true;
 				Vector3 s = transform.localScale;
 				s.x = 1;
@@ -91,13 +91,13 @@ public class DogFollow : MonoBehaviour {
 
 
 
-			if (Input.GetKeyDown (KeyCode.Space) && onSomething && !crouching) {
+			if (Input.GetKey(KeyCode.UpArrow) && onSomething && !crouching) {
 				jump = true;
 			}
-			if (Input.GetKey (KeyCode.S)) {
+			if (Input.GetKey(KeyCode.DownArrow)) {
 				crouching = true;
 			}
-			if (!Input.GetKey (KeyCode.S) && !underSomething) {
+			if (!Input.GetKey(KeyCode.DownArrow) && !underSomething) {
 				crouching = false;
 			}
 		}
