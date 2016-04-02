@@ -22,7 +22,7 @@ public class DigBehavior : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Vector3 dogPos = dog.GetComponent<Transform>().position;
-		if(inDigZone && Input.GetKey (KeyCode.S) && !locked){
+		if(inDigZone && Input.GetKey (KeyCode.DownArrow) && !locked){
 			if(horizontal == 1){
 				transform.position = new Vector3 (transform.position.x+(0.1f*forward),transform.position.y,transform.position.z);
 			}
