@@ -148,6 +148,6 @@ public class MomotaroBehavior : MonoBehaviour {
 		if (!movingRight && !movingLeft) {
 			myRb.velocity = new Vector3(0f, myRb.velocity.y, myRb.velocity.z);
 		}
-		transform.rotation = Quaternion.Euler (Vector3.zero);
+		//transform.rotation = Quaternion.Euler (Vector3.zero);
 	}
 }

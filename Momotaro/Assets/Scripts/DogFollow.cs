@@ -176,6 +176,7 @@ public class DogFollow : MonoBehaviour {
 		if (!movingRight && !movingLeft) {
 			myRb.velocity = new Vector3(0f, myRb.velocity.y, myRb.velocity.z);
 		}
-		transform.rotation = Quaternion.Euler (Vector3.zero);
+		//transform.rotation = leader.GetComponent<Transform>().rotation;
+		//transform.rotation = Quaternion.Euler (Vector3.zero);
 	}
 }
