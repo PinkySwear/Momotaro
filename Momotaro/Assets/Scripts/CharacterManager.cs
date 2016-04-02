@@ -32,28 +32,34 @@ public class CharacterManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.D)) {
-			momo.controlling = true;
-			dog.controlling = false;
-			monkey.controlling = false;
-			pheasant.controlling = false;
+//			momo.controlling = true;
+//			dog.controlling = false;
+//			monkey.controlling = false;
+//			pheasant.controlling = false;
 		}
-		else if (Input.GetKeyDown (KeyCode.S)){
+		else if (Input.GetKey (KeyCode.F)) {
 			momo.controlling = false;
 			dog.controlling = true;
 			monkey.controlling = false;
 			pheasant.controlling = false;
 		}
-		else if (Input.GetKeyDown (KeyCode.A)){
+		else if (Input.GetKey (KeyCode.D)) {
 			momo.controlling = false;
 			dog.controlling = false;
 			monkey.controlling = true;
 			pheasant.controlling = false;
 		}
-		else if (Input.GetKeyDown (KeyCode.W)){
+		else if (Input.GetKey (KeyCode.S)) {
 			momo.controlling = false;
 			dog.controlling = false;
 			monkey.controlling = false;
 			pheasant.controlling = true;
+		}
+		else {
+			momo.controlling = true;
+			dog.controlling = false;
+			monkey.controlling = false;
+			pheasant.controlling = false;
 		}
 	}
 

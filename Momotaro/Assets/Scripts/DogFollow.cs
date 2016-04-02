@@ -81,16 +81,16 @@ public class DogFollow : MonoBehaviour {
 //		underSomething = Physics.Linecast (right, right + (Vector3.up * 1), 1 << LayerMask.NameToLayer ("Obstacle")) 
 //			|| Physics.Linecast (left, left + (Vector3.up * 1), 1 << LayerMask.NameToLayer ("Obstacle"));
 		Vector3 colliderCenter = myCollider.bounds.center;
-		Vector3 right = colliderCenter + Vector3.right * myCollider.bounds.extents.x;
-		Vector3 left = colliderCenter - Vector3.right * myCollider.bounds.extents.x;
+		Vector3 right = colliderCenter + Vector3.right * myCollider.bounds.extents.x * 0.95f;
+		Vector3 left = colliderCenter - Vector3.right * myCollider.bounds.extents.x * 0.95f;
 
 		Debug.DrawLine (right, right + (Vector3.down * myCollider.bounds.extents.y * 1.01f));
 		Debug.DrawLine (left, left + (Vector3.down * myCollider.bounds.extents.y * 1.01f));
 		Debug.DrawLine (right, right + (Vector3.up * fullHeight * 1.5f));
 		Debug.DrawLine (left, left + (Vector3.up * fullHeight * 1.5f));
 
-		onSomething = Physics.Linecast (right, right + (Vector3.down * myCollider.bounds.extents.y * 1.01f), 1 << LayerMask.NameToLayer ("Obstacle")) 
-			|| Physics.Linecast (left, left + (Vector3.down * myCollider.bounds.extents.y * 1.01f), 1 << LayerMask.NameToLayer ("Obstacle"));
+		onSomething = Physics.Linecast (right, right + (Vector3.down * myCollider.bounds.extents.y * 1.001f), 1 << LayerMask.NameToLayer ("Obstacle")) 
+			|| Physics.Linecast (left, left + (Vector3.down * myCollider.bounds.extents.y * 1.001f), 1 << LayerMask.NameToLayer ("Obstacle"));
 
 		underSomething = Physics.Linecast (right, right + (Vector3.up * fullHeight * 1.5f), 1 << LayerMask.NameToLayer ("Obstacle")) 
 			|| Physics.Linecast (left, left + (Vector3.up * fullHeight * 1.5f), 1 << LayerMask.NameToLayer ("Obstacle"));
@@ -98,7 +98,7 @@ public class DogFollow : MonoBehaviour {
 		movingLeft = false;
 		movingRight = false;
 		if (controlling) {
-			Camera.main.transform.position = new Vector3 (transform.position.x, transform.position.y, -10f);
+//			Camera.main.transform.position = new Vector3 (transform.position.x, transform.position.y, -10f);
 			if (Input.GetKey(KeyCode.LeftArrow)) {
 				movingLeft = true;
 				Vector3 s = transform.localScale;
@@ -116,7 +116,7 @@ public class DogFollow : MonoBehaviour {
 
 
 
-			if (Input.GetKey(KeyCode.UpArrow) && onSomething && !crouching) {
+			if (Input.GetKeyDown(KeyCode.UpArrow) && onSomething && !crouching) {
 				jump = true;
 			}
 			if (Input.GetKey(KeyCode.DownArrow)) {
@@ -200,7 +200,7 @@ public class DogFollow : MonoBehaviour {
 			velocity = 10f;
 		}
 
-		if (jump) {
+		if (jump && onSomething && Mathf.Abs(myRb.velocity.y) < 0.01f) {
 			myRb.AddForce (Vector3.up * jumpForce);
 			jump = false;
 		}
