@@ -30,9 +30,20 @@ public class DogFollow : MonoBehaviour {
 	public Queue infoQueue;
 
 
+
+	public CapsuleCollider myCollider;
+
+	private float fullHeight;
+
+	private Vector3 right;
+	private Vector3 left;
+
+
 	// Use this for initialization
 	void Start () {
 		momo = leader.GetComponent<MomotaroBehavior> ();
+		myCollider = this.gameObject.GetComponent<CapsuleCollider> ();
+		fullHeight = myCollider.bounds.extents.y;
 //		followInfo = followInformationObject.GetComponent<FollowInformation> ();
 		infoQueue = new Queue();
 		velocity = 10f;
@@ -56,19 +67,33 @@ public class DogFollow : MonoBehaviour {
 			inParty = true;
 			infoQueue.Clear ();
 		}
-		Vector3 right = transform.position + Vector3.right * transform.lossyScale.x * 0.5f;
-		Vector3 left = transform.position - Vector3.right * transform.lossyScale.x * 0.5f;
+//		Vector3 right = transform.position + Vector3.right * transform.lossyScale.x * 0.5f;
+//		Vector3 left = transform.position - Vector3.right * transform.lossyScale.x * 0.5f;
+//
+//		Debug.DrawLine (right, right + (Vector3.down * transform.lossyScale.y * 1));
+//		Debug.DrawLine (left, left + (Vector3.down * transform.lossyScale.y * 1));
+//		Debug.DrawLine (right, right + (Vector3.up * 1));
+//		Debug.DrawLine (left, left + (Vector3.up * 1));
+//
+//		onSomething = Physics.Linecast (right, right + (Vector3.down * transform.lossyScale.y * 1), 1 << LayerMask.NameToLayer ("Obstacle")) 
+//			|| Physics.Linecast (left, left + (Vector3.down * transform.lossyScale.y * 1), 1 << LayerMask.NameToLayer ("Obstacle"));
+//
+//		underSomething = Physics.Linecast (right, right + (Vector3.up * 1), 1 << LayerMask.NameToLayer ("Obstacle")) 
+//			|| Physics.Linecast (left, left + (Vector3.up * 1), 1 << LayerMask.NameToLayer ("Obstacle"));
+		Vector3 colliderCenter = myCollider.bounds.center;
+		Vector3 right = colliderCenter + Vector3.right * myCollider.bounds.extents.x;
+		Vector3 left = colliderCenter - Vector3.right * myCollider.bounds.extents.x;
 
-		Debug.DrawLine (right, right + (Vector3.down * transform.lossyScale.y * 1));
-		Debug.DrawLine (left, left + (Vector3.down * transform.lossyScale.y * 1));
-		Debug.DrawLine (right, right + (Vector3.up * 1));
-		Debug.DrawLine (left, left + (Vector3.up * 1));
+		Debug.DrawLine (right, right + (Vector3.down * myCollider.bounds.extents.y * 1.01f));
+		Debug.DrawLine (left, left + (Vector3.down * myCollider.bounds.extents.y * 1.01f));
+		Debug.DrawLine (right, right + (Vector3.up * fullHeight * 1.5f));
+		Debug.DrawLine (left, left + (Vector3.up * fullHeight * 1.5f));
 
-		onSomething = Physics.Linecast (right, right + (Vector3.down * transform.lossyScale.y * 1), 1 << LayerMask.NameToLayer ("Obstacle")) 
-			|| Physics.Linecast (left, left + (Vector3.down * transform.lossyScale.y * 1), 1 << LayerMask.NameToLayer ("Obstacle"));
+		onSomething = Physics.Linecast (right, right + (Vector3.down * myCollider.bounds.extents.y * 1.01f), 1 << LayerMask.NameToLayer ("Obstacle")) 
+			|| Physics.Linecast (left, left + (Vector3.down * myCollider.bounds.extents.y * 1.01f), 1 << LayerMask.NameToLayer ("Obstacle"));
 
-		underSomething = Physics.Linecast (right, right + (Vector3.up * 1), 1 << LayerMask.NameToLayer ("Obstacle")) 
-			|| Physics.Linecast (left, left + (Vector3.up * 1), 1 << LayerMask.NameToLayer ("Obstacle"));
+		underSomething = Physics.Linecast (right, right + (Vector3.up * fullHeight * 1.5f), 1 << LayerMask.NameToLayer ("Obstacle")) 
+			|| Physics.Linecast (left, left + (Vector3.up * fullHeight * 1.5f), 1 << LayerMask.NameToLayer ("Obstacle"));
 
 		movingLeft = false;
 		movingRight = false;
@@ -154,10 +179,16 @@ public class DogFollow : MonoBehaviour {
 			//restrict movement to one plane
 			transform.position = new Vector3 (transform.position.x, transform.position.y, 0f);
 			myRb.velocity = new Vector3 (-1 * velocity, myRb.velocity.y, myRb.velocity.z);
+			Vector3 s = transform.localScale;
+			s.x = -1;
+			transform.localScale = s;
 		}
 		if (movingRight) {
 			transform.position = new Vector3 (transform.position.x, transform.position.y, 0f);
 			myRb.velocity = new Vector3 (velocity, myRb.velocity.y, myRb.velocity.z);
+			Vector3 s = transform.localScale;
+			s.x = 1;
+			transform.localScale = s;
 		}
 
 		if (crouching) {

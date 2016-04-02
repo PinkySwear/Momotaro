@@ -22,14 +22,22 @@ public class MomotaroBehavior : MonoBehaviour {
 	public GameObject[] followerObjects;
 	public DogFollow[] followers;
 
+	public CapsuleCollider myCollider;
+
+	private float fullHeight;
+
+	private Vector3 right;
+	private Vector3 left;
+
 	// Use this for initialization
 	void Start () {
 		followInfo = followInformationObject.GetComponent<FollowInformation> ();
-
+		myCollider = this.gameObject.GetComponent<CapsuleCollider> ();
+		fullHeight = myCollider.bounds.extents.y;
 		followers = new DogFollow[followerObjects.Length];
 		for (int i = 0; i < followerObjects.Length; i++) {
 			followers [i] = followerObjects [i].GetComponent<DogFollow> ();
-			followers [i].commandDelay = 6 * (i + 1) + i;
+			followers [i].commandDelay = 7 * (i + 1) + i;
 		}
 
 
@@ -43,19 +51,20 @@ public class MomotaroBehavior : MonoBehaviour {
 	}
 
 	void Update() {
-		Vector3 right = transform.position + Vector3.right * transform.lossyScale.x * 0.5f;
-		Vector3 left = transform.position - Vector3.right * transform.lossyScale.x * 0.5f;
+		Vector3 colliderCenter = myCollider.bounds.center;
+		Vector3 right = colliderCenter + Vector3.right * myCollider.bounds.extents.x;
+		Vector3 left = colliderCenter - Vector3.right * myCollider.bounds.extents.x;
 
-		Debug.DrawLine (right, right + (Vector3.down * transform.lossyScale.y * 1));
-		Debug.DrawLine (left, left + (Vector3.down * transform.lossyScale.y * 1));
-		Debug.DrawLine (right, right + (Vector3.up * 1));
-		Debug.DrawLine (left, left + (Vector3.up * 1));
+		Debug.DrawLine (right, right + (Vector3.down * myCollider.bounds.extents.y * 1.01f));
+		Debug.DrawLine (left, left + (Vector3.down * myCollider.bounds.extents.y * 1.01f));
+		Debug.DrawLine (right, right + (Vector3.up * fullHeight * 1.5f));
+		Debug.DrawLine (left, left + (Vector3.up * fullHeight * 1.5f));
 
-		onSomething = Physics.Linecast (right, right + (Vector3.down * transform.lossyScale.y * 1), 1 << LayerMask.NameToLayer ("Obstacle")) 
-			|| Physics.Linecast (left, left + (Vector3.down * transform.lossyScale.y * 1), 1 << LayerMask.NameToLayer ("Obstacle"));
+		onSomething = Physics.Linecast (right, right + (Vector3.down * myCollider.bounds.extents.y * 1.01f), 1 << LayerMask.NameToLayer ("Obstacle")) 
+			|| Physics.Linecast (left, left + (Vector3.down * myCollider.bounds.extents.y * 1.01f), 1 << LayerMask.NameToLayer ("Obstacle"));
 
-		underSomething = Physics.Linecast (right, right + (Vector3.up * 1), 1 << LayerMask.NameToLayer ("Obstacle")) 
-			|| Physics.Linecast (left, left + (Vector3.up * 1), 1 << LayerMask.NameToLayer ("Obstacle"));
+		underSomething = Physics.Linecast (right, right + (Vector3.up * fullHeight * 1.5f), 1 << LayerMask.NameToLayer ("Obstacle")) 
+			|| Physics.Linecast (left, left + (Vector3.up * fullHeight * 1.5f), 1 << LayerMask.NameToLayer ("Obstacle"));
 
 		movingLeft = false;
 		movingRight = false;
@@ -63,15 +72,9 @@ public class MomotaroBehavior : MonoBehaviour {
 			Camera.main.transform.position = new Vector3 (transform.position.x, transform.position.y, -10f);
 			if (Input.GetKey (KeyCode.A)) {
 				movingLeft = true;
-				Vector3 s = transform.localScale;
-				s.x = -1;
-				transform.localScale = s;
 			}
 			if (Input.GetKey (KeyCode.D)) {
 				movingRight = true;
-				Vector3 s = transform.localScale;
-				s.x = 1;
-				transform.localScale = s;
 			}
 
 
@@ -126,10 +129,16 @@ public class MomotaroBehavior : MonoBehaviour {
 			//restrict movement to one plane
 			transform.position = new Vector3 (transform.position.x, transform.position.y, 0f);
 			myRb.velocity = new Vector3 (-1 * velocity, myRb.velocity.y, myRb.velocity.z);
+			Vector3 s = transform.localScale;
+			s.x = -1;
+			transform.localScale = s;
 		}
 		if (movingRight) {
 			transform.position = new Vector3 (transform.position.x, transform.position.y, 0f);
 			myRb.velocity = new Vector3 (velocity, myRb.velocity.y, myRb.velocity.z);
+			Vector3 s = transform.localScale;
+			s.x = 1;
+			transform.localScale = s;
 		}
 
 		if (crouching) {

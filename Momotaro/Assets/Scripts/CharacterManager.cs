@@ -56,4 +56,9 @@ public class CharacterManager : MonoBehaviour {
 			pheasant.controlling = true;
 		}
 	}
+
+	void Awake() {
+		QualitySettings.vSyncCount = 0;
+		Application.targetFrameRate = 120;
+	}
 }
