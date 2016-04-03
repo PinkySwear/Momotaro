@@ -61,6 +61,7 @@ public class CharacterBehavior : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
+		transform.position = new Vector3 (transform.position.x, transform.position.y, 0f);
 		if (!controlling && inParty) {
 			if (infoQueue.Count > commandDelay) {
 				FollowInformation.MovementInfo mi;

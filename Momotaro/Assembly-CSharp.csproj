@@ -52,6 +52,7 @@
      <Compile Include="Assets\Scripts\DirtBehavior.cs" />
      <Compile Include="Assets\Scripts\DogBehavior.cs" />
      <Compile Include="Assets\Scripts\DogFollow.cs" />
+     <Compile Include="Assets\Scripts\EnemyBehavior.cs" />
      <Compile Include="Assets\Scripts\FollowInformation.cs" />
      <Compile Include="Assets\Scripts\FriskControl.cs" />
      <Compile Include="Assets\Scripts\MomotaroBehavior.cs" />

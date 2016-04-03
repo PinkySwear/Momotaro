@@ -38,11 +38,16 @@ public class DogFollow : CharacterBehavior {
 //			inParty = false;
 //		}
 
-		if (!controlling && !inParty && Vector3.Distance (leader.transform.position, transform.position) < 1f) {
+		if (!controlling && !inParty && Vector3.Distance (leader.transform.position, transform.position) < 2f) {
 			transform.position = leader.transform.position;
 			inParty = true;
 //			infoQueue.Clear ();
 		}
+//		if (!controlling && Vector3.Distance (leader.transform.position, transform.position) < 0.1f) {
+//			transform.position = leader.transform.position;
+//			Debug.Log ("QUEUE CLEARED");
+//			infoQueue.Clear ();
+//		}
 
 		Vector3 colliderCenter = myCollider.bounds.center;
 		Vector3 right = colliderCenter + Vector3.right * myCollider.bounds.extents.x * 0.95f;
@@ -207,7 +212,7 @@ public class DogFollow : CharacterBehavior {
 		foreach (Collider enemyCol in enemyColliders) {
 			float dist = Vector3.Distance (enemyCol.transform.position, transform.position);
 			Debug.Log (dist);
-			enemyCol.gameObject.GetComponent<Rigidbody> ().AddForce (((enemyCol.transform.position - transform.position).normalized + Vector3.up).normalized * (((1f - (dist / 10f)) * 2000f)));
+			enemyCol.gameObject.GetComponent<Rigidbody> ().AddForce ((Mathf.Sign((enemyCol.transform.position - transform.position).x)*Vector3.right + Vector3.up * 2f).normalized * (((1f - (dist / 10f)) * 200000f)));
 			//			((1f - (dist / 10f) * 2000f))
 		}
 	}

@@ -27,11 +27,16 @@ public class PheasantFollow : CharacterBehavior {
 		//			inParty = false;
 		//		}
 
-		if (!controlling && !inParty && Vector3.Distance (leader.transform.position, transform.position) < 1f) {
+		if (!controlling && !inParty && Vector3.Distance (leader.transform.position, transform.position) < 2f) {
 			transform.position = leader.transform.position;
 			inParty = true;
 //			infoQueue.Clear ();
 		}
+//		if (!controlling && Vector3.Distance (leader.transform.position, transform.position) < 0.1f) {
+//			transform.position = leader.transform.position;
+//			Debug.Log ("QUEUE CLEARED");
+//			infoQueue.Clear ();
+//		}
 
 		Vector3 colliderCenter = myCollider.bounds.center;
 		Vector3 right = colliderCenter + Vector3.right * myCollider.bounds.extents.x * 0.95f;

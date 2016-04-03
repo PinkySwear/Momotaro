@@ -9,8 +9,8 @@ public class MomotaroBehavior : MonoBehaviour {
 	private Rigidbody myRb;
 	private bool onSomething = false;
 	private bool underSomething = false;
-	private bool movingLeft;
-	private bool movingRight;
+	public bool movingLeft;
+	public bool movingRight;
 	private bool jump = false;
 	private bool crouching = false;
 
@@ -74,8 +74,9 @@ public class MomotaroBehavior : MonoBehaviour {
 
 		movingLeft = false;
 		movingRight = false;
+//		Camera.main.transform.position = new Vector3 (transform.position.x, transform.position.y + 3f, -10f);
 		if (controlling) {
-			Camera.main.transform.position = new Vector3 (transform.position.x, transform.position.y, -10f);
+//			Camera.main.transform.position = new Vector3 (transform.position.x, transform.position.y, -10f);
 			if (Input.GetKey(KeyCode.LeftArrow)) {
 				movingLeft = true;
 			}
@@ -102,7 +103,7 @@ public class MomotaroBehavior : MonoBehaviour {
 
 	// Update is called once per frame
 	void FixedUpdate () {
-
+		transform.position = new Vector3 (transform.position.x, transform.position.y, 0f);
 //		FollowInformation.MovementInfo mi = new FollowInformation.MovementInfo(movingRight, movingLeft, jump, crouching);
 //		FollowInformation.Tuple<int, int> t = new FollowInformation.Tuple<int, int> (Mathf.RoundToInt(transform.position.x * 100f), Mathf.RoundToInt(transform.position.y * 100f));
 //		followInfo.infoMap.Remove (t);
