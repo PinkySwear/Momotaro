@@ -11,7 +11,7 @@ public class MomotaroBehavior : MonoBehaviour {
 	private bool underSomething = false;
 	public bool movingLeft;
 	public bool movingRight;
-	private bool jump = false;
+	public bool jump = false;
 	private bool crouching = false;
 
 	public bool controlling;
