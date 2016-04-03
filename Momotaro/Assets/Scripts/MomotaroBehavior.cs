@@ -37,7 +37,7 @@ public class MomotaroBehavior : MonoBehaviour {
 		followers = new CharacterBehavior[followerObjects.Length];
 		for (int i = 0; i < followerObjects.Length; i++) {
 			followers [i] = followerObjects [i].GetComponent<CharacterBehavior> ();
-			followers [i].commandDelay = 7 * (i + 1) + i;
+			followers [i].commandDelay = 10 * (i + 1) + i;
 		}
 //		for (int i = 0; i < followerObjects.Length; i++) {
 //			followers [i].commandDelay = 7 * (i + 1) + i;
@@ -125,7 +125,9 @@ public class MomotaroBehavior : MonoBehaviour {
 //		if (controlling) {
 			FollowInformation.MovementInfo mi = new FollowInformation.MovementInfo (movingRight, movingLeft, jump, crouching);
 			foreach (CharacterBehavior df in followers) {
-				df.infoQueue.Enqueue (mi);
+				if (df.inParty) {
+					df.infoQueue.Enqueue (mi);
+				}
 			}
 //		}
 //		followInfo.infoQueue.Enqueue (mi);

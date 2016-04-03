@@ -40,6 +40,7 @@ public class CharacterManager : MonoBehaviour {
 		else if (Input.GetKey (KeyCode.F)) {
 			momo.controlling = false;
 			dog.controlling = true;
+			dog.inParty = false;
 			monkey.controlling = false;
 			pheasant.controlling = false;
 		}
@@ -47,6 +48,7 @@ public class CharacterManager : MonoBehaviour {
 			momo.controlling = false;
 			dog.controlling = false;
 			monkey.controlling = true;
+			monkey.inParty = false;
 			pheasant.controlling = false;
 		}
 		else if (Input.GetKey (KeyCode.S)) {
@@ -54,6 +56,7 @@ public class CharacterManager : MonoBehaviour {
 			dog.controlling = false;
 			monkey.controlling = false;
 			pheasant.controlling = true;
+			pheasant.inParty = false;
 		}
 		else {
 			momo.controlling = true;

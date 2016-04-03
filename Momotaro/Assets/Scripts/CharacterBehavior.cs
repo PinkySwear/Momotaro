@@ -13,6 +13,7 @@ public class CharacterBehavior : MonoBehaviour {
 
 
 	public float velocity;
+	public float specialVelocity;
 	public float jumpForce;
 	protected Rigidbody myRb;
 	protected bool onSomething = false;
@@ -112,29 +113,29 @@ public class CharacterBehavior : MonoBehaviour {
 			myRb.velocity = new Vector3(0f, myRb.velocity.y, myRb.velocity.z);
 		}
 		if (specialMovement) {
-			myRb.velocity = new Vector3 (myRb.velocity.x, 0f, 0f);
+//			myRb.velocity = new Vector3 (myRb.velocity.x, 0f, 0f);
 
 			if (movingLeft) {
 				//restrict movement to one plane
 				transform.position = new Vector3 (transform.position.x, transform.position.y, 0f);
-				myRb.velocity = new Vector3 (-1 * 5f, myRb.velocity.y, myRb.velocity.z);
+				myRb.velocity = new Vector3 (-1 * specialVelocity, myRb.velocity.y, myRb.velocity.z);
 				Vector3 s = transform.localScale;
 				s.x = -1;
 				transform.localScale = s;
 			}
 			if (movingRight) {
 				transform.position = new Vector3 (transform.position.x, transform.position.y, 0f);
-				myRb.velocity = new Vector3 (5f, myRb.velocity.y, myRb.velocity.z);
+				myRb.velocity = new Vector3 (specialVelocity, myRb.velocity.y, myRb.velocity.z);
 				Vector3 s = transform.localScale;
 				s.x = 1;
 				transform.localScale = s;
 			}
 
 			if (movingDown) {
-				myRb.velocity = new Vector3 (myRb.velocity.x, -5f, myRb.velocity.z);
+				myRb.velocity = new Vector3 (myRb.velocity.x, -1 * specialVelocity, myRb.velocity.z);
 			}
 			if (movingUp) {
-				myRb.velocity = new Vector3 (myRb.velocity.x, 5f, myRb.velocity.z);
+				myRb.velocity = new Vector3 (myRb.velocity.x, specialVelocity, myRb.velocity.z);
 			}
 		}
 		//transform.rotation = leader.GetComponent<Transform>().rotation;

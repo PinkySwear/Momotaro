@@ -41,7 +41,7 @@ public class DogFollow : CharacterBehavior {
 		if (!controlling && !inParty && Vector3.Distance (leader.transform.position, transform.position) < 1f) {
 			transform.position = leader.transform.position;
 			inParty = true;
-			infoQueue.Clear ();
+//			infoQueue.Clear ();
 		}
 
 		Vector3 colliderCenter = myCollider.bounds.center;
@@ -106,6 +106,9 @@ public class DogFollow : CharacterBehavior {
 					Physics.IgnoreCollision (dc, myCollider, true);
 				}
 			}
+			if (Input.GetKeyDown (KeyCode.Space)) {
+				bark ();
+			}
 		}
 
 		if (controlling && !specialMovement) {
@@ -134,6 +137,9 @@ public class DogFollow : CharacterBehavior {
 			if (!Input.GetKey (KeyCode.DownArrow) && !underSomething) {
 				crouching = false;
 			}
+			if (Input.GetKeyDown (KeyCode.Space)) {
+				bark ();
+			}
 		}
 
 		if (controlling && specialMovement) {
@@ -143,6 +149,8 @@ public class DogFollow : CharacterBehavior {
 //			Vector3 s = transform.localScale;
 //			s.x = -1;
 //			transform.localScale = s;
+
+			myRb.velocity = new Vector3 (myRb.velocity.x, 0f, 0f);
 
 			if (Input.GetKey (KeyCode.LeftArrow)) {
 				movingLeft = true;
@@ -159,13 +167,17 @@ public class DogFollow : CharacterBehavior {
 				inParty = false;
 			}
 			if (Input.GetKey (KeyCode.UpArrow)) {
+				specialVelocity = 5f;
 				movingUp = true;
 			}
 			if (Input.GetKey (KeyCode.DownArrow)) {
+				specialVelocity = 5f;
 				movingDown = true;
 			}
 		}
-			
+		if (!inParty && infoQueue.Count != 0) {
+			infoQueue.Clear ();
+		}
 //		Debug.Log (touchingDirt);
 
 	}
@@ -188,6 +200,21 @@ public class DogFollow : CharacterBehavior {
 //				dirtColliders.Remove (collisionInfo.collider);
 //			}
 		}
+	}
+
+	public void bark() {
+		Collider[] enemyColliders = Physics.OverlapSphere(transform.position, 10f, 1 << LayerMask.NameToLayer ("Enemy"));
+		foreach (Collider enemyCol in enemyColliders) {
+			float dist = Vector3.Distance (enemyCol.transform.position, transform.position);
+			Debug.Log (dist);
+			enemyCol.gameObject.GetComponent<Rigidbody> ().AddForce (((enemyCol.transform.position - transform.position).normalized + Vector3.up).normalized * (((1f - (dist / 10f)) * 2000f)));
+			//			((1f - (dist / 10f) * 2000f))
+		}
+	}
+
+	void OnDrawGizmos() {
+		Gizmos.color = Color.yellow;
+		Gizmos.DrawWireSphere (transform.position, 10f);
 	}
 		
 }

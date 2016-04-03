@@ -37,7 +37,7 @@ public class MonkeyFollow : CharacterBehavior {
 		if (!controlling && !inParty && Vector3.Distance (leader.transform.position, transform.position) < 1f) {
 			transform.position = leader.transform.position;
 			inParty = true;
-			infoQueue.Clear ();
+//			infoQueue.Clear ();
 		}
 
 		Vector3 colliderCenter = myCollider.bounds.center;
@@ -98,7 +98,8 @@ public class MonkeyFollow : CharacterBehavior {
 				crouching = false;
 			}
 		}
-		if (controlling && specialMovement) {	
+		if (controlling && specialMovement) {
+			myRb.velocity = new Vector3 (myRb.velocity.x, 0f, 0f);	
 			specialMovement = false;
 			myRb.useGravity = false;
 			if (Input.GetKey (KeyCode.LeftArrow)) {
@@ -136,9 +137,11 @@ public class MonkeyFollow : CharacterBehavior {
 //			}
 
 			if (Input.GetKey(KeyCode.UpArrow)) {
+				specialVelocity = 5f;
 				movingUp = true;
 			}
 			if (Input.GetKey(KeyCode.DownArrow)) {
+				specialVelocity = 5f;
 				movingDown = true;
 			}
 //			somethingOnLeft = false;
@@ -148,13 +151,16 @@ public class MonkeyFollow : CharacterBehavior {
 //		somethingOnRight = false;
 		if (somethingOnLeft || somethingOnRight) {
 			specialMovement = true;
-			Debug.Log ("fucking bullshit");
+//			Debug.Log ("fucking bullshit");
 		}
 		else {
 			specialMovement = false;
 		}
 		somethingOnRight = false;
 		somethingOnLeft = false;
+		if (!inParty && infoQueue.Count != 0) {
+			infoQueue.Clear ();
+		}
 
 	}
 
@@ -182,7 +188,7 @@ public class MonkeyFollow : CharacterBehavior {
 			bool left = false;
 			bool right = false;
 			if (collisionInfo.collider.tag == "Obstacle") {
-				Debug.Log (collisionInfo.contacts.Length);
+//				Debug.Log (collisionInfo.contacts.Length);
 				if (collisionInfo.contacts.Length >= 2) {
 					left = true;
 					right = true;
