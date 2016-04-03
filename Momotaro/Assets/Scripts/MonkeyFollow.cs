@@ -1,43 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MonkeyFollow : MonoBehaviour {
+public class MonkeyFollow : CharacterBehavior {
 
-	public GameObject leader;
-	public MomotaroBehavior momo; 
-
-
-	public GameObject followInformationObject;
-	public FollowInformation followInfo;
-
-
-
-	public float velocity;
-	public float jumpForce;
-	private Rigidbody myRb;
-	private bool onSomething = false;
-	private bool underSomething = false;
-	private bool movingLeft;
-	private bool movingRight;
-	private bool jump = false;
-	private bool crouching = false;
-
-	public bool controlling;
-	public bool inParty;
-
-	public int commandDelay;
-
-	public Queue infoQueue;
-
-
-
-	public CapsuleCollider myCollider;
-
-	private float fullHeight;
-
-	private Vector3 right;
-	private Vector3 left;
-
+	public bool somethingOnLeft;
+	public bool somethingOnRight;
+	public Vector3 prevPos;
 
 	// Use this for initialization
 	void Start () {
@@ -51,6 +19,10 @@ public class MonkeyFollow : MonoBehaviour {
 		myRb = GetComponent<Rigidbody> ();
 		myRb.freezeRotation = true;
 		inParty = true;
+		specialMovement = false;
+		somethingOnLeft = false;
+		somethingOnRight = false;
+		prevPos = transform.position;
 
 
 	}
@@ -82,10 +54,18 @@ public class MonkeyFollow : MonoBehaviour {
 
 		underSomething = Physics.Linecast (right, right + (Vector3.up * fullHeight * 1.5f), 1 << LayerMask.NameToLayer ("Obstacle")) 
 			|| Physics.Linecast (left, left + (Vector3.up * fullHeight * 1.5f), 1 << LayerMask.NameToLayer ("Obstacle"));
+	
 
+		movingUp = false;
+		movingDown = false;
 		movingLeft = false;
 		movingRight = false;
-		if (controlling) {
+		somethingOnLeft = false;
+		somethingOnRight = false;
+
+		myRb.useGravity = true;
+
+		if (controlling && !specialMovement) {
 			//			Camera.main.transform.position = new Vector3 (transform.position.x, transform.position.y, -10f);
 			if (Input.GetKey(KeyCode.LeftArrow)) {
 				movingLeft = true;
@@ -93,6 +73,9 @@ public class MonkeyFollow : MonoBehaviour {
 				s.x = -1;
 				transform.localScale = s;
 				inParty = false;
+				if (myRb.velocity.x > -0.01f) {
+					somethingOnLeft = true;
+				}
 			}
 			if (Input.GetKey(KeyCode.RightArrow)) {
 				movingRight = true;
@@ -100,9 +83,10 @@ public class MonkeyFollow : MonoBehaviour {
 				s.x = 1;
 				transform.localScale = s;
 				inParty = false;
+				if (myRb.velocity.x * -1 > -0.01f) {
+					somethingOnRight = true;
+				}
 			}
-
-
 
 			if (Input.GetKeyDown(KeyCode.UpArrow) && onSomething && !crouching) {
 				jump = true;
@@ -114,64 +98,77 @@ public class MonkeyFollow : MonoBehaviour {
 				crouching = false;
 			}
 		}
+		if (controlling && specialMovement) {	
+			specialMovement = false;
+			myRb.useGravity = false;
+			if (Input.GetKey (KeyCode.LeftArrow)) {
+				movingLeft = true;
+				Vector3 s = transform.localScale;
+				s.x = -1;
+				transform.localScale = s;
+				inParty = false;
+				if (myRb.velocity.x > -0.01f) {
+					somethingOnLeft = true;
+				}
+//				if (somethingOnLeft) {
+//					specialMovement = true;
+//				}
 
-
-	}
-
-
-
-	void FixedUpdate () {
-
-		if (!controlling && inParty) {
-			if (infoQueue.Count > commandDelay) {
-				FollowInformation.MovementInfo mi;
-				mi = (FollowInformation.MovementInfo)infoQueue.Dequeue ();
-				movingLeft = mi.movingLeft;
-				movingRight = mi.movingRight;
-				jump = mi.jump;
-				crouching = mi.crouching;
 			}
 			else {
-				movingLeft = false;
-				movingRight = false;
-				jump = false;
-				crouching = false;
+				specialMovement = false;
 			}
+			if (Input.GetKey(KeyCode.RightArrow)) {
+				movingRight = true;
+				Vector3 s = transform.localScale;
+				s.x = 1;
+				transform.localScale = s;
+				inParty = false;
+				if (myRb.velocity.x * -1 > -0.01f) {
+					somethingOnRight = true;
+				}
+//				if (somethingOnRight) {
+//					specialMovement = true;
+//				}
+			}
+			else {
+				specialMovement = false;
+			}
+
+			if (Input.GetKey(KeyCode.UpArrow)) {
+				movingUp = true;
+			}
+			if (Input.GetKey(KeyCode.DownArrow)) {
+				movingDown = true;
+			}
+//			somethingOnLeft = false;
+//			somethingOnRight = false;
+		}
+//		somethingOnLeft = false;
+//		somethingOnRight = false;
+		if (somethingOnLeft || somethingOnRight) {
+			specialMovement = true;
 		}
 
-		if (movingLeft) {
-			//restrict movement to one plane
-			transform.position = new Vector3 (transform.position.x, transform.position.y, 0f);
-			myRb.velocity = new Vector3 (-1 * velocity, myRb.velocity.y, myRb.velocity.z);
-			Vector3 s = transform.localScale;
-			s.x = -1;
-			transform.localScale = s;
-		}
-		if (movingRight) {
-			transform.position = new Vector3 (transform.position.x, transform.position.y, 0f);
-			myRb.velocity = new Vector3 (velocity, myRb.velocity.y, myRb.velocity.z);
-			Vector3 s = transform.localScale;
-			s.x = 1;
-			transform.localScale = s;
-		}
-
-		if (crouching) {
-			transform.localScale = new Vector3 (transform.localScale.x, 0.5f, 1f);
-			velocity = 5f;
-		}
-		else {
-			transform.localScale = new Vector3 (transform.localScale.x, 1f, 1f);
-			velocity = 10f;
-		}
-
-		if (jump && onSomething && Mathf.Abs(myRb.velocity.y) < 0.01f) {
-			myRb.AddForce (Vector3.up * jumpForce);
-			jump = false;
-		}
-		if (!movingRight && !movingLeft) {
-			myRb.velocity = new Vector3(0f, myRb.velocity.y, myRb.velocity.z);
-		}
-		//transform.rotation = leader.GetComponent<Transform>().rotation;
-		//transform.rotation = Quaternion.Euler (Vector3.zero);
 	}
+
+//	void OnCollisionStay(Collision collisionInfo) {
+//
+//		bool left = false;
+//		bool right = false;
+//		if (collisionInfo.collider.tag == "Obstacle") {
+//			Debug.Log (collisionInfo.contacts.Length);
+//			if(collisionInfo.contacts.Length >= 2) {
+//				left = true;
+//				right = true;
+//				foreach (ContactPoint c in collisionInfo.contacts) {
+//					left = left && (c.point.x - transform.position.x < 0f);
+//					right = right && (c.point.x - transform.position.x > 0f);
+//				}
+//			}
+//		}
+//		somethingOnLeft = left;
+//		somethingOnRight = right;
+//	}
+
 }

@@ -10,8 +10,8 @@ public class CharacterManager : MonoBehaviour {
 
 	public MomotaroBehavior momo;
 	public DogFollow dog;
-	public DogFollow monkey;
-	public DogFollow pheasant;
+	public MonkeyFollow monkey;
+	public PheasantFollow pheasant;
 
 	public GameObject[] characterObjects;
 
@@ -22,9 +22,9 @@ public class CharacterManager : MonoBehaviour {
 		momo.controlling = true;
 		dog = dogObject.GetComponent<DogFollow> ();
 		dog.controlling = false;
-		monkey = monkeyObject.GetComponent<DogFollow> ();
+		monkey = monkeyObject.GetComponent<MonkeyFollow> ();
 		monkey.controlling = false;
-		pheasant = pheasantObject.GetComponent<DogFollow> ();
+		pheasant = pheasantObject.GetComponent<PheasantFollow> ();
 		pheasant.controlling = false;
 
 	}

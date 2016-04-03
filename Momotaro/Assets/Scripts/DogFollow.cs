@@ -1,42 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class DogFollow : CharacterBehavior {
-	
-//	public GameObject leader;
-//	public MomotaroBehavior momo; 
-//
-//
-//	public GameObject followInformationObject;
-//	public FollowInformation followInfo;
-//
-//
-//
-//	public float velocity;
-//	public float jumpForce;
-//	private Rigidbody myRb;
-//	private bool onSomething = false;
-//	private bool underSomething = false;
-//	private bool movingLeft;
-//	private bool movingRight;
-//	private bool jump = false;
-//	private bool crouching = false;
-//
-//	public bool controlling;
-//	public bool inParty;
-//
-//	public int commandDelay;
-//
-//	public Queue infoQueue;
-//
-//
-//
-//	public CapsuleCollider myCollider;
-//
-//	private float fullHeight;
-//
-//	private Vector3 right;
-//	private Vector3 left;
+
+	public bool touchingDirt;
+	public bool inDirt;
+	public List<Collider> dirtColliders;
 
 
 	// Use this for initialization
@@ -51,6 +21,12 @@ public class DogFollow : CharacterBehavior {
 		myRb = GetComponent<Rigidbody> ();
 		myRb.freezeRotation = true;
 		inParty = true;
+		specialMovement = false;
+		touchingDirt = false;
+		inDirt = false;
+		movingUp = false;
+		movingDown = false;
+		dirtColliders = new List<Collider> ();
 
 	
 	}
@@ -85,91 +61,133 @@ public class DogFollow : CharacterBehavior {
 
 		movingLeft = false;
 		movingRight = false;
-		if (controlling) {
-//			Camera.main.transform.position = new Vector3 (transform.position.x, transform.position.y, -10f);
-			if (Input.GetKey(KeyCode.LeftArrow)) {
+		movingUp = false;
+		movingDown = false;
+
+		if (!inDirt) {
+			myRb.useGravity = true;
+			foreach (Collider dc in dirtColliders) {
+				Physics.IgnoreCollision (dc, myCollider, false);
+			}
+			specialMovement = false;
+		}
+		else {
+			myRb.useGravity = false;
+			foreach (Collider dc in dirtColliders) {
+				Physics.IgnoreCollision (dc, myCollider, true);
+			}
+			specialMovement = true;
+		}
+
+		if (controlling && touchingDirt) {
+			inParty = false;
+			if (Input.GetKey (KeyCode.LeftArrow)) {
 				movingLeft = true;
 				Vector3 s = transform.localScale;
 				s.x = -1;
 				transform.localScale = s;
 				inParty = false;
 			}
-			if (Input.GetKey(KeyCode.RightArrow)) {
+			if (Input.GetKey (KeyCode.RightArrow)) {
 				movingRight = true;
 				Vector3 s = transform.localScale;
 				s.x = 1;
 				transform.localScale = s;
 				inParty = false;
 			}
+			if (Input.GetKeyDown (KeyCode.UpArrow) && onSomething && !crouching) {
+				jump = true;
+				touchingDirt = false;
+			}
+			if (Input.GetKeyDown (KeyCode.DownArrow)) {
+				specialMovement = true;
+				myRb.useGravity = false;
+				foreach (Collider dc in dirtColliders) {
+					Physics.IgnoreCollision (dc, myCollider, true);
+				}
+			}
+		}
 
-
-
-			if (Input.GetKeyDown(KeyCode.UpArrow) && onSomething && !crouching) {
+		if (controlling && !specialMovement) {
+			inParty = false;
+//			Camera.main.transform.position = new Vector3 (transform.position.x, transform.position.y, -10f);
+			if (Input.GetKey (KeyCode.LeftArrow)) {
+				movingLeft = true;
+				Vector3 s = transform.localScale;
+				s.x = -1;
+				transform.localScale = s;
+				inParty = false;
+			}
+			if (Input.GetKey (KeyCode.RightArrow)) {
+				movingRight = true;
+				Vector3 s = transform.localScale;
+				s.x = 1;
+				transform.localScale = s;
+				inParty = false;
+			}
+			if (Input.GetKeyDown (KeyCode.UpArrow) && onSomething && !crouching) {
 				jump = true;
 			}
-			if (Input.GetKey(KeyCode.DownArrow)) {
+			if (Input.GetKey (KeyCode.DownArrow)) {
 				crouching = true;
 			}
-			if (!Input.GetKey(KeyCode.DownArrow) && !underSomething) {
+			if (!Input.GetKey (KeyCode.DownArrow) && !underSomething) {
 				crouching = false;
 			}
 		}
-			
 
-	}
-		
-//	void FixedUpdate () {
-//
-//		if (!controlling && inParty) {
-//			if (infoQueue.Count > commandDelay) {
-//				FollowInformation.MovementInfo mi;
-//				mi = (FollowInformation.MovementInfo)infoQueue.Dequeue ();
-//				movingLeft = mi.movingLeft;
-//				movingRight = mi.movingRight;
-//				jump = mi.jump;
-//				crouching = mi.crouching;
-//			}
-//			else {
-//				movingLeft = false;
-//				movingRight = false;
-//				jump = false;
-//				crouching = false;
-//			}
-//		}
-//			
-//		if (movingLeft) {
-//			//restrict movement to one plane
+		if (controlling && specialMovement) {
+			inParty = false;
 //			transform.position = new Vector3 (transform.position.x, transform.position.y, 0f);
 //			myRb.velocity = new Vector3 (-1 * velocity, myRb.velocity.y, myRb.velocity.z);
 //			Vector3 s = transform.localScale;
 //			s.x = -1;
 //			transform.localScale = s;
-//		}
-//		if (movingRight) {
-//			transform.position = new Vector3 (transform.position.x, transform.position.y, 0f);
-//			myRb.velocity = new Vector3 (velocity, myRb.velocity.y, myRb.velocity.z);
-//			Vector3 s = transform.localScale;
-//			s.x = 1;
-//			transform.localScale = s;
-//		}
-//
-//		if (crouching) {
-//			transform.localScale = new Vector3 (transform.localScale.x, 0.5f, 1f);
-//			velocity = 5f;
-//		}
-//		else {
-//			transform.localScale = new Vector3 (transform.localScale.x, 1f, 1f);
-//			velocity = 10f;
-//		}
-//
-//		if (jump && onSomething && Mathf.Abs(myRb.velocity.y) < 0.01f) {
-//			myRb.AddForce (Vector3.up * jumpForce);
-//			jump = false;
-//		}
-//		if (!movingRight && !movingLeft) {
-//			myRb.velocity = new Vector3(0f, myRb.velocity.y, myRb.velocity.z);
-//		}
-//		//transform.rotation = leader.GetComponent<Transform>().rotation;
-//		//transform.rotation = Quaternion.Euler (Vector3.zero);
-//	}
+
+			if (Input.GetKey (KeyCode.LeftArrow)) {
+				movingLeft = true;
+				Vector3 s = transform.localScale;
+				s.x = -1;
+				transform.localScale = s;
+				inParty = false;
+			}
+			if (Input.GetKey (KeyCode.RightArrow)) {
+				movingRight = true;
+				Vector3 s = transform.localScale;
+				s.x = 1;
+				transform.localScale = s;
+				inParty = false;
+			}
+			if (Input.GetKey (KeyCode.UpArrow)) {
+				movingUp = true;
+			}
+			if (Input.GetKey (KeyCode.DownArrow)) {
+				movingDown = true;
+			}
+		}
+			
+//		Debug.Log (touchingDirt);
+
+	}
+
+
+	void OnCollisionEnter(Collision collisionInfo) {
+//		Debug.Log ("THIS CALLEd");
+		if (controlling && collisionInfo.collider.tag == "Dirt") {
+			touchingDirt = true;
+			if (!dirtColliders.Contains (collisionInfo.collider)) {
+				dirtColliders.Add (collisionInfo.collider);
+			}
+		}
+	}
+	void OnCollisionExit(Collision collisionInfo) {
+		//		Debug.Log ("THIS CALLEd");
+		if (controlling && collisionInfo.collider.tag == "Dirt") {
+			touchingDirt = false;
+//			if (dirtColliders.Contains (collisionInfo.collider)) {
+//				dirtColliders.Remove (collisionInfo.collider);
+//			}
+		}
+	}
+		
 }

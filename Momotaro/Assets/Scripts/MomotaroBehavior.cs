@@ -75,7 +75,7 @@ public class MomotaroBehavior : MonoBehaviour {
 		movingLeft = false;
 		movingRight = false;
 		if (controlling) {
-//			Camera.main.transform.position = new Vector3 (transform.position.x, transform.position.y, -10f);
+			Camera.main.transform.position = new Vector3 (transform.position.x, transform.position.y, -10f);
 			if (Input.GetKey(KeyCode.LeftArrow)) {
 				movingLeft = true;
 			}
