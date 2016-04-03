@@ -73,9 +73,9 @@ public class MonkeyFollow : CharacterBehavior {
 				s.x = -1;
 				transform.localScale = s;
 				inParty = false;
-				if (myRb.velocity.x > -0.01f) {
-					somethingOnLeft = true;
-				}
+//				if (myRb.velocity.x > -0.01f) {
+//					somethingOnLeft = true;
+//				}
 			}
 			if (Input.GetKey(KeyCode.RightArrow)) {
 				movingRight = true;
@@ -83,9 +83,9 @@ public class MonkeyFollow : CharacterBehavior {
 				s.x = 1;
 				transform.localScale = s;
 				inParty = false;
-				if (myRb.velocity.x * -1 > -0.01f) {
-					somethingOnRight = true;
-				}
+//				if (myRb.velocity.x * -1 > -0.01f) {
+//					somethingOnRight = true;
+//				}
 			}
 
 			if (Input.GetKeyDown(KeyCode.UpArrow) && onSomething && !crouching) {
@@ -115,9 +115,9 @@ public class MonkeyFollow : CharacterBehavior {
 //				}
 
 			}
-			else {
-				specialMovement = false;
-			}
+//			else {
+//				specialMovement = false;
+//			}
 			if (Input.GetKey(KeyCode.RightArrow)) {
 				movingRight = true;
 				Vector3 s = transform.localScale;
@@ -131,9 +131,9 @@ public class MonkeyFollow : CharacterBehavior {
 //					specialMovement = true;
 //				}
 			}
-			else {
-				specialMovement = false;
-			}
+//			else {
+//				specialMovement = false;
+//			}
 
 			if (Input.GetKey(KeyCode.UpArrow)) {
 				movingUp = true;
@@ -148,7 +148,13 @@ public class MonkeyFollow : CharacterBehavior {
 //		somethingOnRight = false;
 		if (somethingOnLeft || somethingOnRight) {
 			specialMovement = true;
+			Debug.Log ("fucking bullshit");
 		}
+		else {
+			specialMovement = false;
+		}
+		somethingOnRight = false;
+		somethingOnLeft = false;
 
 	}
 
@@ -170,5 +176,28 @@ public class MonkeyFollow : CharacterBehavior {
 //		somethingOnLeft = left;
 //		somethingOnRight = right;
 //	}
+
+	void OnCollisionEnter(Collision collisionInfo) {
+		if (!specialMovement) {
+			bool left = false;
+			bool right = false;
+			if (collisionInfo.collider.tag == "Obstacle") {
+				Debug.Log (collisionInfo.contacts.Length);
+				if (collisionInfo.contacts.Length >= 2) {
+					left = true;
+					right = true;
+					foreach (ContactPoint c in collisionInfo.contacts) {
+						left = left && (c.point.x - transform.position.x < 0f);
+						right = right && (c.point.x - transform.position.x > 0f);
+					}
+				}
+			}
+			somethingOnLeft = left;
+			somethingOnRight = right;
+			if (somethingOnLeft || somethingOnRight) {
+				specialMovement = true;
+			}
+		}
+	}
 
 }
