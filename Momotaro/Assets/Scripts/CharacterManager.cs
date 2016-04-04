@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class CharacterManager : MonoBehaviour {
 
@@ -63,6 +64,9 @@ public class CharacterManager : MonoBehaviour {
 			dog.controlling = false;
 			monkey.controlling = false;
 			pheasant.controlling = false;
+		}
+		if (Input.GetKeyDown (KeyCode.P)) {
+			SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
 		}
 	}
 
