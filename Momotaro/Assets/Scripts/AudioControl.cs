@@ -9,7 +9,9 @@ public class AudioControl : MonoBehaviour {
 	public GameObject dog;
 	public GameObject bird;
 	public GameObject monkey;
+	public GameObject[] switches;
 	public AudioSource[] aSources;
+	public bool[] actives;
 	
 	private bool pressed;
 
@@ -35,6 +37,13 @@ public class AudioControl : MonoBehaviour {
 			if(!aSources[1].isPlaying){
 				//aSources[1].Stop();
 				pressed = false;
+			}
+		}
+		for (int i = 0; i < switches.Length; i++){
+			if((switches[i].GetComponent<InteractionControl>().activated) &&
+			   (!actives[i])){
+				actives[i] = true;
+				aSources[2].Play();
 			}
 		}
 	}
