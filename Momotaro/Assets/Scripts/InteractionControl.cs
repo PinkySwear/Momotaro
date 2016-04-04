@@ -8,6 +8,7 @@ public class InteractionControl : MonoBehaviour {
 	public GameObject avatar;
 	public GameObject door;
 	public GameObject textbox;
+	public GameObject box;
 	public int num;
 	public string message;
 	public bool activated = false;
@@ -16,7 +17,7 @@ public class InteractionControl : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		box.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -26,10 +27,12 @@ public class InteractionControl : MonoBehaviour {
 				(avatar.GetComponent<Transform>().position.x + 2 >= transform.position.x)){
 				seesAvatar = true;
 				textbox.GetComponent<Text>().text = message;
+				box.SetActive(true);
 			}
 			else{
 				seesAvatar = false;
 				textbox.GetComponent<Text>().text = "";
+				box.SetActive(false);
 			}
 			if(seesAvatar && Input.GetKey(KeyCode.Return)){
 				textbox.GetComponent<Text>().text = "";
