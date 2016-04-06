@@ -6,6 +6,7 @@ public class MonkeyFollow : CharacterBehavior {
 	public bool somethingOnLeft;
 	public bool somethingOnRight;
 	public Vector3 prevPos;
+	public GameObject bananaPrefab;
 
 	// Use this for initialization
 	void Start () {
@@ -99,6 +100,10 @@ public class MonkeyFollow : CharacterBehavior {
 			if (Input.GetKey(KeyCode.DownArrow)) {
 				crouching = true;
 			}
+
+			if (Input.GetKeyDown (KeyCode.Space)) {
+				throwBanana ();
+			}
 			if (!Input.GetKey(KeyCode.DownArrow) && !underSomething) {
 				crouching = false;
 			}
@@ -168,25 +173,13 @@ public class MonkeyFollow : CharacterBehavior {
 		}
 
 	}
-
-//	void OnCollisionStay(Collision collisionInfo) {
-//
-//		bool left = false;
-//		bool right = false;
-//		if (collisionInfo.collider.tag == "Obstacle") {
-//			Debug.Log (collisionInfo.contacts.Length);
-//			if(collisionInfo.contacts.Length >= 2) {
-//				left = true;
-//				right = true;
-//				foreach (ContactPoint c in collisionInfo.contacts) {
-//					left = left && (c.point.x - transform.position.x < 0f);
-//					right = right && (c.point.x - transform.position.x > 0f);
-//				}
-//			}
-//		}
-//		somethingOnLeft = left;
-//		somethingOnRight = right;
-//	}
+		
+	public void throwBanana () {
+		GameObject spawnedBanana = (GameObject) Instantiate (bananaPrefab, transform.position, Quaternion.identity);
+		Rigidbody bananaRB = spawnedBanana.GetComponent<Rigidbody> ();
+		bananaRB.AddForce (new Vector3 (((500f * transform.localScale.x) + (400f * (myRb.velocity.x / 10f))), 750f, 0f));
+		bananaRB.AddTorque (new Vector3 (0f, 0f, ((Random.value - 0.5f) * 200f)));
+	}
 
 	void OnCollisionEnter(Collision collisionInfo) {
 		if (!specialMovement) {
