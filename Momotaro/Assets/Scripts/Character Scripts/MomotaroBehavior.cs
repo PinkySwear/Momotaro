@@ -15,7 +15,8 @@ public class MomotaroBehavior : MonoBehaviour {
 	private bool crouching = false;
 
 	public bool controlling;
-
+	public bool stop;
+	
 	public GameObject followInformationObject;
 	public FollowInformation followInfo;
 
@@ -75,7 +76,7 @@ public class MomotaroBehavior : MonoBehaviour {
 		movingLeft = false;
 		movingRight = false;
 //		Camera.main.transform.position = new Vector3 (transform.position.x, transform.position.y + 3f, -10f);
-		if (controlling) {
+		if (controlling && !stop) {
 //			Camera.main.transform.position = new Vector3 (transform.position.x, transform.position.y, -10f);
 			if (Input.GetKey(KeyCode.LeftArrow)) {
 				movingLeft = true;
@@ -96,7 +97,9 @@ public class MomotaroBehavior : MonoBehaviour {
 				crouching = false;
 			}
 		}
-
+		else{
+			// Nothing!
+		}
 
 
 	}
