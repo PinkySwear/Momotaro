@@ -45,24 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-     <Compile Include="Assets\Scripts\AudioControl.cs" />
      <Compile Include="Assets\Scripts\BananaBehavior.cs" />
-     <Compile Include="Assets\Scripts\CameraControl.cs" />
-     <Compile Include="Assets\Scripts\CharacterBehavior.cs" />
-     <Compile Include="Assets\Scripts\CharacterManager.cs" />
-     <Compile Include="Assets\Scripts\DigBehavior.cs" />
-     <Compile Include="Assets\Scripts\DirtBehavior.cs" />
-     <Compile Include="Assets\Scripts\DogBehavior.cs" />
-     <Compile Include="Assets\Scripts\DogFollow.cs" />
-     <Compile Include="Assets\Scripts\EnemyBehavior.cs" />
-     <Compile Include="Assets\Scripts\FollowInformation.cs" />
-     <Compile Include="Assets\Scripts\FriskControl.cs" />
-     <Compile Include="Assets\Scripts\InteractionControl.cs" />
-     <Compile Include="Assets\Scripts\MomotaroBehavior.cs" />
-     <Compile Include="Assets\Scripts\MonkeyFollow.cs" />
-     <Compile Include="Assets\Scripts\PheasantFollow.cs" />
-=======
      <Compile Include="Assets\Scripts\Character Scripts\CharacterBehavior.cs" />
      <Compile Include="Assets\Scripts\Character Scripts\CharacterManager.cs" />
      <Compile Include="Assets\Scripts\Character Scripts\DogBehavior.cs" />
@@ -76,10 +59,10 @@
      <Compile Include="Assets\Scripts\Environment Scripts\AudioControl.cs" />
      <Compile Include="Assets\Scripts\Environment Scripts\CameraControl.cs" />
      <Compile Include="Assets\Scripts\Environment Scripts\Dialogues\JerryDialogue.cs" />
+     <Compile Include="Assets\Scripts\Environment Scripts\Dialogues\KitchenSceneDialogue.cs" />
      <Compile Include="Assets\Scripts\Environment Scripts\DigBehavior.cs" />
      <Compile Include="Assets\Scripts\Environment Scripts\DirtBehavior.cs" />
      <Compile Include="Assets\Scripts\Environment Scripts\InteractionControl.cs" />
->>>>>>> 7941081da958c793c61132f96de656e67c2f722e
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
