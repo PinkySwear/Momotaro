@@ -15,22 +15,29 @@ public class KitchenSceneDialogue : MonoBehaviour {
 	public bool jump = false;
 	
 	public GameObject momo;
+	public GameObject dad;
 	public GameObject text1;
 	public GameObject box1;
 	public AudioSource[] typeSFX;
 	public GameObject[] text;
 	public GameObject[] box;
 	
-	public bool onSomething;
+	private bool onSomething;
+	private bool enterRoom;
+	private bool moveDad;
+	public bool moveBoth;
 	private bool seesMomo;
-	private bool stop;
+	private bool stop = false;
 	private float refract = 1f;
 	private float refractTime;
 	private float startTime;
 	private char[] message;
 	private int count;
 	private Rigidbody myRb;
+	private Rigidbody dadRb;
+	private Rigidbody momRb;
 	private CapsuleCollider myCollider;
+	private bool isDone;
 
 	// All Dialogues
 	string[] messages = new string[16];
@@ -80,8 +87,13 @@ public class KitchenSceneDialogue : MonoBehaviour {
 		myRb = momo.GetComponent<Rigidbody> ();
 		myCollider = momo.GetComponent<CapsuleCollider> ();
 		myRb.freezeRotation = true;
+		dadRb = dad.GetComponent<Rigidbody> ();
+		dadRb.freezeRotation = true;
+		momRb = GetComponent<Rigidbody> ();
+		momRb.freezeRotation = true;
 		velocity = 10f;
 		jumpForce = 1000f;
+		refractTime = Time.time;
 	}
 	
 	// Update is called once per frame
@@ -102,7 +114,7 @@ public class KitchenSceneDialogue : MonoBehaviour {
 			text[1].GetComponent<Text>().text = "";
 			text[2].GetComponent<Text>().text = "";
 			if((momo.GetComponent<Transform>().position.x <= transform.position.x) &&
-				(momo.GetComponent<Transform>().position.x + 5 >= transform.position.x)){
+				(momo.GetComponent<Transform>().position.x + 5 >= transform.position.x) && !isDone){
 				seesMomo = true;
 				box1.SetActive(true);
 				text1.GetComponent<Text>().text = "Press 'Enter' to Eat Breakfast";
@@ -115,7 +127,7 @@ public class KitchenSceneDialogue : MonoBehaviour {
 			if(seesMomo && Input.GetKey(KeyCode.Return)){
 				text1.GetComponent<Text>().text = "Press 'Enter' to Skip to New Dialogue";
 				stop = true;
-				momo.GetComponent<MomotaroBehavior>().stop = true;
+				//momo.GetComponent<MomotaroBehavior>().stop = true;
 				refractTime = Time.time;
 			}
 			if (Input.GetKey(KeyCode.LeftArrow)) {
@@ -126,11 +138,10 @@ public class KitchenSceneDialogue : MonoBehaviour {
 			}
 			if (Input.GetKeyDown(KeyCode.UpArrow) && onSomething) {
 				jump = true;
-				Debug.Log("Jump initiated!");
+				//Debug.Log("Jump initiated!");
 			}
 		}
 		else{
-			Debug.Log(Time.time-refractTime);
 			if(Input.GetKey(KeyCode.Return) && dialogue < 16 && (Time.time-refractTime > refract)){
 				refractTime = Time.time;
 				box[0].SetActive(false);
@@ -139,7 +150,6 @@ public class KitchenSceneDialogue : MonoBehaviour {
 				text[0].GetComponent<Text>().text = "";
 				text[1].GetComponent<Text>().text = "";
 				text[2].GetComponent<Text>().text = "";
-				dialogue++;
 				message = messages[dialogue].ToCharArray();
 				count = 0;
 				if(dialogue == 8 || dialogue == 10 || dialogue == 13){
@@ -152,9 +162,11 @@ public class KitchenSceneDialogue : MonoBehaviour {
 				else{
 					speaker = 0;
 				}
+				Debug.Log(dialogue);
+				dialogue++;
 			}
 			
-			if((Time.time-startTime > letterPause) && message.Length > count){
+			if((Time.time-startTime > letterPause) && message != null && message.Length > count){
 				box[speaker].SetActive(true);
 				text[speaker].GetComponent<Text>().text += message[count];
 				typeSFX[speaker].Play();
@@ -171,10 +183,22 @@ public class KitchenSceneDialogue : MonoBehaviour {
 				startTime = Time.time;
 			}
 			
-			if(dialogue >= 16){
+			if(dialogue == 9 && !enterRoom){
+				Debug.Log("HI IM MR MEESEEKS");
+				moveDad = true;
+				enterRoom = true;
+			}
+			if(dialogue >= 16 && !moveBoth && count >= 77){
+				moveBoth = true;
+				dialogue++;
+			}
+			
+			if(dialogue > 16){
 				stop = false;
 			}
 		}
+		dad.GetComponent<Transform>().position = new Vector3 (dad.GetComponent<Transform>().position.x, dad.GetComponent<Transform>().position.y, 2.25f);
+		transform.position = new Vector3 (transform.position.x, transform.position.y, 2.25f);
 	}
 	
 	void FixedUpdate () {
@@ -194,10 +218,44 @@ public class KitchenSceneDialogue : MonoBehaviour {
 			s.x = 1;
 			momo.GetComponent<Transform>().localScale = s;
 		}
+		if (moveDad) {
+			//restrict movement to one plane
+			dad.GetComponent<Transform>().position = new Vector3 (dad.GetComponent<Transform>().position.x, dad.GetComponent<Transform>().position.y, 0f);
+			dadRb.velocity = new Vector3 (-1 * velocity, dadRb.velocity.y, dadRb.velocity.z);
+			Vector3 s = dad.GetComponent<Transform>().localScale;
+			s.x = -1;
+			dad.GetComponent<Transform>().localScale = s;
+			if(dad.GetComponent<Transform>().position.x <= 46f){
+				moveDad = false;
+			}
+		}
+		if(moveBoth){
+			dad.GetComponent<Transform>().position = new Vector3 (dad.GetComponent<Transform>().position.x, dad.GetComponent<Transform>().position.y, 0f);
+			transform.position = new Vector3 (transform.position.x, transform.position.y, 0f);
+			dadRb.velocity = new Vector3 (velocity, dadRb.velocity.y, dadRb.velocity.z);
+			momRb.velocity = new Vector3 (velocity, momRb.velocity.y, momRb.velocity.z);
+			Vector3 s = dad.GetComponent<Transform>().localScale;
+			s.x = -1;
+			Vector3 t = transform.localScale;
+			t.x = -1;
+			dad.GetComponent<Transform>().localScale = s;
+			transform.localScale = t;
+			if(dad.GetComponent<Transform>().position.x >= 57f){
+				dad.SetActive(false);
+			}
+			if(transform.position.x >= 57f){
+				isDone = true;
+				GetComponent<MeshRenderer> ().enabled = false;
+				GetComponent<CapsuleCollider> ().enabled = false;
+			}
+		}
+		
+		if(!moveDad && !moveBoth){
+			dadRb.velocity = new Vector3(0f, dadRb.velocity.y, dadRb.velocity.z);
+		}
 
 		momo.GetComponent<Transform>().localScale = new Vector3 (momo.GetComponent<Transform>().localScale.x, 1f, 1f);
 		velocity = 10f;
-
 		if (jump && onSomething && Mathf.Abs(myRb.velocity.y) < 0.01f) {
 			myRb.AddForce (Vector3.up * jumpForce);
 			jump = false;
