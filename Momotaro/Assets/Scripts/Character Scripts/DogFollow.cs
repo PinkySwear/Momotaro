@@ -8,6 +8,8 @@ public class DogFollow : CharacterBehavior {
 	public bool inDirt;
 	public List<Collider> dirtColliders;
 
+	public float barkCoolDown;
+
 
 	// Use this for initialization
 	void Start () {
@@ -27,6 +29,7 @@ public class DogFollow : CharacterBehavior {
 		movingUp = false;
 		movingDown = false;
 		dirtColliders = new List<Collider> ();
+		barkCoolDown = 0f;
 
 	
 	}
@@ -37,7 +40,9 @@ public class DogFollow : CharacterBehavior {
 //		if (controlling && Vector3.Distance (leader.transform.position, transform.position) > 4f) {
 //			inParty = false;
 //		}
-
+		if (barkCoolDown > 0f) {
+			barkCoolDown -= Time.deltaTime;
+		}
 		if (!controlling && !inParty && Vector3.Distance (leader.transform.position, transform.position) < 2f) {
 			transform.position = leader.transform.position;
 			inParty = true;
@@ -111,7 +116,7 @@ public class DogFollow : CharacterBehavior {
 					Physics.IgnoreCollision (dc, myCollider, true);
 				}
 			}
-			if (Input.GetKeyDown (KeyCode.Space)) {
+			if (Input.GetKeyDown (KeyCode.Space) && barkCoolDown <= 0f) {
 				bark ();
 			}
 		}
@@ -142,7 +147,7 @@ public class DogFollow : CharacterBehavior {
 			if (!Input.GetKey (KeyCode.DownArrow) && !underSomething) {
 				crouching = false;
 			}
-			if (Input.GetKeyDown (KeyCode.Space)) {
+			if (Input.GetKeyDown (KeyCode.Space) && barkCoolDown <= 0f) {
 				bark ();
 			}
 		}
@@ -208,12 +213,13 @@ public class DogFollow : CharacterBehavior {
 	}
 
 	public void bark() {
+		barkCoolDown = 0.5f;
 		Collider[] enemyColliders = Physics.OverlapSphere(transform.position, 10f, 1 << LayerMask.NameToLayer ("Enemy"));
 		foreach (Collider enemyCol in enemyColliders) {
 			float dist = Vector3.Distance (enemyCol.transform.position, transform.position);
-			Debug.Log (dist);
-			enemyCol.gameObject.GetComponent<Rigidbody> ().AddForce ((Mathf.Sign((enemyCol.transform.position - transform.position).x)*Vector3.right + Vector3.up * 2f).normalized * (((1f - (dist / 10f)) * 200000f)));
-			//			((1f - (dist / 10f) * 2000f))
+			EnemyBehavior enemy = enemyCol.gameObject.GetComponent<EnemyBehavior> ();
+			enemy.knockBack (((Mathf.Sign(enemyCol.transform.position.x - transform.position.x))*Vector3.right + Vector3.up * 2f).normalized * (((1f - (dist / 10f)) * 1000f)));
+			enemy.stun (1f);
 		}
 	}
 
