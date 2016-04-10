@@ -3,21 +3,28 @@ using System.Collections;
 
 public class DerpBehavior : EnemyBehavior {
 
-	bool hitSomething;
+	int numThingsInTheWay;
+	bool somethingInTheWay;
 
 	// Use this for initialization
 	void Start () {
 		StartP ();
 		health = 2;
-		velocity = 3f;
+		velocity = 3f + Random.value;
 		jumpForce = 1000f;
 		movingLeft = true;
+		numThingsInTheWay = 0;
 	}
 
 	void Update () {
 
+		if (numThingsInTheWay > 0) {
+			movingLeft = !movingLeft;
+			movingRight = !movingRight;
+		}
 
 		UpdateP ();
+//		Debug.Log (numThingsInTheWay);
 
 	}
 
@@ -28,25 +35,26 @@ public class DerpBehavior : EnemyBehavior {
 
 	void OnTriggerEnter (Collider other) {
 		if (LayerMask.LayerToName (other.gameObject.layer) == "Detector" || LayerMask.LayerToName (other.gameObject.layer) == "Enemy") {
+//		if (LayerMask.LayerToName (other.gameObject.layer) == "Detector") {
+			
 			return;
 		}
-		if (!hitSomething) {
-			hitSomething = true;
-			if (movingLeft) {
-				movingLeft = false;
-				movingRight = true;
-			}
-			else if (movingRight) {
-				movingRight = false;
-				movingLeft = true;
-			}
+		if (other.tag == "Follower") {
+			return;
 		}
+		numThingsInTheWay++;
 	}
 
 	void OnTriggerExit (Collider other) {
-		if (hitSomething) {
-			hitSomething = false;
+		if (LayerMask.LayerToName (other.gameObject.layer) == "Detector" || LayerMask.LayerToName (other.gameObject.layer) == "Enemy") {
+			
+//		if (LayerMask.LayerToName (other.gameObject.layer) == "Detector") {
+			return;
 		}
+		if (other.tag == "Follower") {
+			return;
+		}
+		numThingsInTheWay--;
 	}
 
 }

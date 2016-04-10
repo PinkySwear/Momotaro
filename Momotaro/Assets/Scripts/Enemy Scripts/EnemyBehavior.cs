@@ -84,11 +84,15 @@ public class EnemyBehavior : MonoBehaviour {
 	}
 
 	public void knockBack (Vector3 force) {
-		myRb.AddForce (force);
+		if (!isDead) {
+			myRb.AddForce (force);
+		}
 	}
 
 	public void stun (float duration) {
-		stunned = true;
-		stunDuration = duration;
+		if (!isDead) {
+			stunned = true;
+			stunDuration = duration;
+		}
 	}
 }
