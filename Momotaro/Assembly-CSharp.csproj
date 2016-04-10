@@ -60,6 +60,7 @@
      <Compile Include="Assets\Scripts\Environment Scripts\CameraControl.cs" />
      <Compile Include="Assets\Scripts\Environment Scripts\Dialogues\JerryDialogue.cs" />
      <Compile Include="Assets\Scripts\Environment Scripts\Dialogues\KitchenSceneDialogue.cs" />
+     <Compile Include="Assets\Scripts\Environment Scripts\Dialogues\LevelOneDialogue.cs" />
      <Compile Include="Assets\Scripts\Environment Scripts\DigBehavior.cs" />
      <Compile Include="Assets\Scripts\Environment Scripts\DirtBehavior.cs" />
      <Compile Include="Assets\Scripts\Environment Scripts\InteractionControl.cs" />
