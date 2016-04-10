@@ -1,0 +1,239 @@
+fileFormatVersion: 2
+guid: f5d8aedb8b50546658ad5fdbef792972
+timeCreated: 1460314226
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Dog - Jump sheet_0
+    21300002: Dog - Jump sheet_1
+    21300004: Dog - Jump sheet_2
+    21300006: Dog - Jump sheet_3
+    21300008: Dog - Jump sheet_4
+    21300010: Dog - Jump sheet_5
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Dog - Jump sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 366
+        width: 368
+        height: 366
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 148, y: -36}
+        - {x: 129, y: 2}
+        - {x: 79, y: -1}
+        - {x: 29, y: 2}
+        - {x: -85, y: 2}
+        - {x: -136, y: -58}
+        - {x: -136, y: -97}
+        - {x: -123, y: -130}
+        - {x: -77, y: -183}
+        - {x: 58, y: -183}
+        - {x: 82, y: -155}
+        - {x: 89, y: -119}
+        - {x: 148, y: -81}
+      - - {x: 49, y: 37}
+        - {x: 46, y: 34}
+        - {x: 46, y: 31}
+        - {x: 49, y: 28}
+        - {x: 52, y: 28}
+        - {x: 54, y: 30}
+        - {x: 54, y: 34}
+        - {x: 51, y: 37}
+    - name: Dog - Jump sheet_1
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 366
+        width: 368
+        height: 366
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -9, y: 6}
+        - {x: -12, y: 52}
+        - {x: -22, y: 56}
+        - {x: -54, y: 56}
+        - {x: -85, y: 50}
+        - {x: -129, y: -13}
+        - {x: -129, y: -106}
+        - {x: -111, y: -148}
+        - {x: -68, y: -177}
+        - {x: -29, y: -183}
+        - {x: 87, y: -183}
+        - {x: 137, y: -134}
+        - {x: 137, y: -58}
+        - {x: 111, y: -32}
+      - - {x: 49, y: 37}
+        - {x: 46, y: 34}
+        - {x: 46, y: 31}
+        - {x: 49, y: 28}
+        - {x: 52, y: 28}
+        - {x: 54, y: 30}
+        - {x: 54, y: 34}
+        - {x: 51, y: 37}
+    - name: Dog - Jump sheet_2
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 366
+        width: 368
+        height: 366
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 13, y: 32}
+        - {x: -17, y: 82}
+        - {x: -91, y: 82}
+        - {x: -129, y: -6}
+        - {x: -129, y: -103}
+        - {x: -73, y: -132}
+        - {x: 12, y: -156}
+        - {x: 101, y: -156}
+        - {x: 135, y: -65}
+        - {x: 135, y: -9}
+        - {x: 102, y: 24}
+    - name: Dog - Jump sheet_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 368
+        height: 366
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 49, y: 31}
+        - {x: 35, y: 6}
+        - {x: -9, y: 73}
+        - {x: -89, y: 73}
+        - {x: -103, y: 70}
+        - {x: -133, y: 7}
+        - {x: -133, y: -105}
+        - {x: -96, y: -146}
+        - {x: -80, y: -146}
+        - {x: -18, y: -120}
+        - {x: 21, y: -146}
+        - {x: 103, y: -146}
+        - {x: 123, y: -74}
+        - {x: 123, y: 15}
+        - {x: 95, y: 52}
+    - name: Dog - Jump sheet_4
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 0
+        width: 368
+        height: 366
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 74, y: 51}
+        - {x: 14, y: 20}
+        - {x: 23, y: -1}
+        - {x: 35, y: -22}
+        - {x: 44, y: -26}
+        - {x: 50, y: -28}
+        - {x: 46, y: -27}
+        - {x: 37, y: -24}
+        - {x: 27, y: -17}
+        - {x: -30, y: 51}
+        - {x: -90, y: 51}
+        - {x: -97, y: 48}
+        - {x: -137, y: -34}
+        - {x: -137, y: -108}
+        - {x: -106, y: -169}
+        - {x: -17, y: -169}
+        - {x: 114, y: -143}
+        - {x: 114, y: 41}
+        - {x: 97, y: 51}
+    - name: Dog - Jump sheet_5
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 0
+        width: 368
+        height: 366
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 110, y: -9}
+        - {x: 87, y: 4}
+        - {x: 49, y: 4}
+        - {x: 23, y: -6}
+        - {x: -27, y: 4}
+        - {x: -85, y: 4}
+        - {x: -145, y: -62}
+        - {x: -145, y: -103}
+        - {x: -125, y: -135}
+        - {x: -87, y: -179}
+        - {x: -77, y: -183}
+        - {x: 61, y: -183}
+        - {x: 88, y: -156}
+        - {x: 110, y: -66}
+      - - {x: 49, y: 37}
+        - {x: 46, y: 34}
+        - {x: 46, y: 31}
+        - {x: 49, y: 28}
+        - {x: 52, y: 28}
+        - {x: 54, y: 30}
+        - {x: 54, y: 34}
+        - {x: 51, y: 37}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

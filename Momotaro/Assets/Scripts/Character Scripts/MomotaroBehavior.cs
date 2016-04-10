@@ -30,8 +30,16 @@ public class MomotaroBehavior : MonoBehaviour {
 	private Vector3 right;
 	private Vector3 left;
 
+	public float health;
+	private float attackCoolDown;
+
+	Animator anim;
+
 	// Use this for initialization
 	void Start () {
+		anim = GetComponent<Animator> ();
+		health = 6f;
+		attackCoolDown = 0f;
 		followInfo = followInformationObject.GetComponent<FollowInformation> ();
 		myCollider = this.gameObject.GetComponent<CapsuleCollider> ();
 		fullHeight = myCollider.bounds.extents.y;
@@ -43,7 +51,7 @@ public class MomotaroBehavior : MonoBehaviour {
 
 
 		velocity = 10f;
-		jumpForce = 1000f;
+		jumpForce = 1500f;
 		myRb = GetComponent<Rigidbody> ();
 		myRb.freezeRotation = true;
 		Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Interactable"));
@@ -56,6 +64,9 @@ public class MomotaroBehavior : MonoBehaviour {
 	}
 
 	void Update() {
+		if (attackCoolDown > 0f) {
+			attackCoolDown -= Time.deltaTime;
+		}
 		Vector3 colliderCenter = myCollider.bounds.center;
 		Vector3 right = colliderCenter + Vector3.right * myCollider.bounds.extents.x * 0.95f;
 		Vector3 left = colliderCenter - Vector3.right * myCollider.bounds.extents.x * 0.95f;
@@ -73,27 +84,37 @@ public class MomotaroBehavior : MonoBehaviour {
 
 		movingLeft = false;
 		movingRight = false;
+
+//
+//		if (anim.GetCurrentAnimatorStateInfo (0).IsName ("momoAttack")) {
+//			anim.SetBool ("attacking", true);
+//		}
+		bool inAttackState = anim.GetCurrentAnimatorStateInfo (0).IsName ("momoAttack");
 //		Camera.main.transform.position = new Vector3 (transform.position.x, transform.position.y + 3f, -10f);
 		if (controlling && !stop) {
 //			Camera.main.transform.position = new Vector3 (transform.position.x, transform.position.y, -10f);
-			if (Input.GetKey(KeyCode.LeftArrow)) {
+			if (Input.GetKey(KeyCode.LeftArrow) && (!inAttackState || !onSomething)) {
 				movingLeft = true;
 			}
-			if (Input.GetKey(KeyCode.RightArrow)) {
+			if (Input.GetKey(KeyCode.RightArrow) && (!inAttackState || !onSomething)) {
 				movingRight = true;
 			}
 
-			if (Input.GetKeyDown(KeyCode.UpArrow) && onSomething && !crouching) {
+			if (Input.GetKeyDown(KeyCode.UpArrow) && onSomething && !crouching && !inAttackState) {
 				jump = true;
 			}
-			if (Input.GetKey(KeyCode.DownArrow)) {
+			if (Input.GetKey(KeyCode.DownArrow) && !inAttackState) {
 				crouching = true;
 			}
 			if (!Input.GetKey(KeyCode.DownArrow) && !underSomething) {
 				crouching = false;
 			}
-			if (Input.GetKeyDown (KeyCode.Space)) {
+			if (Input.GetKeyDown (KeyCode.Space) && attackCoolDown <= 0f) {
+				anim.SetBool ("attacking", true);
 				attack ();
+			}
+			else {
+				anim.SetBool ("attacking", false);
 			}
 		}
 		else{
@@ -127,6 +148,8 @@ public class MomotaroBehavior : MonoBehaviour {
 			Vector3 s = transform.localScale;
 			s.x = -1;
 			transform.localScale = s;
+			anim.SetBool ("walking", true);
+			anim.SetBool ("idling", false);
 		}
 		if (movingRight) {
 			transform.position = new Vector3 (transform.position.x, transform.position.y, 0f);
@@ -134,6 +157,8 @@ public class MomotaroBehavior : MonoBehaviour {
 			Vector3 s = transform.localScale;
 			s.x = 1;
 			transform.localScale = s;
+			anim.SetBool ("walking", true);
+			anim.SetBool ("idling", false);
 		}
 
 		if (crouching) {
@@ -145,18 +170,31 @@ public class MomotaroBehavior : MonoBehaviour {
 			velocity = 10f;
 		}
 
-		if (jump && onSomething && Mathf.Abs(myRb.velocity.y) < 0.01f) {
+		if (jump && onSomething && Mathf.Abs (myRb.velocity.y) < 0.01f) {
+			anim.SetBool ("jumping", true);
 			myRb.AddForce (Vector3.up * jumpForce);
 			jump = false;
 		}
+		else {
+			anim.SetBool ("jumping", false);
+		}
 		if (!movingRight && !movingLeft) {
+			anim.SetBool ("walking", false);
+			anim.SetBool ("idling", true);
 			myRb.velocity = new Vector3(0f, myRb.velocity.y, myRb.velocity.z);
 		}
 		//transform.rotation = Quaternion.Euler (Vector3.zero);
+		if (!onSomething) {
+			anim.SetBool ("falling", true);
+		}
+		else {
+			anim.SetBool ("falling", false);
+		}
 	}
 
 
 	public void attack() {
+		attackCoolDown = 0.5f;
 		Collider[] enemyColliders = Physics.OverlapSphere(transform.position, 2f, 1 << LayerMask.NameToLayer ("Enemy"));
 		foreach (Collider enemyCol in enemyColliders) {
 			EnemyBehavior enemy = enemyCol.gameObject.GetComponent<EnemyBehavior> ();

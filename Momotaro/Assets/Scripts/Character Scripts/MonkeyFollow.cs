@@ -17,7 +17,7 @@ public class MonkeyFollow : CharacterBehavior {
 		//		followInfo = followInformationObject.GetComponent<FollowInformation> ();
 		infoQueue = new Queue();
 		velocity = 10f;
-		jumpForce = 1000f;
+		jumpForce = 1500f;
 		myRb = GetComponent<Rigidbody> ();
 		myRb.freezeRotation = true;
 		inParty = true;
@@ -39,7 +39,7 @@ public class MonkeyFollow : CharacterBehavior {
 		if (bananaCoolDown > 0f) {
 			bananaCoolDown -= Time.deltaTime;
 		}
-		if (!controlling && !inParty && Vector3.Distance (leader.transform.position, transform.position) < 2f) {
+		if (!controlling && !inParty && Vector3.Distance (leader.transform.position, transform.position) < 1f) {
 			transform.position = leader.transform.position;
 			inParty = true;
 //			infoQueue.Clear ();

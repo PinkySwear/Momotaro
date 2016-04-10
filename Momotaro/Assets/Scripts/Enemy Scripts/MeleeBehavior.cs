@@ -3,9 +3,11 @@ using System.Collections;
 
 public class MeleeBehavior : EnemyBehavior {
 
-	bool hitSomething;
 	float attackCoolDown;
 	bool nearPlayer;
+
+	int numThingsInTheWay;
+	bool somethingInTheWay;
 
 	// Use this for initialization
 	void Start () {
@@ -22,58 +24,56 @@ public class MeleeBehavior : EnemyBehavior {
 			attackCoolDown -= Time.deltaTime;
 		}
 
+		if (numThingsInTheWay > 0) {
+			movingLeft = !movingLeft;
+			movingRight = !movingRight;
+		}
 		if (nearPlayer) {
 			movingLeft = false;
 			movingRight = false;
 			if (attackCoolDown <= 0f) {
 				attack ();
 			}
-
 		}
 		else {
 			movingLeft = true;
 		}
 
 		UpdateP ();
+//		Debug.Log (numThingsInTheWay);
+//		Debug.Log (nearPlayer);
+
 	}
 
 	void attack () {
-		Debug.Log ("I ATTACKED");
+//		Debug.Log ("I ATTACKED");
 		attackCoolDown = 2f;
 
 	}
 
-	void OnTriggerStay (Collider other) {
+	void OnTriggerEnter (Collider other) {
 		if (LayerMask.LayerToName (other.gameObject.layer) == "Detector" || LayerMask.LayerToName (other.gameObject.layer) == "Enemy") {
 			return;
 		}
-
 		if (other.tag == "Player" && !nearPlayer) {
 			nearPlayer = true;
+		}
+		if (other.tag == "Follower") {
 			return;
 		}
-
-		if (!hitSomething) {
-			hitSomething = true;
-			if (movingLeft) {
-				movingLeft = false;
-				movingRight = true;
-			}
-			else if (movingRight) {
-				movingRight = false;
-				movingLeft = true;
-			}
-		}
+		numThingsInTheWay++;
 	}
 
 	void OnTriggerExit (Collider other) {
-		
+		if (LayerMask.LayerToName (other.gameObject.layer) == "Detector" || LayerMask.LayerToName (other.gameObject.layer) == "Enemy") {
+			return;
+		}
 		if (other.tag == "Player" && nearPlayer) {
 			nearPlayer = false;
 		}
-
-		if (hitSomething) {
-			hitSomething = false;
+		if (other.tag == "Follower") {
+			return;
 		}
+		numThingsInTheWay--;	
 	}
 }

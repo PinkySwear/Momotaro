@@ -13,12 +13,12 @@ public class DirtBehavior : MonoBehaviour {
 	
 	}
 
-	void OnTriggerStay(Collider other) {
-		DogFollow df = other.gameObject.GetComponent<DogFollow> ();
-		if (df != null) {
-			df.inDirt = true;
-		}
-	}
+//	void OnTriggerStay(Collider other) {
+//		DogFollow df = other.gameObject.GetComponent<DogFollow> ();
+//		if (df != null) {
+//			df.inDirt = true;
+//		}
+//	}
 	void OnTriggerExit(Collider other) {
 		DogFollow df = other.gameObject.GetComponent<DogFollow> ();
 		if (df != null) {

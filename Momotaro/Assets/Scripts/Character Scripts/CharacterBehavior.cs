@@ -10,6 +10,7 @@ public class CharacterBehavior : MonoBehaviour {
 	public GameObject followInformationObject;
 	public FollowInformation followInfo;
 
+	protected Animator anim;
 
 
 	public float velocity;
@@ -86,6 +87,10 @@ public class CharacterBehavior : MonoBehaviour {
 			Vector3 s = transform.localScale;
 			s.x = -1;
 			transform.localScale = s;
+			if (anim != null) {
+				anim.SetBool ("walking", true);
+				anim.SetBool ("idling", false);
+			}
 		}
 		if (movingRight) {
 			transform.position = new Vector3 (transform.position.x, transform.position.y, 0f);
@@ -93,6 +98,10 @@ public class CharacterBehavior : MonoBehaviour {
 			Vector3 s = transform.localScale;
 			s.x = 1;
 			transform.localScale = s;
+			if (anim != null) {
+				anim.SetBool ("walking", true);
+				anim.SetBool ("idling", false);
+			}
 		}
 
 		if (crouching) {
@@ -107,15 +116,30 @@ public class CharacterBehavior : MonoBehaviour {
 		if (jump && onSomething && Mathf.Abs(myRb.velocity.y) < 0.01f) {
 			myRb.useGravity = true;
 			myRb.AddForce (Vector3.up * jumpForce);
-
 			jump = false;
+			if (anim != null) {
+				anim.SetBool ("jumping", true);
+			}
+		}
+		else {
+			if (anim != null) {
+				anim.SetBool ("jumping", false);
+			}
+
 		}
 		if (!movingRight && !movingLeft) {
 			myRb.velocity = new Vector3(0f, myRb.velocity.y, myRb.velocity.z);
+			if (anim != null) {
+				anim.SetBool ("walking", false);
+				anim.SetBool ("idling", true);
+			}
 		}
 		if (specialMovement) {
 //			myRb.velocity = new Vector3 (myRb.velocity.x, 0f, 0f);
-
+			if (anim != null) {
+				anim.SetBool ("walking", false);
+				anim.SetBool ("idling", false);
+			}
 			if (movingLeft) {
 				//restrict movement to one plane
 				transform.position = new Vector3 (transform.position.x, transform.position.y, 0f);
@@ -137,6 +161,14 @@ public class CharacterBehavior : MonoBehaviour {
 			}
 			if (movingUp) {
 				myRb.velocity = new Vector3 (myRb.velocity.x, specialVelocity, myRb.velocity.z);
+			}
+		}
+		if (anim != null) {
+			if (!onSomething && !specialMovement) {
+				anim.SetBool ("falling", true);
+			}
+			else {
+				anim.SetBool ("falling", false);
 			}
 		}
 		//transform.rotation = leader.GetComponent<Transform>().rotation;
