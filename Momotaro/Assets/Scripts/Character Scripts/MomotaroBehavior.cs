@@ -40,12 +40,6 @@ public class MomotaroBehavior : MonoBehaviour {
 			followers [i] = followerObjects [i].GetComponent<CharacterBehavior> ();
 			followers [i].commandDelay = 10 * (i + 1) + i;
 		}
-//		for (int i = 0; i < followerObjects.Length; i++) {
-//			followers [i].commandDelay = 7 * (i + 1) + i;
-//		}
-//		followers [0] = followerObjects [0].GetComponent<DogFollow> ();
-//		followers [1] = followerObjects [1].GetComponent<MonkeyFollow> ();
-//		followers [2] = followerObjects [2].GetComponent<PheasantFollow> ();
 
 
 		velocity = 10f;
@@ -54,7 +48,11 @@ public class MomotaroBehavior : MonoBehaviour {
 		myRb.freezeRotation = true;
 		Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Interactable"));
 		Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Player"));
-
+		Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Enemy"), LayerMask.NameToLayer("Enemy"));
+		Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Enemy"), LayerMask.NameToLayer("Player"));
+		Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Enemy"), LayerMask.NameToLayer("Interactable"));
+		Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Detector"), LayerMask.NameToLayer("Interactable"));
+		Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Detector"), LayerMask.NameToLayer("Detector"));
 	}
 
 	void Update() {
@@ -85,8 +83,6 @@ public class MomotaroBehavior : MonoBehaviour {
 				movingRight = true;
 			}
 
-
-
 			if (Input.GetKeyDown(KeyCode.UpArrow) && onSomething && !crouching) {
 				jump = true;
 			}
@@ -95,6 +91,9 @@ public class MomotaroBehavior : MonoBehaviour {
 			}
 			if (!Input.GetKey(KeyCode.DownArrow) && !underSomething) {
 				crouching = false;
+			}
+			if (Input.GetKeyDown (KeyCode.Space)) {
+				attack ();
 			}
 		}
 		else{
@@ -107,22 +106,6 @@ public class MomotaroBehavior : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 		transform.position = new Vector3 (transform.position.x, transform.position.y, 0f);
-//		FollowInformation.MovementInfo mi = new FollowInformation.MovementInfo(movingRight, movingLeft, jump, crouching);
-//		FollowInformation.Tuple<int, int> t = new FollowInformation.Tuple<int, int> (Mathf.RoundToInt(transform.position.x * 100f), Mathf.RoundToInt(transform.position.y * 100f));
-//		followInfo.infoMap.Remove (t);
-//		followInfo.infoMap.Add (t, mi);
-
-
-//		if (movingLeft || movingRight) {
-//			FollowInformation.MovementInfo mi = new FollowInformation.MovementInfo(movingRight, movingLeft, jump, crouching);
-//			followInfo.infoQueue.Enqueue (mi);
-//		}
-//		if (movingLeft || movingRight || jump || crouching || (!onSomething && (movingLeft || movingRight))) {
-//			FollowInformation.MovementInfo mi = new FollowInformation.MovementInfo(movingRight, movingLeft, jump, crouching);
-//			foreach (DogFollow df in followers) {
-//				df.infoQueue.Enqueue (mi);
-//			}
-//		}
 
 
 
@@ -170,5 +153,15 @@ public class MomotaroBehavior : MonoBehaviour {
 			myRb.velocity = new Vector3(0f, myRb.velocity.y, myRb.velocity.z);
 		}
 		//transform.rotation = Quaternion.Euler (Vector3.zero);
+	}
+
+
+	public void attack() {
+		Collider[] enemyColliders = Physics.OverlapSphere(transform.position, 2f, 1 << LayerMask.NameToLayer ("Enemy"));
+		foreach (Collider enemyCol in enemyColliders) {
+			EnemyBehavior enemy = enemyCol.gameObject.GetComponent<EnemyBehavior> ();
+			enemy.takeDamage (1);
+			enemy.knockBack (((Mathf.Sign(enemyCol.transform.position.x - transform.position.x)) * Vector3.right + Vector3.up * 2f).normalized * 500f);
+		}
 	}
 }

@@ -7,6 +7,7 @@ public class MonkeyFollow : CharacterBehavior {
 	public bool somethingOnRight;
 	public Vector3 prevPos;
 	public GameObject bananaPrefab;
+	public float bananaCoolDown;
 
 	// Use this for initialization
 	void Start () {
@@ -35,6 +36,9 @@ public class MonkeyFollow : CharacterBehavior {
 		//			inParty = false;
 		//		}
 
+		if (bananaCoolDown > 0f) {
+			bananaCoolDown -= Time.deltaTime;
+		}
 		if (!controlling && !inParty && Vector3.Distance (leader.transform.position, transform.position) < 2f) {
 			transform.position = leader.transform.position;
 			inParty = true;
@@ -101,7 +105,7 @@ public class MonkeyFollow : CharacterBehavior {
 				crouching = true;
 			}
 
-			if (Input.GetKeyDown (KeyCode.Space)) {
+			if (Input.GetKeyDown (KeyCode.Space) && bananaCoolDown <= 0f) {
 				throwBanana ();
 			}
 			if (!Input.GetKey(KeyCode.DownArrow) && !underSomething) {
@@ -175,9 +179,13 @@ public class MonkeyFollow : CharacterBehavior {
 	}
 		
 	public void throwBanana () {
+		bananaCoolDown = 0.5f;
 		GameObject spawnedBanana = (GameObject) Instantiate (bananaPrefab, transform.position, Quaternion.identity);
 		Rigidbody bananaRB = spawnedBanana.GetComponent<Rigidbody> ();
-		bananaRB.AddForce (new Vector3 (((500f * transform.localScale.x) + (400f * (myRb.velocity.x / 10f))), 750f, 0f));
+//		bananaRB.AddForce (new Vector3 (((500f * transform.localScale.x) + (400f * (myRb.velocity.x / 10f))), 750f, 0f));
+		bananaRB.velocity = myRb.velocity;
+		bananaRB.constraints = RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationX;
+		bananaRB.AddForce (Vector3.up * 1000f);
 		bananaRB.AddTorque (new Vector3 (0f, 0f, ((Random.value - 0.5f) * 200f)));
 	}
 

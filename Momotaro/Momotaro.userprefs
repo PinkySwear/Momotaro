@@ -1,8 +1,15 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="../../../../educational games/FinalProject/Color-Quest/Color Quest/Assets/Scripts/PlayerController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Enemy Scripts/MeleeBehavior.cs">
     <Files>
-      <File FileName="../../../../educational games/FinalProject/Color-Quest/Color Quest/Assets/Scripts/PlayerController.cs" Line="43" Column="42" />
+      <File FileName="Assets/Scripts/BananaBehavior.cs" Line="16" Column="18" />
+      <File FileName="Assets/Scripts/Character Scripts/MomotaroBehavior.cs" Line="117" Column="6" />
+      <File FileName="Assets/Scripts/Character Scripts/CharacterBehavior.cs" Line="122" Column="61" />
+      <File FileName="Assets/Scripts/Character Scripts/DogFollow.cs" Line="43" Column="3" />
+      <File FileName="Assets/Scripts/Character Scripts/MonkeyFollow.cs" Line="180" Column="3" />
+      <File FileName="Assets/Scripts/Enemy Scripts/EnemyBehavior.cs" Line="45" Column="3" />
+      <File FileName="Assets/Scripts/Enemy Scripts/DerpBehavior.cs" Line="10" Column="13" />
+      <File FileName="Assets/Scripts/Enemy Scripts/MeleeBehavior.cs" Line="52" Column="22" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
