@@ -5,6 +5,8 @@ public class PheasantFollow : CharacterBehavior {
 
 	// Use this for initialization
 	void Start () {
+		anim = GetComponent<Animator> ();
+
 		momo = leader.GetComponent<MomotaroBehavior> ();
 		myCollider = this.gameObject.GetComponent<CapsuleCollider> ();
 		fullHeight = myCollider.bounds.extents.y;

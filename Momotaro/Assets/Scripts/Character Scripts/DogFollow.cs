@@ -100,10 +100,10 @@ public class DogFollow : CharacterBehavior {
 			specialMovement = true;
 		}
 
-		if (controlling && touchingDirt) {
+		if (controlling && !specialMovement && touchingDirt) {
 			rz = 0f;
 			inParty = false;
-//			crouching = false;
+			crouching = false;
 			if (Input.GetKey (KeyCode.LeftArrow)) {
 				movingLeft = true;
 				Vector3 s = transform.localScale;
@@ -165,6 +165,7 @@ public class DogFollow : CharacterBehavior {
 			}
 			if (Input.GetKey (KeyCode.DownArrow)) {
 				crouching = true;
+
 			}
 			if (!Input.GetKey (KeyCode.DownArrow) && !underSomething) {
 				crouching = false;
@@ -218,7 +219,7 @@ public class DogFollow : CharacterBehavior {
 		if (!inParty && infoQueue.Count != 0) {
 			infoQueue.Clear ();
 		}
-		//transform.rotation = Quaternion.Euler (new Vector3 (0f, 0f, rz));
+		transform.rotation = Quaternion.Euler (new Vector3 (0f, 0f, rz));
 
 //		Debug.Log (touchingDirt);
 
@@ -240,7 +241,7 @@ public class DogFollow : CharacterBehavior {
 		//		Debug.Log ("THIS CALLEd");
 //		if (controlling && collisionInfo.collider.tag == "Dirt") {
 		if (collisionInfo.collider.tag == "Dirt") {
-			touchingDirt = false;
+//			touchingDirt = false;
 //			if (dirtColliders.Contains (collisionInfo.collider)) {
 //				dirtColliders.Remove (collisionInfo.collider);
 //			}

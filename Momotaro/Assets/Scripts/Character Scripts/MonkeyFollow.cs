@@ -8,9 +8,11 @@ public class MonkeyFollow : CharacterBehavior {
 	public Vector3 prevPos;
 	public GameObject bananaPrefab;
 	public float bananaCoolDown;
+	public float bananaDelay;
 
 	// Use this for initialization
 	void Start () {
+		anim = GetComponent<Animator> ();
 		momo = leader.GetComponent<MomotaroBehavior> ();
 		myCollider = this.gameObject.GetComponent<CapsuleCollider> ();
 		fullHeight = myCollider.bounds.extents.y;
@@ -25,6 +27,7 @@ public class MonkeyFollow : CharacterBehavior {
 		somethingOnLeft = false;
 		somethingOnRight = false;
 		prevPos = transform.position;
+		bananaDelay = 0f;
 
 
 	}
@@ -39,6 +42,14 @@ public class MonkeyFollow : CharacterBehavior {
 		if (bananaCoolDown > 0f) {
 			bananaCoolDown -= Time.deltaTime;
 		}
+
+		if (bananaDelay > 0f) {
+			bananaDelay -= Time.deltaTime;
+			if (bananaDelay <= 0f) {
+				throwBanana ();
+			}
+		}
+
 		if (!controlling && !inParty && Vector3.Distance (leader.transform.position, transform.position) < 1f) {
 			transform.position = leader.transform.position;
 			inParty = true;
@@ -105,9 +116,14 @@ public class MonkeyFollow : CharacterBehavior {
 				crouching = true;
 			}
 
-			if (Input.GetKeyDown (KeyCode.Space) && bananaCoolDown <= 0f) {
-				throwBanana ();
+			if (Input.GetKeyDown (KeyCode.Space) && bananaCoolDown <= 0f && bananaDelay <= 0f) {
+				anim.SetBool ("throwing", true);
+				bananaDelay = 0.3f;
 			}
+			else {
+				anim.SetBool ("throwing", false);
+			}
+
 			if (!Input.GetKey(KeyCode.DownArrow) && !underSomething) {
 				crouching = false;
 			}
@@ -183,9 +199,10 @@ public class MonkeyFollow : CharacterBehavior {
 		GameObject spawnedBanana = (GameObject) Instantiate (bananaPrefab, transform.position, Quaternion.identity);
 		Rigidbody bananaRB = spawnedBanana.GetComponent<Rigidbody> ();
 //		bananaRB.AddForce (new Vector3 (((500f * transform.localScale.x) + (400f * (myRb.velocity.x / 10f))), 750f, 0f));
-		bananaRB.velocity = myRb.velocity;
+//		bananaRB.velocity = myRb.velocity;
 		bananaRB.constraints = RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationX;
-		bananaRB.AddForce (Vector3.up * 1000f);
+//		bananaRB.AddForce (Vector3.up * 1000f);
+		bananaRB.AddForce ((Mathf.Sign(transform.localScale.x) * Vector3.right + Vector3.up).normalized * 1000f);
 		bananaRB.AddTorque (new Vector3 (0f, 0f, ((Random.value - 0.5f) * 200f)));
 	}
 
