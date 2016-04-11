@@ -218,7 +218,7 @@ public class DogFollow : CharacterBehavior {
 		if (!inParty && infoQueue.Count != 0) {
 			infoQueue.Clear ();
 		}
-		transform.rotation = Quaternion.Euler (new Vector3 (0f, 0f, rz));
+		//transform.rotation = Quaternion.Euler (new Vector3 (0f, 0f, rz));
 
 //		Debug.Log (touchingDirt);
 
