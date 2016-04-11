@@ -245,7 +245,7 @@ public class KitchenSceneDialogue : MonoBehaviour {
 			}
 			if(transform.position.x >= 57f){
 				isDone = true;
-				GetComponent<MeshRenderer> ().enabled = false;
+				GetComponent<SpriteRenderer> ().enabled = false;
 				GetComponent<CapsuleCollider> ().enabled = false;
 			}
 		}

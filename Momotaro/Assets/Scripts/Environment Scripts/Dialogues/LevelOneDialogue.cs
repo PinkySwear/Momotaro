@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class LevelOneDialogue : MonoBehaviour {
 
@@ -55,7 +56,14 @@ public class LevelOneDialogue : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(Input.GetKey(KeyCode.X)){
+			SceneManager.LoadScene ("AlphaDemo");
+		}
 		if(!stop){
+			if(count >= 23){
+				stop = true;
+				momo.GetComponent<MomotaroBehavior> ().stop = true;
+			}
 			if((momo.GetComponent<Transform>().position.x <= transform.position.x) &&
 			   (momo.GetComponent<Transform>().position.x + 2 >= transform.position.x)){
 				seesMomo = true;
@@ -77,6 +85,14 @@ public class LevelOneDialogue : MonoBehaviour {
 				Debug.Log("no stop");
 				stop = true;
 				momo.GetComponent<MomotaroBehavior> ().stop = true;
+			}
+			if(momo.GetComponent<Transform> ().position.x >= 181 &&
+			   hasDefeatOni){
+				Debug.Log("no stop");
+				stop = true;
+				momo.GetComponent<MomotaroBehavior> ().stop = true;
+				transform.position = new Vector3(167f,-27f,transform.position.z);
+				moveDog = true;
 			}
 		}
 		else{
@@ -156,10 +172,18 @@ public class LevelOneDialogue : MonoBehaviour {
 			Vector3 s = transform.localScale;
 			s.x = 1;
 			transform.localScale = s;
-			if(transform.position.x >= 131f){
+			if((transform.position.x >= 131f && count < 20) || 
+			   (transform.position.x >= 179f)){
 				moveDog = false;
-				count = 17;
-				dogs.GetComponent<Transform> ().position = new Vector3 (30f,transform.position.y,transform.position.z);
+				if(count < 20){
+					count = 17;
+					dogs.GetComponent<Transform> ().position = new Vector3 (30f,transform.position.y,transform.position.z);
+				}
+				else{
+					Debug.Log("yo");
+					count = 23;
+					dogs.GetComponent<Transform> ().position = new Vector3 (75f,transform.position.y,transform.position.z);
+				}
 			}
 			if((Time.time - jumpTime) >= 1f){
 				Debug.Log("Jump!");
