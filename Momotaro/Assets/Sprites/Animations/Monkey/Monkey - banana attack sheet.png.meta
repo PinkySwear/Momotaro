@@ -1,0 +1,301 @@
+fileFormatVersion: 2
+guid: 2c3e474f4a3ea4c5990c6d407aa8fc91
+timeCreated: 1460339673
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Monkey - banana attack sheet_0
+    21300002: Monkey - banana attack sheet_1
+    21300004: Monkey - banana attack sheet_2
+    21300006: Monkey - banana attack sheet_3
+    21300008: Monkey - banana attack sheet_4
+    21300010: Monkey - banana attack sheet_5
+    21300012: Monkey - banana attack sheet_6
+    21300014: Monkey - banana attack sheet_7
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Monkey - banana attack sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 366
+        width: 368
+        height: 366
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 109, y: -11}
+        - {x: 16, y: 12}
+        - {x: 11, y: 16}
+        - {x: 18, y: 13}
+        - {x: 37, y: 40}
+        - {x: 25, y: 58}
+        - {x: -48, y: 58}
+        - {x: -100, y: 52}
+        - {x: -134, y: 13}
+        - {x: -134, y: -19}
+        - {x: -131, y: -40}
+        - {x: -111, y: -179}
+        - {x: -95, y: -183}
+        - {x: 82, y: -183}
+        - {x: 150, y: -100}
+        - {x: 150, y: -34}
+        - {x: 144, y: -24}
+    - name: Monkey - banana attack sheet_1
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 366
+        width: 368
+        height: 366
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 130, y: -53}
+        - {x: 130, y: -9}
+        - {x: 82, y: 42}
+        - {x: -66, y: 42}
+        - {x: -130, y: 14}
+        - {x: -130, y: -68}
+        - {x: -93, y: -100}
+        - {x: -93, y: -183}
+        - {x: 47, y: -183}
+        - {x: 62, y: -173}
+        - {x: 66, y: -165}
+        - {x: 71, y: -150}
+    - name: Monkey - banana attack sheet_2
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 366
+        width: 368
+        height: 366
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 118, y: -16}
+        - {x: 118, y: 13}
+        - {x: 111, y: 31}
+        - {x: 52, y: 53}
+        - {x: -56, y: 53}
+        - {x: -91, y: 50}
+        - {x: -125, y: 12}
+        - {x: -125, y: -53}
+        - {x: -81, y: -110}
+        - {x: -108, y: -164}
+        - {x: -109, y: -183}
+        - {x: 32, y: -183}
+        - {x: 59, y: -152}
+        - {x: 100, y: -82}
+        - {x: 111, y: -54}
+    - name: Monkey - banana attack sheet_3
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 366
+        width: 368
+        height: 366
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 57, y: -183}
+        - {x: 131, y: -163}
+        - {x: 152, y: -66}
+        - {x: 139, y: -27}
+        - {x: 128, y: -15}
+        - {x: 101, y: 5}
+        - {x: 105, y: 5}
+        - {x: 146, y: -31}
+        - {x: 151, y: -29}
+        - {x: 150, y: -20}
+        - {x: 147, y: -4}
+        - {x: 167, y: 15}
+        - {x: 167, y: 64}
+        - {x: 107, y: 130}
+        - {x: 51, y: 130}
+        - {x: 23, y: 127}
+        - {x: -22, y: 117}
+        - {x: -25, y: 115}
+        - {x: -25, y: 116}
+        - {x: -16, y: 120}
+        - {x: -12, y: 122}
+        - {x: -3, y: 126}
+        - {x: 0, y: 130}
+        - {x: -42, y: 130}
+        - {x: -184, y: 45}
+        - {x: -184, y: -121}
+        - {x: -142, y: -183}
+        - {x: -54, y: -183}
+        - {x: -47, y: -175}
+        - {x: -43, y: -169}
+        - {x: -41, y: -165}
+        - {x: -29, y: -183}
+      - - {x: 111, y: 57}
+        - {x: 112, y: 54}
+        - {x: 115, y: 53}
+        - {x: 118, y: 53}
+        - {x: 119, y: 55}
+        - {x: 118, y: 58}
+        - {x: 113, y: 59}
+    - name: Monkey - banana attack sheet_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 368
+        height: 366
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 90, y: -101}
+        - {x: 90, y: 8}
+        - {x: 65, y: 19}
+        - {x: 34, y: 4}
+        - {x: 29, y: -16}
+        - {x: 30, y: -28}
+        - {x: 23, y: -1}
+        - {x: 42, y: 24}
+        - {x: 16, y: 42}
+        - {x: -54, y: 42}
+        - {x: -130, y: 17}
+        - {x: -130, y: -88}
+        - {x: -102, y: -183}
+        - {x: -46, y: -183}
+        - {x: -39, y: -175}
+        - {x: -21, y: -183}
+        - {x: 68, y: -183}
+    - name: Monkey - banana attack sheet_5
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 0
+        width: 368
+        height: 366
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 50, y: 4}
+        - {x: 43, y: -14}
+        - {x: 48, y: -54}
+        - {x: 32, y: 10}
+        - {x: 41, y: 24}
+        - {x: 10, y: 42}
+        - {x: -40, y: 42}
+        - {x: -93, y: 29}
+        - {x: -130, y: 14}
+        - {x: -130, y: -78}
+        - {x: -103, y: -183}
+        - {x: 52, y: -183}
+        - {x: 105, y: -44}
+        - {x: 105, y: -3}
+        - {x: 93, y: 11}
+    - name: Monkey - banana attack sheet_6
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 0
+        width: 368
+        height: 366
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 90, y: -101}
+        - {x: 90, y: 8}
+        - {x: 65, y: 19}
+        - {x: 34, y: 4}
+        - {x: 29, y: -16}
+        - {x: 30, y: -28}
+        - {x: 23, y: -1}
+        - {x: 42, y: 24}
+        - {x: 16, y: 42}
+        - {x: -54, y: 42}
+        - {x: -130, y: 17}
+        - {x: -130, y: -88}
+        - {x: -102, y: -183}
+        - {x: -46, y: -183}
+        - {x: -39, y: -175}
+        - {x: -21, y: -183}
+        - {x: 68, y: -183}
+    - name: Monkey - banana attack sheet_7
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 0
+        width: 368
+        height: 366
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 66, y: 14}
+        - {x: 35, y: 4}
+        - {x: 30, y: -16}
+        - {x: 31, y: -28}
+        - {x: 23, y: -1}
+        - {x: 42, y: 24}
+        - {x: 11, y: 42}
+        - {x: -40, y: 42}
+        - {x: -93, y: 29}
+        - {x: -130, y: 14}
+        - {x: -130, y: -78}
+        - {x: -103, y: -183}
+        - {x: 52, y: -183}
+        - {x: 91, y: -77}
+        - {x: 91, y: -6}
+        - {x: 87, y: 8}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

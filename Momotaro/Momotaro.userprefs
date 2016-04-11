@@ -1,15 +1,17 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Enemy Scripts/MeleeBehavior.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Enemy Scripts/DerpBehavior.cs">
     <Files>
-      <File FileName="Assets/Scripts/BananaBehavior.cs" Line="16" Column="18" />
-      <File FileName="Assets/Scripts/Character Scripts/MomotaroBehavior.cs" Line="117" Column="6" />
-      <File FileName="Assets/Scripts/Character Scripts/CharacterBehavior.cs" Line="122" Column="61" />
-      <File FileName="Assets/Scripts/Character Scripts/DogFollow.cs" Line="43" Column="3" />
-      <File FileName="Assets/Scripts/Character Scripts/MonkeyFollow.cs" Line="180" Column="3" />
-      <File FileName="Assets/Scripts/Enemy Scripts/EnemyBehavior.cs" Line="45" Column="3" />
-      <File FileName="Assets/Scripts/Enemy Scripts/DerpBehavior.cs" Line="10" Column="13" />
-      <File FileName="Assets/Scripts/Enemy Scripts/MeleeBehavior.cs" Line="52" Column="22" />
+      <File FileName="Assets/Scripts/BananaBehavior.cs" Line="31" Column="40" />
+      <File FileName="Assets/Scripts/Character Scripts/MomotaroBehavior.cs" Line="57" Column="42" />
+      <File FileName="Assets/Scripts/Character Scripts/CharacterBehavior.cs" Line="120" Column="23" />
+      <File FileName="Assets/Scripts/Character Scripts/DogFollow.cs" Line="244" Column="60" />
+      <File FileName="Assets/Scripts/Character Scripts/MonkeyFollow.cs" Line="42" Column="103" />
+      <File FileName="Assets/Scripts/Enemy Scripts/EnemyBehavior.cs" Line="21" Column="28" />
+      <File FileName="Assets/Scripts/Enemy Scripts/DerpBehavior.cs" Line="18" Column="2" />
+      <File FileName="Assets/Scripts/Enemy Scripts/MeleeBehavior.cs" Line="74" Column="1" />
+      <File FileName="Assets/Scripts/Character Scripts/PheasantFollow.cs" Line="27" Column="24" />
+      <File FileName="Assets/Scripts/Environment Scripts/DirtBehavior.cs" Line="26" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

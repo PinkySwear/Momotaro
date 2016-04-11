@@ -1,0 +1,191 @@
+fileFormatVersion: 2
+guid: 52da04d6ed1834428a4fe444a21e2e7c
+timeCreated: 1460339686
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Monkey - Idle sheet_0
+    21300002: Monkey - Idle sheet_1
+    21300004: Monkey - Idle sheet_2
+    21300006: Monkey - Idle sheet_3
+    21300008: Monkey - Idle sheet_4
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Monkey - Idle sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 368
+        height: 366
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 119, y: -41}
+        - {x: 68, y: -44}
+        - {x: 63, y: -66}
+        - {x: 37, y: -56}
+        - {x: 74, y: -37}
+        - {x: 83, y: 28}
+        - {x: 68, y: 48}
+        - {x: 60, y: 56}
+        - {x: 7, y: 56}
+        - {x: -38, y: 44}
+        - {x: -81, y: 31}
+        - {x: -81, y: -183}
+        - {x: 54, y: -183}
+        - {x: 122, y: -96}
+        - {x: 122, y: -51}
+    - name: Monkey - Idle sheet_1
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 0
+        width: 368
+        height: 366
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 75, y: -39}
+        - {x: 56, y: -75}
+        - {x: 71, y: -35}
+        - {x: 94, y: 25}
+        - {x: 65, y: 56}
+        - {x: -21, y: 56}
+        - {x: -81, y: 29}
+        - {x: -81, y: -86}
+        - {x: -76, y: -108}
+        - {x: -78, y: -183}
+        - {x: 53, y: -183}
+        - {x: 122, y: -101}
+        - {x: 122, y: -59}
+        - {x: 103, y: -31}
+    - name: Monkey - Idle sheet_2
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 0
+        width: 368
+        height: 366
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 78, y: -40}
+        - {x: 66, y: -50}
+        - {x: 57, y: -67}
+        - {x: 71, y: -36}
+        - {x: 75, y: -1}
+        - {x: 79, y: 35}
+        - {x: 63, y: 54}
+        - {x: 47, y: 55}
+        - {x: -48, y: 55}
+        - {x: -81, y: 9}
+        - {x: -81, y: -153}
+        - {x: -78, y: -174}
+        - {x: -76, y: -183}
+        - {x: 55, y: -183}
+        - {x: 119, y: -94}
+        - {x: 119, y: -58}
+        - {x: 115, y: -39}
+    - name: Monkey - Idle sheet_3
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 0
+        width: 368
+        height: 366
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 75, y: -39}
+        - {x: 56, y: -75}
+        - {x: 71, y: -35}
+        - {x: 91, y: -20}
+        - {x: 80, y: 56}
+        - {x: -38, y: 56}
+        - {x: -81, y: 26}
+        - {x: -81, y: -179}
+        - {x: -79, y: -183}
+        - {x: 54, y: -183}
+        - {x: 122, y: -101}
+        - {x: 122, y: -59}
+        - {x: 103, y: -31}
+    - name: Monkey - Idle sheet_4
+      rect:
+        serializedVersion: 2
+        x: 1472
+        y: 0
+        width: 368
+        height: 366
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 119, y: -41}
+        - {x: 68, y: -44}
+        - {x: 63, y: -66}
+        - {x: 37, y: -56}
+        - {x: 74, y: -37}
+        - {x: 83, y: 28}
+        - {x: 68, y: 48}
+        - {x: 60, y: 56}
+        - {x: 7, y: 56}
+        - {x: -38, y: 44}
+        - {x: -81, y: 31}
+        - {x: -81, y: -183}
+        - {x: 54, y: -183}
+        - {x: 122, y: -96}
+        - {x: 122, y: -51}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
