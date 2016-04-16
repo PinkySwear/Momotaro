@@ -12,13 +12,13 @@ public class CharacterBehavior : MonoBehaviour {
 
 	protected Animator anim;
 
-
+	public int underNum;
 	public float velocity;
 	public float specialVelocity;
 	public float jumpForce;
 	protected Rigidbody myRb;
 	protected bool onSomething = false;
-	protected bool underSomething = false;
+//	protected bool underSomething = false;
 	protected bool movingLeft;
 	protected bool movingRight;
 	protected bool movingDown;
@@ -175,5 +175,13 @@ public class CharacterBehavior : MonoBehaviour {
 		}
 		//transform.rotation = leader.GetComponent<Transform>().rotation;
 		//transform.rotation = Quaternion.Euler (Vector3.zero);
+	}
+
+	protected void OnTriggerEnter (Collider other) {
+		underNum++;
+	}
+
+	protected void OnTriggerExit (Collider other) {
+		underNum--;
 	}
 }

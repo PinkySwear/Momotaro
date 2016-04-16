@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class DogFollow : CharacterBehavior {
 
+	public int dirtNum;
 	public bool touchingDirt;
 	public bool inDirt;
 	public List<Collider> dirtColliders;
@@ -39,16 +40,16 @@ public class DogFollow : CharacterBehavior {
 	
 	// Update is called once per frame
 	void Update () {
-		if (specialMovement) {
-			transform.position = new Vector3 (transform.position.x, transform.position.y, -2f);
-		}
-		else {
-			transform.position = new Vector3 (transform.position.x, transform.position.y, 0f);
-		}
-
-//		if (controlling && Vector3.Distance (leader.transform.position, transform.position) > 4f) {
-//			inParty = false;
+//		if (specialMovement) {
+//			transform.position = new Vector3 (transform.position.x, transform.position.y, -2f);
 //		}
+//		else {
+//			transform.position = new Vector3 (transform.position.x, transform.position.y, 0f);
+//		}
+
+		if (controlling && Vector3.Distance (leader.transform.position, transform.position) > 4f) {
+			inParty = false;
+		}
 		if (barkCoolDown > 0f) {
 			barkCoolDown -= Time.deltaTime;
 		}
@@ -63,26 +64,17 @@ public class DogFollow : CharacterBehavior {
 //			infoQueue.Clear ();
 //		}
 
-		Vector3 colliderCenter = myCollider.bounds.center;
-		Vector3 right = colliderCenter + Vector3.right * myCollider.bounds.extents.x * 0.95f;
-		Vector3 left = colliderCenter - Vector3.right * myCollider.bounds.extents.x * 0.95f;
 
-		Debug.DrawLine (right, right + (Vector3.down * myCollider.bounds.extents.y * 1.01f));
-		Debug.DrawLine (left, left + (Vector3.down * myCollider.bounds.extents.y * 1.01f));
-		Debug.DrawLine (right, right + (Vector3.up * fullHeight * 1.5f));
-		Debug.DrawLine (left, left + (Vector3.up * fullHeight * 1.5f));
 
-		onSomething = Physics.Linecast (right, right + (Vector3.down * myCollider.bounds.extents.y * 1.001f), 1 << LayerMask.NameToLayer ("Obstacle")) 
-			|| Physics.Linecast (left, left + (Vector3.down * myCollider.bounds.extents.y * 1.001f), 1 << LayerMask.NameToLayer ("Obstacle"));
+		onSomething = underNum > 0;
 
-		underSomething = Physics.Linecast (right, right + (Vector3.up * fullHeight * 1.5f), 1 << LayerMask.NameToLayer ("Obstacle")) 
-			|| Physics.Linecast (left, left + (Vector3.up * fullHeight * 1.5f), 1 << LayerMask.NameToLayer ("Obstacle"));
 
 		movingLeft = false;
 		movingRight = false;
 		movingUp = false;
 		movingDown = false;
 
+		touchingDirt = dirtNum > 0;
 		if (!inDirt) {
 			anim.SetBool ("digging", false);
 			myRb.useGravity = true;
@@ -97,6 +89,7 @@ public class DogFollow : CharacterBehavior {
 			foreach (Collider dc in dirtColliders) {
 				Physics.IgnoreCollision (dc, myCollider, true);
 			}
+			touchingDirt = true;
 			specialMovement = true;
 		}
 
@@ -118,13 +111,9 @@ public class DogFollow : CharacterBehavior {
 				transform.localScale = s;
 				inParty = false;
 			}
-//			if (Input.GetKeyDown (KeyCode.UpArrow) && onSomething && !crouching) {
-//				jump = true;
-//				touchingDirt = false;
-//			}
 			if (Input.GetKeyDown (KeyCode.UpArrow) && onSomething) {
 				jump = true;
-				touchingDirt = false;
+//				touchingDirt = false;
 			}
 			if (Input.GetKey (KeyCode.DownArrow)) {
 				myRb.useGravity = false;
@@ -232,26 +221,46 @@ public class DogFollow : CharacterBehavior {
 
 	}
 
+//
+//	void OnCollisionEnter(Collision collisionInfo) {
+////		Debug.Log ("THIS CALLEd");
+////		if (controlling && collisionInfo.collider.tag == "Dirt") {
+//		if (collisionInfo.collider.tag == "Dirt") {
+//
+//			touchingDirt = true;
+//			if (!dirtColliders.Contains (collisionInfo.collider)) {
+//				dirtColliders.Add (collisionInfo.collider);
+//			}
+//		}
+//	}
+//	void OnCollisionExit(Collision collisionInfo) {
+//		//		Debug.Log ("THIS CALLEd");
+////		if (controlling && collisionInfo.collider.tag == "Dirt") {
+//		if (collisionInfo.collider.tag == "Dirt") {
+////			touchingDirt = false;
+////			if (dirtColliders.Contains (collisionInfo.collider)) {
+////				dirtColliders.Remove (collisionInfo.collider);
+////			}
+//		}
+//	}
 
-	void OnCollisionEnter(Collision collisionInfo) {
-//		Debug.Log ("THIS CALLEd");
-//		if (controlling && collisionInfo.collider.tag == "Dirt") {
-		if (collisionInfo.collider.tag == "Dirt") {
-
-			touchingDirt = true;
-			if (!dirtColliders.Contains (collisionInfo.collider)) {
-				dirtColliders.Add (collisionInfo.collider);
+	void OnTriggerEnter(Collider other) {
+//		if (!inDirt) {
+			base.OnTriggerEnter (other);
+//		}
+		if (other.tag == "Dirt") {
+			if (!dirtColliders.Contains (other)) {
+				dirtColliders.Add (other);
 			}
+			dirtNum++;
 		}
 	}
-	void OnCollisionExit(Collision collisionInfo) {
-		//		Debug.Log ("THIS CALLEd");
-//		if (controlling && collisionInfo.collider.tag == "Dirt") {
-		if (collisionInfo.collider.tag == "Dirt") {
-//			touchingDirt = false;
-//			if (dirtColliders.Contains (collisionInfo.collider)) {
-//				dirtColliders.Remove (collisionInfo.collider);
-//			}
+	void OnTriggerExit(Collider other) {
+//		if (!inDirt) {
+			base.OnTriggerExit (other);
+//		}
+		if (other.tag == "Dirt") {
+			dirtNum--;
 		}
 	}
 
@@ -272,5 +281,6 @@ public class DogFollow : CharacterBehavior {
 		Gizmos.color = Color.yellow;
 		Gizmos.DrawWireSphere (transform.position, 10f);
 	}
+		
 		
 }

@@ -60,21 +60,10 @@ public class MonkeyFollow : CharacterBehavior {
 //			Debug.Log ("QUEUE CLEARED");
 //			infoQueue.Clear ();
 //		}
+	
 
-		Vector3 colliderCenter = myCollider.bounds.center;
-		Vector3 right = colliderCenter + Vector3.right * myCollider.bounds.extents.x * 0.95f;
-		Vector3 left = colliderCenter - Vector3.right * myCollider.bounds.extents.x * 0.95f;
+		onSomething = underNum > 0;
 
-		Debug.DrawLine (right, right + (Vector3.down * myCollider.bounds.extents.y * 1.01f));
-		Debug.DrawLine (left, left + (Vector3.down * myCollider.bounds.extents.y * 1.01f));
-		Debug.DrawLine (right, right + (Vector3.up * fullHeight * 1.5f));
-		Debug.DrawLine (left, left + (Vector3.up * fullHeight * 1.5f));
-
-		onSomething = Physics.Linecast (right, right + (Vector3.down * myCollider.bounds.extents.y * 1.001f), 1 << LayerMask.NameToLayer ("Obstacle")) 
-			|| Physics.Linecast (left, left + (Vector3.down * myCollider.bounds.extents.y * 1.001f), 1 << LayerMask.NameToLayer ("Obstacle"));
-
-		underSomething = Physics.Linecast (right, right + (Vector3.up * fullHeight * 1.5f), 1 << LayerMask.NameToLayer ("Obstacle")) 
-			|| Physics.Linecast (left, left + (Vector3.up * fullHeight * 1.5f), 1 << LayerMask.NameToLayer ("Obstacle"));
 	
 
 		movingUp = false;

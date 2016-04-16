@@ -8,10 +8,11 @@ public class MomotaroBehavior : MonoBehaviour {
 	public float jumpForce;
 	private Rigidbody myRb;
 	private bool onSomething = false;
-	private bool underSomething = false;
+//	private bool underSomething = false;
 	public bool movingLeft;
 	public bool movingRight;
 	public bool jump = false;
+	public int underNum;
 //	private bool crouching = false;
 
 	public bool controlling;
@@ -69,20 +70,10 @@ public class MomotaroBehavior : MonoBehaviour {
 		if (attackCoolDown > 0f) {
 			attackCoolDown -= Time.deltaTime;
 		}
-		Vector3 colliderCenter = myCollider.bounds.center;
-		Vector3 right = colliderCenter + Vector3.right * myCollider.bounds.extents.x * 0.95f;
-		Vector3 left = colliderCenter - Vector3.right * myCollider.bounds.extents.x * 0.95f;
 
-		Debug.DrawLine (right, right + (Vector3.down * myCollider.bounds.extents.y * 1.001f));
-		Debug.DrawLine (left, left + (Vector3.down * myCollider.bounds.extents.y * 1.001f));
-		Debug.DrawLine (right, right + (Vector3.up * fullHeight * 1.5f));
-		Debug.DrawLine (left, left + (Vector3.up * fullHeight * 1.5f));
 
-		onSomething = Physics.Linecast (right, right + (Vector3.down * myCollider.bounds.extents.y * 1.001f), 1 << LayerMask.NameToLayer ("Obstacle")) 
-			|| Physics.Linecast (left, left + (Vector3.down * myCollider.bounds.extents.y * 1.001f), 1 << LayerMask.NameToLayer ("Obstacle"));
+		onSomething = underNum > 0;
 
-		underSomething = Physics.Linecast (right, right + (Vector3.up * fullHeight * 1.5f), 1 << LayerMask.NameToLayer ("Obstacle")) 
-			|| Physics.Linecast (left, left + (Vector3.up * fullHeight * 1.5f), 1 << LayerMask.NameToLayer ("Obstacle"));
 
 		movingLeft = false;
 		movingRight = false;
@@ -134,7 +125,6 @@ public class MomotaroBehavior : MonoBehaviour {
 
 
 //		if (Mathf.Abs(prevLoc.x - transform.position.x) > 0.001f || jump) {
-//			FollowInformation.MovementInfo mi = new FollowInformation.MovementInfo (movingRight, movingLeft, jump, crouching);
 			FollowInformation.MovementInfo mi = new FollowInformation.MovementInfo (movingRight, movingLeft, jump);
 
 			foreach (CharacterBehavior df in followers) {
@@ -209,5 +199,13 @@ public class MomotaroBehavior : MonoBehaviour {
 			enemy.takeDamage (1);
 			enemy.knockBack (((Mathf.Sign(enemyCol.transform.position.x - transform.position.x)) * Vector3.right + Vector3.up * 2f).normalized * 500f);
 		}
+	}
+
+	void OnTriggerEnter (Collider other) {
+		underNum++;
+	}
+
+	void OnTriggerExit (Collider other) {
+		underNum--;
 	}
 }

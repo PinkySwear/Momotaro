@@ -3,7 +3,7 @@ using System.Collections;
 
 public class DerpBehavior : EnemyBehavior {
 
-	int numThingsInTheWay;
+	public int numThingsInTheWay;
 	bool somethingInTheWay;
 
 	// Use this for initialization
@@ -42,8 +42,11 @@ public class DerpBehavior : EnemyBehavior {
 		if (other.tag == "Follower") {
 			return;
 		}
+//		Debug.Log (" " + numThingsInTheWay + other.ToString ());
 		numThingsInTheWay++;
+//		Debug.Log ("ENTER: " + numThingsInTheWay + other.gameObject.name + " " + other.gameObject.tag);
 	}
+
 
 	void OnTriggerExit (Collider other) {
 		if (LayerMask.LayerToName (other.gameObject.layer) == "Detector" || LayerMask.LayerToName (other.gameObject.layer) == "Enemy") {
@@ -55,6 +58,7 @@ public class DerpBehavior : EnemyBehavior {
 			return;
 		}
 		numThingsInTheWay--;
+//		Debug.Log ("EXIT: " + numThingsInTheWay + other.gameObject.name);
 	}
 
 }
