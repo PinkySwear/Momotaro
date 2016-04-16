@@ -24,7 +24,7 @@ public class CharacterBehavior : MonoBehaviour {
 	protected bool movingDown;
 	protected bool movingUp;
 	protected bool jump = false;
-	protected bool crouching = false;
+//	protected bool crouching = false;
 
 	public bool controlling;
 	public bool inParty;
@@ -70,13 +70,13 @@ public class CharacterBehavior : MonoBehaviour {
 				movingLeft = mi.movingLeft;
 				movingRight = mi.movingRight;
 				jump = mi.jump;
-				crouching = mi.crouching;
+//				crouching = mi.crouching;
 			}
 			else {
 				movingLeft = false;
 				movingRight = false;
 				jump = false;
-				crouching = false;
+//				crouching = false;
 			}
 		}
 
@@ -104,14 +104,16 @@ public class CharacterBehavior : MonoBehaviour {
 			}
 		}
 
-		if (crouching) {
-			transform.localScale = new Vector3 (transform.localScale.x, 0.5f, 1f);
-			velocity = 5f;
-		}
-		else {
-			transform.localScale = new Vector3 (transform.localScale.x, 1f, 1f);
-			velocity = 10f;
-		}
+//		if (crouching) {
+//			transform.localScale = new Vector3 (transform.localScale.x, 0.5f, 1f);
+//			velocity = 5f;
+//		}
+//		else {
+//			transform.localScale = new Vector3 (transform.localScale.x, 1f, 1f);
+//			velocity = 10f;
+//		}
+		transform.localScale = new Vector3 (transform.localScale.x, 1f, 1f);
+		velocity = 10f;
 
 		if (jump && onSomething && Mathf.Abs(myRb.velocity.y) < 0.01f) {
 			myRb.useGravity = true;

@@ -37,12 +37,12 @@ public class FollowInformation : MonoBehaviour {
 		public bool movingRight;
 		public bool movingLeft;
 		public bool jump;
-		public bool crouching;
-		public MovementInfo(bool mR, bool mL, bool j, bool c) {
+//		public bool crouching;
+		public MovementInfo(bool mR, bool mL, bool j) {
 			this.movingRight = mR;
 			this.movingLeft = mL;
 			this.jump = j;
-			this.crouching = c;
+//			this.crouching = c;
 		}
 	}
 

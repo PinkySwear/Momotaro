@@ -83,16 +83,10 @@ public class PheasantFollow : CharacterBehavior {
 				inParty = false;
 			}
 
-			if (Input.GetKeyDown(KeyCode.UpArrow) && onSomething && !crouching) {
+			if (Input.GetKeyDown(KeyCode.UpArrow) && onSomething) {
 				jump = true;
 //				specialMovement = true;
 //				movingUp = true;
-			}
-			if (Input.GetKey(KeyCode.DownArrow)) {
-				crouching = true;
-			}
-			if (!Input.GetKey(KeyCode.DownArrow) && !underSomething) {
-				crouching = false;
 			}
 		}
 

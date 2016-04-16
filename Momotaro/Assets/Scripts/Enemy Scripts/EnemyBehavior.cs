@@ -72,6 +72,7 @@ public class EnemyBehavior : MonoBehaviour {
 			Debug.Log (myRb);
 			myRb.velocity = new Vector3(0f, myRb.velocity.y, myRb.velocity.z);
 		}
+		myRb.velocity = Vector3.ClampMagnitude (myRb.velocity, 20f);
 	}
 		
 	public void takeDamage (int dm) {

@@ -12,7 +12,7 @@ public class MomotaroBehavior : MonoBehaviour {
 	public bool movingLeft;
 	public bool movingRight;
 	public bool jump = false;
-	private bool crouching = false;
+//	private bool crouching = false;
 
 	public bool controlling;
 	public bool stop;
@@ -34,6 +34,8 @@ public class MomotaroBehavior : MonoBehaviour {
 	private float attackCoolDown;
 
 	Animator anim;
+
+	private Vector3 prevLoc;
 
 	// Use this for initialization
 	void Start () {
@@ -100,15 +102,16 @@ public class MomotaroBehavior : MonoBehaviour {
 				movingRight = true;
 			}
 
-			if (Input.GetKeyDown(KeyCode.UpArrow) && onSomething && !crouching && !inAttackState) {
+//			if (Input.GetKeyDown(KeyCode.UpArrow) && onSomething && !crouching && !inAttackState) {
+			if (Input.GetKeyDown(KeyCode.UpArrow) && onSomething && !inAttackState) {
 				jump = true;
 			}
-			if (Input.GetKey(KeyCode.DownArrow) && !inAttackState) {
-				crouching = true;
-			}
-			if (!Input.GetKey(KeyCode.DownArrow) && !underSomething) {
-				crouching = false;
-			}
+//			if (Input.GetKey(KeyCode.DownArrow) && !inAttackState) {
+//				crouching = true;
+//			}
+//			if (!Input.GetKey(KeyCode.DownArrow) && !underSomething) {
+//				crouching = false;
+//			}
 			if (Input.GetKeyDown (KeyCode.Space) && attackCoolDown <= 0f) {
 				anim.SetBool ("attacking", true);
 				attack ();
@@ -130,8 +133,10 @@ public class MomotaroBehavior : MonoBehaviour {
 
 
 
-//		if (controlling) {
-			FollowInformation.MovementInfo mi = new FollowInformation.MovementInfo (movingRight, movingLeft, jump, crouching);
+//		if (Mathf.Abs(prevLoc.x - transform.position.x) > 0.001f || jump) {
+//			FollowInformation.MovementInfo mi = new FollowInformation.MovementInfo (movingRight, movingLeft, jump, crouching);
+			FollowInformation.MovementInfo mi = new FollowInformation.MovementInfo (movingRight, movingLeft, jump);
+
 			foreach (CharacterBehavior df in followers) {
 				if (df.inParty) {
 					df.infoQueue.Enqueue (mi);
@@ -139,7 +144,7 @@ public class MomotaroBehavior : MonoBehaviour {
 			}
 //		}
 //		followInfo.infoQueue.Enqueue (mi);
-
+		prevLoc = transform.position;
 
 		if (movingLeft) {
 			//restrict movement to one plane
@@ -161,14 +166,16 @@ public class MomotaroBehavior : MonoBehaviour {
 			anim.SetBool ("idling", false);
 		}
 
-		if (crouching) {
-			transform.localScale = new Vector3 (transform.localScale.x, 0.5f, 1f);
-			velocity = 5f;
-		}
-		else {
-			transform.localScale = new Vector3 (transform.localScale.x, 1f, 1f);
-			velocity = 10f;
-		}
+//		if (crouching) {
+//			transform.localScale = new Vector3 (transform.localScale.x, 0.5f, 1f);
+//			velocity = 5f;
+//		}
+//		else {
+//			transform.localScale = new Vector3 (transform.localScale.x, 1f, 1f);
+//			velocity = 10f;
+//		}
+		transform.localScale = new Vector3 (transform.localScale.x, 1f, 1f);
+		velocity = 10f;
 
 		if (jump && onSomething && Mathf.Abs (myRb.velocity.y) < 0.01f) {
 			anim.SetBool ("jumping", true);
@@ -190,6 +197,7 @@ public class MomotaroBehavior : MonoBehaviour {
 		else {
 			anim.SetBool ("falling", false);
 		}
+
 	}
 
 

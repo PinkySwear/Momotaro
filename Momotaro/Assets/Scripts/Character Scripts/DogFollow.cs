@@ -103,7 +103,7 @@ public class DogFollow : CharacterBehavior {
 		if (controlling && !specialMovement && touchingDirt) {
 			rz = 0f;
 			inParty = false;
-			crouching = false;
+//			crouching = false;
 			if (Input.GetKey (KeyCode.LeftArrow)) {
 				movingLeft = true;
 				Vector3 s = transform.localScale;
@@ -118,7 +118,11 @@ public class DogFollow : CharacterBehavior {
 				transform.localScale = s;
 				inParty = false;
 			}
-			if (Input.GetKeyDown (KeyCode.UpArrow) && onSomething && !crouching) {
+//			if (Input.GetKeyDown (KeyCode.UpArrow) && onSomething && !crouching) {
+//				jump = true;
+//				touchingDirt = false;
+//			}
+			if (Input.GetKeyDown (KeyCode.UpArrow) && onSomething) {
 				jump = true;
 				touchingDirt = false;
 			}
@@ -160,16 +164,19 @@ public class DogFollow : CharacterBehavior {
 				transform.localScale = s;
 				inParty = false;
 			}
-			if (Input.GetKeyDown (KeyCode.UpArrow) && onSomething && !crouching) {
+			if (Input.GetKeyDown (KeyCode.UpArrow) && onSomething) {
 				jump = true;
 			}
-			if (Input.GetKey (KeyCode.DownArrow)) {
-				crouching = true;
-
-			}
-			if (!Input.GetKey (KeyCode.DownArrow) && !underSomething) {
-				crouching = false;
-			}
+//			if (Input.GetKeyDown (KeyCode.UpArrow) && onSomething && !crouching) {
+//				jump = true;
+//			}
+//			if (Input.GetKey (KeyCode.DownArrow)) {
+//				crouching = true;
+//
+//			}
+//			if (!Input.GetKey (KeyCode.DownArrow) && !underSomething) {
+//				crouching = false;
+//			}
 			if (Input.GetKeyDown (KeyCode.Space) && barkCoolDown <= 0f) {
 				anim.SetBool ("barking", true);
 				bark ();
@@ -183,7 +190,7 @@ public class DogFollow : CharacterBehavior {
 
 		else if (controlling && specialMovement) {
 			inParty = false;
-			crouching = false;
+//			crouching = false;
 //			transform.position = new Vector3 (transform.position.x, transform.position.y, 0f);
 //			myRb.velocity = new Vector3 (-1 * velocity, myRb.velocity.y, myRb.velocity.z);
 //			Vector3 s = transform.localScale;

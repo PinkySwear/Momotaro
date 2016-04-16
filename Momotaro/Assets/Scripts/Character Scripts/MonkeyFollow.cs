@@ -109,12 +109,10 @@ public class MonkeyFollow : CharacterBehavior {
 //				}
 			}
 
-			if (Input.GetKeyDown(KeyCode.UpArrow) && onSomething && !crouching) {
+			if (Input.GetKeyDown(KeyCode.UpArrow) && onSomething) {
 				jump = true;
 			}
-			if (Input.GetKey(KeyCode.DownArrow)) {
-				crouching = true;
-			}
+
 
 			if (Input.GetKeyDown (KeyCode.Space) && bananaCoolDown <= 0f && bananaDelay <= 0f) {
 				anim.SetBool ("throwing", true);
@@ -124,9 +122,6 @@ public class MonkeyFollow : CharacterBehavior {
 				anim.SetBool ("throwing", false);
 			}
 
-			if (!Input.GetKey(KeyCode.DownArrow) && !underSomething) {
-				crouching = false;
-			}
 		}
 		if (controlling && specialMovement) {
 			myRb.velocity = new Vector3 (myRb.velocity.x, 0f, 0f);	
@@ -206,7 +201,7 @@ public class MonkeyFollow : CharacterBehavior {
 		bananaRB.AddTorque (new Vector3 (0f, 0f, ((Random.value - 0.5f) * 200f)));
 	}
 
-	void OnCollisionEnter(Collision collisionInfo) {
+	void OnCollisionStay(Collision collisionInfo) {
 		if (!specialMovement) {
 			bool left = false;
 			bool right = false;
