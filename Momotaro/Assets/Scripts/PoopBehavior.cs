@@ -28,6 +28,7 @@ public class PoopBehavior: MonoBehaviour {
 	}
 	void OnCollisionEnter (Collision collision) {
 		active = true;
+		Destroy (this.gameObject);
 	}
 
 

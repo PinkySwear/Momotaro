@@ -107,6 +107,7 @@ public class PheasantFollow : CharacterBehavior {
 			//			Camera.main.transform.position = new Vector3 (transform.position.x, transform.position.y, -10f);
 			myRb.useGravity = false;
 			myRb.velocity = new Vector3 (myRb.velocity.x, 0f, 0f);
+			anim.SetBool ("walking", false);
 			if (Input.GetKey(KeyCode.LeftArrow)) {
 				movingLeft = true;
 				Vector3 s = transform.localScale;
@@ -114,6 +115,7 @@ public class PheasantFollow : CharacterBehavior {
 				transform.localScale = s;
 				inParty = false;
 				myRb.velocity = new Vector3 (myRb.velocity.x, 0f, 0f);
+				anim.SetBool ("walking", true);
 //				myRb.AddForce (Vector3.up * 50f);
 			}
 			if (Input.GetKey(KeyCode.RightArrow)) {
@@ -123,16 +125,19 @@ public class PheasantFollow : CharacterBehavior {
 				transform.localScale = s;
 				inParty = false;
 				myRb.velocity = new Vector3 (myRb.velocity.x, 0f, 0f);
+				anim.SetBool ("walking", true);
 //				myRb.AddForce (Vector3.up * 50f);
 			}
 
 			if (Input.GetKey(KeyCode.UpArrow)) {
 				specialVelocity = 10f;
 				movingUp = true;
+				anim.SetBool ("walking", true);
 			}
 			if (Input.GetKey(KeyCode.DownArrow)) {
 				specialVelocity = 10f;
 				movingDown = true;
+				anim.SetBool ("walking", true);
 			}
 
 			if (Input.GetKeyDown (KeyCode.Space) && poopCoolDown <= 0f && poopDelay <= 0f) {
