@@ -31,6 +31,9 @@ public class PheasantFollow : CharacterBehavior {
 
 		if (!controlling && !inParty && Vector3.Distance (leader.transform.position, transform.position) < 1f) {
 			transform.position = leader.transform.position;
+			specialMovement = false;
+			myRb.useGravity = true;
+
 			inParty = true;
 //			infoQueue.Clear ();
 		}
@@ -80,14 +83,15 @@ public class PheasantFollow : CharacterBehavior {
 
 		if (controlling && specialMovement) {
 			//			Camera.main.transform.position = new Vector3 (transform.position.x, transform.position.y, -10f);
-			myRb.velocity = new Vector3 (myRb.velocity.x, myRb.velocity.y, 0f);
+			myRb.useGravity = false;
+			myRb.velocity = new Vector3 (myRb.velocity.x, 0f, 0f);
 			if (Input.GetKey(KeyCode.LeftArrow)) {
 				movingLeft = true;
 				Vector3 s = transform.localScale;
 				s.x = -1;
 				transform.localScale = s;
 				inParty = false;
-				myRb.velocity = new Vector3 (myRb.velocity.x, -3f, 0f);
+				myRb.velocity = new Vector3 (myRb.velocity.x, 0f, 0f);
 //				myRb.AddForce (Vector3.up * 50f);
 			}
 			if (Input.GetKey(KeyCode.RightArrow)) {
@@ -96,13 +100,17 @@ public class PheasantFollow : CharacterBehavior {
 				s.x = 1;
 				transform.localScale = s;
 				inParty = false;
-				myRb.velocity = new Vector3 (myRb.velocity.x, -3f, 0f);
+				myRb.velocity = new Vector3 (myRb.velocity.x, 0f, 0f);
 //				myRb.AddForce (Vector3.up * 50f);
 			}
 
 			if (Input.GetKey(KeyCode.UpArrow)) {
 				specialVelocity = 10f;
 				movingUp = true;
+			}
+			if (Input.GetKey(KeyCode.DownArrow)) {
+				specialVelocity = 10f;
+				movingDown = true;
 			}
 		}
 		if (!inParty && infoQueue.Count != 0) {

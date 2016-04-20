@@ -50,6 +50,21 @@ public class CharacterManager : MonoBehaviour {
 		Application.targetFrameRate = 120;
 	}
 
+	void OnGUI () {
+		GUI.color = Color.black;
+		if (holdSwitching) {
+			GUI.Label (new Rect (500, 10, 400, 20), "SWITCH BY HOLDING");
+			GUI.Label (new Rect (500, 40, 400, 20), "SWITCH SWITCHING MODE WITH \"O\"");
+
+		}
+		else {
+			GUI.Label (new Rect (500, 10, 400, 20), "SWITCH BY PRESSING");
+			GUI.Label (new Rect (500, 40, 400, 20), "SWITCH SWITCHING MODE WITH \"O\"");
+
+		}
+	
+	}
+
 	void characterSwitchHold () {
 		if (Input.GetKey (KeyCode.D)) {
 			momo.controlling = false;
@@ -77,6 +92,9 @@ public class CharacterManager : MonoBehaviour {
 			dog.controlling = false;
 			monkey.controlling = false;
 			pheasant.controlling = false;
+		}
+		if (Input.GetKeyDown (KeyCode.O)) {
+			holdSwitching = false;
 		}
 	}
 
@@ -107,6 +125,9 @@ public class CharacterManager : MonoBehaviour {
 			monkey.controlling = false;
 			pheasant.controlling = true;
 			pheasant.inParty = false;
+		}
+		if (Input.GetKeyDown (KeyCode.O)) {
+			holdSwitching = true;
 		}
 	}
 }
