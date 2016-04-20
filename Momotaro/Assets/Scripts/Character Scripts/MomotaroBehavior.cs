@@ -33,6 +33,7 @@ public class MomotaroBehavior : MonoBehaviour {
 
 	public float health;
 	private float attackCoolDown;
+	private float attackDelay;
 
 	Animator anim;
 
@@ -70,7 +71,12 @@ public class MomotaroBehavior : MonoBehaviour {
 		if (attackCoolDown > 0f) {
 			attackCoolDown -= Time.deltaTime;
 		}
-
+		if (attackDelay > 0f) {
+			attackDelay -= Time.deltaTime;
+			if (attackDelay <= 0f) {
+				attack ();
+			}
+		}
 
 		onSomething = underNum > 0;
 
@@ -103,13 +109,22 @@ public class MomotaroBehavior : MonoBehaviour {
 //			if (!Input.GetKey(KeyCode.DownArrow) && !underSomething) {
 //				crouching = false;
 //			}
-			if (Input.GetKeyDown (KeyCode.Space) && attackCoolDown <= 0f) {
+//			if (Input.GetKeyDown (KeyCode.Space) && attackCoolDown <= 0f) {
+//				
+//				anim.SetBool ("attacking", true);
+//				attack ();
+//			}
+//			else {
+//				anim.SetBool ("attacking", false);
+//			}
+			if (Input.GetKeyDown (KeyCode.Space) && attackDelay <= 0f && attackCoolDown <= 0f) {
 				anim.SetBool ("attacking", true);
-				attack ();
+				attackDelay = 0.2f;
 			}
 			else {
 				anim.SetBool ("attacking", false);
 			}
+
 		}
 		else{
 			// Nothing!
