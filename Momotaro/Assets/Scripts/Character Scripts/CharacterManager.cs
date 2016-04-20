@@ -16,6 +16,8 @@ public class CharacterManager : MonoBehaviour {
 
 	public GameObject[] characterObjects;
 
+	public bool holdSwitching;
+
 
 	// Use this for initialization
 	void Start () {
@@ -32,27 +34,38 @@ public class CharacterManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown (KeyCode.D)) {
-//			momo.controlling = true;
-//			dog.controlling = false;
-//			monkey.controlling = false;
-//			pheasant.controlling = false;
+		if (holdSwitching) {
+			characterSwitchHold ();
 		}
-		else if (Input.GetKey (KeyCode.F)) {
+		else {
+			characterSwitchPress ();
+		}
+		if (Input.GetKeyDown (KeyCode.P)) {
+			SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
+		}
+	}
+
+	void Awake() {
+		QualitySettings.vSyncCount = 0;
+		Application.targetFrameRate = 120;
+	}
+
+	void characterSwitchHold () {
+		if (Input.GetKey (KeyCode.D)) {
 			momo.controlling = false;
 			dog.controlling = true;
 			dog.inParty = false;
 			monkey.controlling = false;
 			pheasant.controlling = false;
 		}
-		else if (Input.GetKey (KeyCode.D)) {
+		else if (Input.GetKey (KeyCode.S)) {
 			momo.controlling = false;
 			dog.controlling = false;
 			monkey.controlling = true;
 			monkey.inParty = false;
 			pheasant.controlling = false;
 		}
-		else if (Input.GetKey (KeyCode.S)) {
+		else if (Input.GetKey (KeyCode.A)) {
 			momo.controlling = false;
 			dog.controlling = false;
 			monkey.controlling = false;
@@ -65,13 +78,35 @@ public class CharacterManager : MonoBehaviour {
 			monkey.controlling = false;
 			pheasant.controlling = false;
 		}
-		if (Input.GetKeyDown (KeyCode.P)) {
-			SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
-		}
 	}
 
-	void Awake() {
-		QualitySettings.vSyncCount = 0;
-		Application.targetFrameRate = 120;
+	void characterSwitchPress () {
+		if (Input.GetKeyDown (KeyCode.F)) {
+			momo.controlling = true;
+			dog.controlling = false;
+			monkey.controlling = false;
+			pheasant.controlling = false;
+		}
+		else if (Input.GetKeyDown (KeyCode.D)) {
+			momo.controlling = false;
+			dog.controlling = true;
+			dog.inParty = false;
+			monkey.controlling = false;
+			pheasant.controlling = false;
+		}
+		else if (Input.GetKeyDown (KeyCode.S)) {
+			momo.controlling = false;
+			dog.controlling = false;
+			monkey.controlling = true;
+			monkey.inParty = false;
+			pheasant.controlling = false;
+		}
+		else if (Input.GetKeyDown (KeyCode.A)) {
+			momo.controlling = false;
+			dog.controlling = false;
+			monkey.controlling = false;
+			pheasant.controlling = true;
+			pheasant.inParty = false;
+		}
 	}
 }

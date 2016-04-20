@@ -193,12 +193,17 @@ public class MomotaroBehavior : MonoBehaviour {
 
 	public void attack() {
 		attackCoolDown = 0.5f;
-		Collider[] enemyColliders = Physics.OverlapSphere(transform.position, 2f, 1 << LayerMask.NameToLayer ("Enemy"));
+		Collider[] enemyColliders = Physics.OverlapSphere(transform.position + Vector3.right * Mathf.Sign(transform.localScale.x) * 1f, 2f, 1 << LayerMask.NameToLayer ("Enemy"));
 		foreach (Collider enemyCol in enemyColliders) {
 			EnemyBehavior enemy = enemyCol.gameObject.GetComponent<EnemyBehavior> ();
 			enemy.takeDamage (1);
 			enemy.knockBack (((Mathf.Sign(enemyCol.transform.position.x - transform.position.x)) * Vector3.right + Vector3.up * 2f).normalized * 500f);
 		}
+	}
+
+	void OnDrawGizmos() {
+		Gizmos.color = Color.white;
+		Gizmos.DrawWireSphere(transform.position + Vector3.right * Mathf.Sign(transform.localScale.x) * 1f, 2f);
 	}
 
 	void OnTriggerEnter (Collider other) {

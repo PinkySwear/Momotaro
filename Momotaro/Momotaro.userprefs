@@ -1,17 +1,18 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Enemy Scripts/EnemyBehavior.cs">
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="Assets/Scripts/BananaBehavior.cs" Line="34" Column="16" />
+      <File FileName="Assets/Scripts/BananaBehavior.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Character Scripts/MomotaroBehavior.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Character Scripts/CharacterBehavior.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Character Scripts/DogFollow.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Character Scripts/MonkeyFollow.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Enemy Scripts/EnemyBehavior.cs" Line="75" Column="63" />
-      <File FileName="Assets/Scripts/Enemy Scripts/DerpBehavior.cs" Line="18" Column="2" />
+      <File FileName="Assets/Scripts/Enemy Scripts/EnemyBehavior.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Enemy Scripts/DerpBehavior.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Enemy Scripts/MeleeBehavior.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Character Scripts/PheasantFollow.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Environment Scripts/DirtBehavior.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Character Scripts/FollowInformation.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
