@@ -28,7 +28,7 @@ public class MeleeBehavior : EnemyBehavior {
 			movingLeft = !movingLeft;
 			movingRight = !movingRight;
 		}
-		if (nearPlayer) {
+		if (nearPlayer && !stunned) {
 			movingLeft = false;
 			movingRight = false;
 			if (attackCoolDown <= 0f) {
@@ -40,13 +40,11 @@ public class MeleeBehavior : EnemyBehavior {
 		}
 
 		UpdateP ();
-//		Debug.Log (numThingsInTheWay);
-//		Debug.Log (nearPlayer);
 
 	}
 
 	void attack () {
-//		Debug.Log ("I ATTACKED");
+		momo.takeDamage (1);
 		attackCoolDown = 2f;
 
 	}

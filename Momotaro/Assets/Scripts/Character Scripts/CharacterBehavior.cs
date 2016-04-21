@@ -70,7 +70,6 @@ public class CharacterBehavior : MonoBehaviour {
 				movingLeft = mi.movingLeft;
 				movingRight = mi.movingRight;
 				jump = mi.jump;
-//				crouching = mi.crouching;
 			}
 			else {
 				movingLeft = false;

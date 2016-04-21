@@ -3,6 +3,10 @@ using System.Collections;
 
 public class PheasantFollow : CharacterBehavior {
 
+	public GameObject poopPrefab;
+	private float poopCoolDown;
+	private float poopDelay;
+
 	// Use this for initialization
 	void Start () {
 		anim = GetComponent<Animator> ();
@@ -24,6 +28,17 @@ public class PheasantFollow : CharacterBehavior {
 
 	// Update is called once per frame
 	void Update () {
+
+		if (poopCoolDown > 0f) {
+			poopCoolDown -= Time.deltaTime;
+		}
+
+		if (poopDelay > 0f) {
+			poopDelay -= Time.deltaTime;
+			if (poopDelay <= 0f) {
+				poop ();
+			}
+		}
 
 		//		if (controlling && Vector3.Distance (leader.transform.position, transform.position) > 4f) {
 		//			inParty = false;
@@ -79,12 +94,20 @@ public class PheasantFollow : CharacterBehavior {
 //				specialMovement = true;
 //				movingUp = true;
 			}
+			if (Input.GetKeyDown (KeyCode.Space) && poopCoolDown <= 0f && poopDelay <= 0f) {
+				anim.SetBool ("pooping", true);
+				poopDelay = 0.1f;
+			}
+			else {
+				anim.SetBool ("pooping", false);
+			}
 		}
 
 		if (controlling && specialMovement) {
 			//			Camera.main.transform.position = new Vector3 (transform.position.x, transform.position.y, -10f);
 			myRb.useGravity = false;
 			myRb.velocity = new Vector3 (myRb.velocity.x, 0f, 0f);
+			anim.SetBool ("walking", false);
 			if (Input.GetKey(KeyCode.LeftArrow)) {
 				movingLeft = true;
 				Vector3 s = transform.localScale;
@@ -92,6 +115,7 @@ public class PheasantFollow : CharacterBehavior {
 				transform.localScale = s;
 				inParty = false;
 				myRb.velocity = new Vector3 (myRb.velocity.x, 0f, 0f);
+				anim.SetBool ("walking", true);
 //				myRb.AddForce (Vector3.up * 50f);
 			}
 			if (Input.GetKey(KeyCode.RightArrow)) {
@@ -101,22 +125,43 @@ public class PheasantFollow : CharacterBehavior {
 				transform.localScale = s;
 				inParty = false;
 				myRb.velocity = new Vector3 (myRb.velocity.x, 0f, 0f);
+				anim.SetBool ("walking", true);
 //				myRb.AddForce (Vector3.up * 50f);
 			}
 
 			if (Input.GetKey(KeyCode.UpArrow)) {
 				specialVelocity = 10f;
 				movingUp = true;
+				anim.SetBool ("walking", true);
 			}
 			if (Input.GetKey(KeyCode.DownArrow)) {
 				specialVelocity = 10f;
 				movingDown = true;
+				anim.SetBool ("walking", true);
+			}
+
+			if (Input.GetKeyDown (KeyCode.Space) && poopCoolDown <= 0f && poopDelay <= 0f) {
+				anim.SetBool ("pooping", true);
+				poopDelay = 0.1f;
+			}
+			else {
+				anim.SetBool ("pooping", false);
 			}
 		}
 		if (!inParty && infoQueue.Count != 0) {
 			infoQueue.Clear ();
 		}
 
+
+	}
+
+	public void poop () {
+		poopCoolDown = 0.5f;
+		GameObject spawnedPoop = (GameObject) Instantiate (poopPrefab, transform.position + Mathf.Sign (transform.localScale.x) * Vector3.left * 0.3f + Vector3.down * 0.8f, Quaternion.identity);
+		Rigidbody poopRB = spawnedPoop.GetComponent<Rigidbody> ();
+		//		bananaRB.AddForce (new Vector3 (((500f * transform.localScale.x) + (400f * (myRb.velocity.x / 10f))), 750f, 0f));
+		//		bananaRB.velocity = myRb.velocity;
+		poopRB.constraints = RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationX;
 
 	}
 

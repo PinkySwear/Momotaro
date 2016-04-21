@@ -3,6 +3,8 @@ using System.Collections;
 
 public class EnemyBehavior : MonoBehaviour {
 
+	public GameObject MomoObject;
+	public MomotaroBehavior momo;
 	public int health;
 	public bool isDead;
 
@@ -19,6 +21,7 @@ public class EnemyBehavior : MonoBehaviour {
 
 	// Use this for initialization
 	protected void StartP () {
+		momo = MomoObject.GetComponent<MomotaroBehavior> ();
 		myRb = this.gameObject.GetComponent<Rigidbody> ();
 		stunned = false;
 		isDead = false;

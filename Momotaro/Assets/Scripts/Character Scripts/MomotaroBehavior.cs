@@ -34,6 +34,7 @@ public class MomotaroBehavior : MonoBehaviour {
 	public float health;
 	private float attackCoolDown;
 	private float attackDelay;
+	public bool isDead;
 
 	Animator anim;
 
@@ -43,6 +44,7 @@ public class MomotaroBehavior : MonoBehaviour {
 	void Start () {
 		anim = GetComponent<Animator> ();
 		health = 6f;
+		isDead = false;
 		attackCoolDown = 0f;
 		followInfo = followInformationObject.GetComponent<FollowInformation> ();
 		myCollider = this.gameObject.GetComponent<CapsuleCollider> ();
@@ -84,6 +86,10 @@ public class MomotaroBehavior : MonoBehaviour {
 		movingLeft = false;
 		movingRight = false;
 
+		if (anim.GetCurrentAnimatorStateInfo (0).IsName ("momoHurt")) {
+			anim.SetBool ("gettingHit", false);
+			return;
+		}
 //
 //		if (anim.GetCurrentAnimatorStateInfo (0).IsName ("momoAttack")) {
 //			anim.SetBool ("attacking", true);
@@ -103,20 +109,6 @@ public class MomotaroBehavior : MonoBehaviour {
 			if (Input.GetKeyDown(KeyCode.UpArrow) && onSomething && !inAttackState) {
 				jump = true;
 			}
-//			if (Input.GetKey(KeyCode.DownArrow) && !inAttackState) {
-//				crouching = true;
-//			}
-//			if (!Input.GetKey(KeyCode.DownArrow) && !underSomething) {
-//				crouching = false;
-//			}
-//			if (Input.GetKeyDown (KeyCode.Space) && attackCoolDown <= 0f) {
-//				
-//				anim.SetBool ("attacking", true);
-//				attack ();
-//			}
-//			else {
-//				anim.SetBool ("attacking", false);
-//			}
 			if (Input.GetKeyDown (KeyCode.Space) && attackDelay <= 0f && attackCoolDown <= 0f) {
 				anim.SetBool ("attacking", true);
 				attackDelay = 0.2f;
@@ -136,8 +128,6 @@ public class MomotaroBehavior : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 		transform.position = new Vector3 (transform.position.x, transform.position.y, 0f);
-
-
 
 //		if (Mathf.Abs(prevLoc.x - transform.position.x) > 0.001f || jump) {
 			FollowInformation.MovementInfo mi = new FollowInformation.MovementInfo (movingRight, movingLeft, jump);
@@ -213,6 +203,18 @@ public class MomotaroBehavior : MonoBehaviour {
 			EnemyBehavior enemy = enemyCol.gameObject.GetComponent<EnemyBehavior> ();
 			enemy.takeDamage (1);
 			enemy.knockBack (((Mathf.Sign(enemyCol.transform.position.x - transform.position.x)) * Vector3.right + Vector3.up * 2f).normalized * 500f);
+		}
+	}
+
+	public void takeDamage (int dm) {
+//		anim.SetBool ("gettingHit", true);
+		if (health > 0) {
+			health -= dm;
+			anim.SetBool ("gettingHit", true);
+
+		}
+		if (health <= 0) {
+			isDead = true;
 		}
 	}
 
