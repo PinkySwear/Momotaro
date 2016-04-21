@@ -1,0 +1,370 @@
+fileFormatVersion: 2
+guid: 53068121cb3b04655a6699985039cdb0
+timeCreated: 1461274145
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Derp Oni Idle_0
+    21300002: Derp Oni Idle_1
+    21300004: Derp Oni Idle_2
+    21300006: Derp Oni Idle_3
+    21300008: Derp Oni Idle_4
+    21300010: Derp Oni Idle_5
+    21300012: Derp Oni Idle_6
+    21300014: Derp Oni Idle_7
+    21300016: Derp Oni Idle_8
+    21300018: Derp Oni Idle_9
+    21300020: Derp Oni Idle_10
+    21300022: Derp Oni Idle_11
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Derp Oni Idle_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 736
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 15, y: 60}
+        - {x: -30, y: 60}
+        - {x: -78, y: 29}
+        - {x: -92, y: -26}
+        - {x: -92, y: -83}
+        - {x: -72, y: -118}
+        - {x: -86, y: -183}
+        - {x: -77, y: -184}
+        - {x: 65, y: -184}
+        - {x: 77, y: -176}
+        - {x: 77, y: -9}
+    - name: Derp Oni Idle_1
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 736
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -24, y: 63}
+        - {x: -45, y: 55}
+        - {x: -62, y: 29}
+        - {x: -86, y: -16}
+        - {x: -89, y: -25}
+        - {x: -89, y: -63}
+        - {x: -73, y: -102}
+        - {x: -84, y: -155}
+        - {x: -84, y: -172}
+        - {x: -75, y: -175}
+        - {x: -20, y: -184}
+        - {x: 74, y: -184}
+        - {x: 79, y: -148}
+        - {x: 79, y: -4}
+        - {x: 30, y: 63}
+    - name: Derp Oni Idle_2
+      rect:
+        serializedVersion: 2
+        x: 732
+        y: 736
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 68, y: 37}
+        - {x: 39, y: 67}
+        - {x: -22, y: 67}
+        - {x: -57, y: 55}
+        - {x: -87, y: -30}
+        - {x: -87, y: -55}
+        - {x: -71, y: -89}
+        - {x: -87, y: -132}
+        - {x: -87, y: -164}
+        - {x: -86, y: -167}
+        - {x: -33, y: -184}
+        - {x: 62, y: -184}
+        - {x: 87, y: -129}
+        - {x: 89, y: -95}
+        - {x: 89, y: -13}
+    - name: Derp Oni Idle_3
+      rect:
+        serializedVersion: 2
+        x: 1098
+        y: 736
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 92, y: -16}
+        - {x: 55, y: 66}
+        - {x: 11, y: 66}
+        - {x: -48, y: 50}
+        - {x: -87, y: -33}
+        - {x: -64, y: -58}
+        - {x: -88, y: -118}
+        - {x: -88, y: -162}
+        - {x: -87, y: -166}
+        - {x: -4, y: -184}
+        - {x: 65, y: -184}
+        - {x: 70, y: -181}
+        - {x: 86, y: -78}
+        - {x: 92, y: -71}
+    - name: Derp Oni Idle_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 368
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 39, y: 67}
+        - {x: -27, y: 67}
+        - {x: -62, y: 55}
+        - {x: -92, y: -30}
+        - {x: -92, y: -54}
+        - {x: -76, y: -89}
+        - {x: -92, y: -132}
+        - {x: -92, y: -164}
+        - {x: -91, y: -167}
+        - {x: -22, y: -184}
+        - {x: 45, y: -184}
+        - {x: 65, y: -176}
+        - {x: 84, y: -98}
+        - {x: 84, y: -18}
+        - {x: 69, y: 42}
+    - name: Derp Oni Idle_5
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 368
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 38, y: 37}
+        - {x: 34, y: 38}
+        - {x: 14, y: 65}
+        - {x: -35, y: 65}
+        - {x: -50, y: 64}
+        - {x: -91, y: -4}
+        - {x: -91, y: -175}
+        - {x: -17, y: -184}
+        - {x: 76, y: -184}
+        - {x: 77, y: -177}
+        - {x: 77, y: -9}
+        - {x: 44, y: 34}
+      - - {x: 35, y: 184}
+        - {x: 36, y: 181}
+        - {x: 40, y: 181}
+        - {x: 42, y: 183}
+        - {x: 42, y: 184}
+    - name: Derp Oni Idle_6
+      rect:
+        serializedVersion: 2
+        x: 732
+        y: 368
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 15, y: 60}
+        - {x: -15, y: 60}
+        - {x: -73, y: 29}
+        - {x: -87, y: -26}
+        - {x: -87, y: -83}
+        - {x: -67, y: -118}
+        - {x: -86, y: -184}
+        - {x: 71, y: -184}
+        - {x: 82, y: -172}
+        - {x: 82, y: -25}
+        - {x: 63, y: 17}
+    - name: Derp Oni Idle_7
+      rect:
+        serializedVersion: 2
+        x: 1098
+        y: 368
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 2, y: 61}
+        - {x: -21, y: 61}
+        - {x: -76, y: 23}
+        - {x: -93, y: -32}
+        - {x: -93, y: -64}
+        - {x: -71, y: -87}
+        - {x: -73, y: -176}
+        - {x: -65, y: -184}
+        - {x: 71, y: -184}
+        - {x: 83, y: -166}
+        - {x: 83, y: -37}
+        - {x: 37, y: 44}
+      - - {x: 25, y: 184}
+        - {x: 26, y: 181}
+        - {x: 36, y: 181}
+        - {x: 38, y: 183}
+        - {x: 38, y: 184}
+    - name: Derp Oni Idle_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 75, y: -15}
+        - {x: 23, y: 46}
+        - {x: 2, y: 59}
+        - {x: -35, y: 59}
+        - {x: -67, y: 34}
+        - {x: -90, y: 12}
+        - {x: -96, y: -7}
+        - {x: -96, y: -92}
+        - {x: -75, y: -131}
+        - {x: -64, y: -183}
+        - {x: -60, y: -184}
+        - {x: 34, y: -184}
+        - {x: 67, y: -179}
+        - {x: 92, y: -169}
+        - {x: 92, y: -116}
+    - name: Derp Oni Idle_9
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 0
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 64, y: -10}
+        - {x: 5, y: 56}
+        - {x: -9, y: 59}
+        - {x: -53, y: 59}
+        - {x: -94, y: 12}
+        - {x: -100, y: -30}
+        - {x: -100, y: -68}
+        - {x: -94, y: -80}
+        - {x: -66, y: -128}
+        - {x: -68, y: -183}
+        - {x: -64, y: -184}
+        - {x: 74, y: -184}
+        - {x: 88, y: -158}
+        - {x: 88, y: -86}
+    - name: Derp Oni Idle_10
+      rect:
+        serializedVersion: 2
+        x: 732
+        y: 0
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 20, y: 47}
+        - {x: -15, y: 62}
+        - {x: -38, y: 62}
+        - {x: -92, y: 26}
+        - {x: -104, y: -31}
+        - {x: -104, y: -64}
+        - {x: -93, y: -76}
+        - {x: -76, y: -140}
+        - {x: -78, y: -184}
+        - {x: 56, y: -184}
+        - {x: 78, y: -164}
+        - {x: 78, y: -104}
+        - {x: 63, y: -17}
+    - name: Derp Oni Idle_11
+      rect:
+        serializedVersion: 2
+        x: 1098
+        y: 0
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 39, y: 44}
+        - {x: 13, y: 60}
+        - {x: -19, y: 60}
+        - {x: -79, y: 29}
+        - {x: -93, y: -26}
+        - {x: -93, y: -83}
+        - {x: -73, y: -118}
+        - {x: -93, y: -184}
+        - {x: 63, y: -184}
+        - {x: 75, y: -168}
+        - {x: 76, y: -156}
+        - {x: 76, y: -20}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

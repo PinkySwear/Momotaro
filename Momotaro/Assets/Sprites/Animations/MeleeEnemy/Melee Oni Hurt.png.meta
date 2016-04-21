@@ -1,0 +1,321 @@
+fileFormatVersion: 2
+guid: 2addd428b412d4167be67ed6df7b34fb
+timeCreated: 1461280071
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Melee Oni Hurt_0
+    21300002: Melee Oni Hurt_1
+    21300004: Melee Oni Hurt_2
+    21300006: Melee Oni Hurt_3
+    21300008: Melee Oni Hurt_4
+    21300010: Melee Oni Hurt_5
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Melee Oni Hurt_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 368
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -5, y: -179}
+        - {x: 2, y: -176}
+        - {x: 11, y: -170}
+        - {x: 4, y: -144}
+        - {x: 14, y: -161}
+        - {x: 12, y: -172}
+        - {x: 19, y: -184}
+        - {x: 112, y: -184}
+        - {x: 116, y: -178}
+        - {x: 116, y: -55}
+        - {x: 107, y: 22}
+        - {x: 116, y: 98}
+        - {x: 116, y: 109}
+        - {x: 94, y: 175}
+        - {x: 60, y: 184}
+        - {x: -93, y: 184}
+        - {x: -121, y: 94}
+        - {x: -113, y: 49}
+        - {x: -134, y: 6}
+        - {x: -134, y: -33}
+        - {x: -93, y: -81}
+        - {x: -103, y: -141}
+        - {x: -81, y: -184}
+        - {x: -30, y: -184}
+        - {x: -31, y: -182}
+        - {x: -35, y: -178}
+        - {x: -19, y: -179}
+      - - {x: -30, y: -183}
+        - {x: -30, y: -184}
+        - {x: -22, y: -184}
+        - {x: -22, y: -182}
+        - {x: -24, y: -180}
+        - {x: -27, y: -180}
+    - name: Melee Oni Hurt_1
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 368
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -60, y: -183}
+        - {x: -60, y: -184}
+        - {x: -42, y: -184}
+        - {x: -42, y: -183}
+        - {x: -45, y: -177}
+        - {x: -52, y: -177}
+        - {x: -57, y: -178}
+      - - {x: -33, y: -184}
+        - {x: -34, y: -181}
+        - {x: -38, y: -181}
+        - {x: -39, y: -184}
+      - - {x: 83, y: 174}
+        - {x: 42, y: 184}
+        - {x: -74, y: 184}
+        - {x: -100, y: 145}
+        - {x: -112, y: 93}
+        - {x: -102, y: 52}
+        - {x: -129, y: 26}
+        - {x: -135, y: 5}
+        - {x: -135, y: -29}
+        - {x: -102, y: -75}
+        - {x: -86, y: -110}
+        - {x: -73, y: -130}
+        - {x: -88, y: -149}
+        - {x: -90, y: -169}
+        - {x: -82, y: -184}
+        - {x: -8, y: -184}
+        - {x: 7, y: -154}
+        - {x: 4, y: -166}
+        - {x: 4, y: -181}
+        - {x: 9, y: -184}
+        - {x: 85, y: -184}
+        - {x: 97, y: -180}
+        - {x: 114, y: -153}
+        - {x: 114, y: 161}
+    - name: Melee Oni Hurt_2
+      rect:
+        serializedVersion: 2
+        x: 732
+        y: 368
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -46, y: -175}
+        - {x: -50, y: -180}
+        - {x: -50, y: -184}
+        - {x: -31, y: -184}
+        - {x: -31, y: -182}
+        - {x: -38, y: -175}
+      - - {x: -30, y: -183}
+        - {x: -30, y: -184}
+        - {x: -22, y: -184}
+        - {x: -22, y: -182}
+        - {x: -24, y: -180}
+        - {x: -27, y: -180}
+      - - {x: 110, y: 10}
+        - {x: 120, y: 42}
+        - {x: 120, y: 109}
+        - {x: 113, y: 163}
+        - {x: 59, y: 179}
+        - {x: -5, y: 184}
+        - {x: -62, y: 184}
+        - {x: -112, y: 125}
+        - {x: -111, y: 51}
+        - {x: -135, y: 16}
+        - {x: -135, y: -22}
+        - {x: -103, y: -68}
+        - {x: -97, y: -107}
+        - {x: -107, y: -156}
+        - {x: -87, y: -184}
+        - {x: -40, y: -184}
+        - {x: -9, y: -183}
+        - {x: -3, y: -169}
+        - {x: -6, y: -131}
+        - {x: -2, y: -166}
+        - {x: -1, y: -181}
+        - {x: 3, y: -184}
+        - {x: 74, y: -184}
+        - {x: 80, y: -181}
+        - {x: 110, y: -149}
+        - {x: 118, y: -71}
+    - name: Melee Oni Hurt_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 111, y: -131}
+        - {x: 125, y: 16}
+        - {x: 125, y: 116}
+        - {x: 119, y: 154}
+        - {x: 71, y: 182}
+        - {x: 52, y: 184}
+        - {x: -53, y: 184}
+        - {x: -104, y: 124}
+        - {x: -102, y: 65}
+        - {x: -135, y: 19}
+        - {x: -135, y: -12}
+        - {x: -108, y: -62}
+        - {x: -94, y: -121}
+        - {x: -110, y: -153}
+        - {x: -92, y: -182}
+        - {x: -31, y: -182}
+        - {x: -24, y: -178}
+        - {x: -14, y: -167}
+        - {x: -11, y: -159}
+        - {x: -17, y: -132}
+        - {x: -10, y: -162}
+        - {x: -10, y: -180}
+        - {x: -6, y: -184}
+        - {x: 68, y: -184}
+        - {x: 75, y: -178}
+        - {x: 74, y: -167}
+        - {x: 99, y: -150}
+    - name: Melee Oni Hurt_4
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 0
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 110, y: 10}
+        - {x: 120, y: 42}
+        - {x: 120, y: 109}
+        - {x: 113, y: 163}
+        - {x: 50, y: 184}
+        - {x: -63, y: 184}
+        - {x: -69, y: 166}
+        - {x: -110, y: 124}
+        - {x: -105, y: 53}
+        - {x: -135, y: 15}
+        - {x: -135, y: -22}
+        - {x: -103, y: -68}
+        - {x: -97, y: -107}
+        - {x: -103, y: -155}
+        - {x: -91, y: -179}
+        - {x: -85, y: -182}
+        - {x: -9, y: -183}
+        - {x: -3, y: -169}
+        - {x: -6, y: -131}
+        - {x: 5, y: -158}
+        - {x: -2, y: -166}
+        - {x: -1, y: -181}
+        - {x: 3, y: -184}
+        - {x: 74, y: -184}
+        - {x: 80, y: -181}
+        - {x: 110, y: -149}
+        - {x: 118, y: -71}
+    - name: Melee Oni Hurt_5
+      rect:
+        serializedVersion: 2
+        x: 732
+        y: 0
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 111, y: -131}
+        - {x: 125, y: 16}
+        - {x: 125, y: 143}
+        - {x: 124, y: 160}
+        - {x: 82, y: 184}
+        - {x: -56, y: 184}
+        - {x: -104, y: 124}
+        - {x: -102, y: 65}
+        - {x: -119, y: 38}
+        - {x: -135, y: 18}
+        - {x: -135, y: -12}
+        - {x: -108, y: -62}
+        - {x: -94, y: -121}
+        - {x: -110, y: -153}
+        - {x: -92, y: -182}
+        - {x: -31, y: -182}
+        - {x: -24, y: -178}
+        - {x: -14, y: -167}
+        - {x: -11, y: -159}
+        - {x: -17, y: -132}
+        - {x: -10, y: -162}
+        - {x: -10, y: -180}
+        - {x: -6, y: -184}
+        - {x: 68, y: -184}
+        - {x: 75, y: -178}
+        - {x: 74, y: -167}
+        - {x: 99, y: -150}
+      - - {x: 55, y: 184}
+        - {x: 56, y: 181}
+        - {x: 70, y: 181}
+        - {x: 72, y: 183}
+        - {x: 72, y: 184}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

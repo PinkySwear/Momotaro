@@ -1,0 +1,561 @@
+fileFormatVersion: 2
+guid: be7c0e3fdcf584d8b8d9885569537445
+timeCreated: 1461280213
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Melee Oni Idle_0
+    21300002: Melee Oni Idle_1
+    21300004: Melee Oni Idle_2
+    21300006: Melee Oni Idle_3
+    21300008: Melee Oni Idle_4
+    21300010: Melee Oni Idle_5
+    21300012: Melee Oni Idle_6
+    21300014: Melee Oni Idle_7
+    21300016: Melee Oni Idle_8
+    21300018: Melee Oni Idle_9
+    21300020: Melee Oni Idle_10
+    21300022: Melee Oni Idle_11
+    21300024: Melee Oni Idle_12
+    21300026: Melee Oni Idle_13
+    21300028: Melee Oni Idle_14
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Melee Oni Idle_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 736
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 23, y: -161}
+        - {x: 21, y: -172}
+        - {x: 28, y: -184}
+        - {x: 99, y: -184}
+        - {x: 109, y: -153}
+        - {x: 125, y: -139}
+        - {x: 125, y: -55}
+        - {x: 116, y: 22}
+        - {x: 125, y: 98}
+        - {x: 125, y: 109}
+        - {x: 103, y: 175}
+        - {x: 69, y: 184}
+        - {x: -78, y: 184}
+        - {x: -99, y: 135}
+        - {x: -105, y: 93}
+        - {x: -96, y: 36}
+        - {x: -120, y: 11}
+        - {x: -120, y: -23}
+        - {x: -96, y: -52}
+        - {x: -70, y: -116}
+        - {x: -55, y: -132}
+        - {x: -78, y: -164}
+        - {x: -65, y: -184}
+        - {x: -33, y: -184}
+        - {x: 13, y: -179}
+        - {x: 20, y: -169}
+        - {x: 13, y: -144}
+        - {x: 46, y: -136}
+    - name: Melee Oni Idle_1
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 736
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 20, y: -172}
+        - {x: 27, y: -184}
+        - {x: 98, y: -184}
+        - {x: 108, y: -153}
+        - {x: 124, y: -139}
+        - {x: 124, y: -63}
+        - {x: 112, y: 22}
+        - {x: 122, y: 64}
+        - {x: 114, y: 169}
+        - {x: 77, y: 184}
+        - {x: -69, y: 184}
+        - {x: -98, y: 140}
+        - {x: -109, y: 113}
+        - {x: -99, y: 39}
+        - {x: -113, y: 18}
+        - {x: -113, y: -7}
+        - {x: -112, y: -10}
+        - {x: -97, y: -26}
+        - {x: -91, y: -75}
+        - {x: -78, y: -120}
+        - {x: -79, y: -164}
+        - {x: -67, y: -184}
+        - {x: -29, y: -184}
+        - {x: 12, y: -179}
+        - {x: 19, y: -169}
+        - {x: 12, y: -144}
+        - {x: 22, y: -161}
+    - name: Melee Oni Idle_2
+      rect:
+        serializedVersion: 2
+        x: 732
+        y: 736
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 21, y: -172}
+        - {x: 28, y: -184}
+        - {x: 99, y: -184}
+        - {x: 109, y: -153}
+        - {x: 125, y: -139}
+        - {x: 125, y: -62}
+        - {x: 113, y: 22}
+        - {x: 120, y: 63}
+        - {x: 121, y: 106}
+        - {x: 104, y: 168}
+        - {x: 54, y: 184}
+        - {x: -70, y: 184}
+        - {x: -73, y: 183}
+        - {x: -108, y: 122}
+        - {x: -98, y: 50}
+        - {x: -113, y: 29}
+        - {x: -113, y: -4}
+        - {x: -100, y: -26}
+        - {x: -93, y: -78}
+        - {x: -56, y: -134}
+        - {x: -78, y: -164}
+        - {x: -65, y: -184}
+        - {x: -33, y: -184}
+        - {x: 13, y: -179}
+        - {x: 20, y: -169}
+        - {x: 13, y: -144}
+        - {x: 23, y: -161}
+    - name: Melee Oni Idle_3
+      rect:
+        serializedVersion: 2
+        x: 1098
+        y: 736
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 21, y: -172}
+        - {x: 28, y: -184}
+        - {x: 99, y: -184}
+        - {x: 109, y: -153}
+        - {x: 125, y: -139}
+        - {x: 125, y: -63}
+        - {x: 113, y: 22}
+        - {x: 121, y: 64}
+        - {x: 124, y: 108}
+        - {x: 107, y: 173}
+        - {x: 56, y: 184}
+        - {x: -71, y: 184}
+        - {x: -92, y: 150}
+        - {x: -109, y: 123}
+        - {x: -109, y: 5}
+        - {x: -107, y: -5}
+        - {x: -78, y: -121}
+        - {x: -48, y: -137}
+        - {x: -78, y: -164}
+        - {x: -65, y: -184}
+        - {x: -33, y: -184}
+        - {x: 13, y: -179}
+        - {x: 20, y: -169}
+        - {x: 13, y: -144}
+        - {x: 23, y: -161}
+    - name: Melee Oni Idle_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 368
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 19, y: -172}
+        - {x: 26, y: -184}
+        - {x: 119, y: -184}
+        - {x: 128, y: -170}
+        - {x: 128, y: 102}
+        - {x: 121, y: 87}
+        - {x: 122, y: 90}
+        - {x: 125, y: 98}
+        - {x: 103, y: 169}
+        - {x: 52, y: 184}
+        - {x: -73, y: 184}
+        - {x: -95, y: 149}
+        - {x: -105, y: 129}
+        - {x: -105, y: 65}
+        - {x: -102, y: 16}
+        - {x: -91, y: -74}
+        - {x: -71, y: -115}
+        - {x: -57, y: -132}
+        - {x: -80, y: -164}
+        - {x: -68, y: -184}
+        - {x: -30, y: -184}
+        - {x: 11, y: -179}
+        - {x: 18, y: -169}
+        - {x: 11, y: -144}
+        - {x: 21, y: -161}
+      - - {x: 102, y: 154}
+        - {x: 102, y: 149}
+        - {x: 106, y: 145}
+        - {x: 110, y: 145}
+        - {x: 112, y: 147}
+        - {x: 112, y: 154}
+    - name: Melee Oni Idle_5
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 368
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 20, y: -172}
+        - {x: 27, y: -184}
+        - {x: 98, y: -184}
+        - {x: 108, y: -153}
+        - {x: 124, y: -139}
+        - {x: 124, y: -63}
+        - {x: 112, y: 22}
+        - {x: 124, y: 52}
+        - {x: 124, y: 105}
+        - {x: 107, y: 172}
+        - {x: 64, y: 184}
+        - {x: -69, y: 184}
+        - {x: -72, y: 182}
+        - {x: -104, y: 134}
+        - {x: -104, y: 71}
+        - {x: -101, y: 50}
+        - {x: -81, y: 8}
+        - {x: -96, y: -78}
+        - {x: -59, y: -138}
+        - {x: -79, y: -164}
+        - {x: -67, y: -184}
+        - {x: -29, y: -184}
+        - {x: 12, y: -179}
+        - {x: 19, y: -169}
+        - {x: 12, y: -144}
+        - {x: 22, y: -161}
+      - - {x: 133, y: 78}
+        - {x: 133, y: 63}
+        - {x: 139, y: 63}
+        - {x: 141, y: 66}
+        - {x: 141, y: 77}
+        - {x: 140, y: 78}
+      - - {x: 122, y: 144}
+        - {x: 122, y: 138}
+        - {x: 127, y: 134}
+        - {x: 130, y: 134}
+        - {x: 132, y: 135}
+        - {x: 132, y: 142}
+        - {x: 128, y: 144}
+      - - {x: 120, y: 156}
+        - {x: 118, y: 154}
+        - {x: 118, y: 152}
+        - {x: 120, y: 150}
+        - {x: 122, y: 150}
+        - {x: 124, y: 152}
+        - {x: 124, y: 154}
+        - {x: 122, y: 156}
+    - name: Melee Oni Idle_6
+      rect:
+        serializedVersion: 2
+        x: 732
+        y: 368
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 21, y: -172}
+        - {x: 28, y: -184}
+        - {x: 121, y: -184}
+        - {x: 130, y: -170}
+        - {x: 130, y: 101}
+        - {x: 125, y: 89}
+        - {x: 123, y: 87}
+        - {x: 124, y: 90}
+        - {x: 127, y: 98}
+        - {x: 105, y: 169}
+        - {x: 54, y: 184}
+        - {x: -71, y: 184}
+        - {x: -93, y: 149}
+        - {x: -103, y: 129}
+        - {x: -103, y: 65}
+        - {x: -100, y: 16}
+        - {x: -89, y: -74}
+        - {x: -78, y: -121}
+        - {x: -78, y: -164}
+        - {x: -65, y: -184}
+        - {x: -33, y: -184}
+        - {x: 13, y: -179}
+        - {x: 20, y: -169}
+        - {x: 13, y: -144}
+        - {x: 23, y: -161}
+      - - {x: 104, y: 154}
+        - {x: 104, y: 149}
+        - {x: 108, y: 145}
+        - {x: 112, y: 145}
+        - {x: 114, y: 147}
+        - {x: 114, y: 154}
+    - name: Melee Oni Idle_7
+      rect:
+        serializedVersion: 2
+        x: 1098
+        y: 368
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 21, y: -172}
+        - {x: 28, y: -184}
+        - {x: 99, y: -184}
+        - {x: 109, y: -153}
+        - {x: 125, y: -139}
+        - {x: 125, y: -63}
+        - {x: 113, y: 22}
+        - {x: 125, y: 70}
+        - {x: 125, y: 97}
+        - {x: 107, y: 172}
+        - {x: 55, y: 184}
+        - {x: -71, y: 184}
+        - {x: -92, y: 150}
+        - {x: -109, y: 123}
+        - {x: -109, y: 117}
+        - {x: -98, y: 78}
+        - {x: -109, y: 55}
+        - {x: -109, y: 5}
+        - {x: -107, y: -5}
+        - {x: -78, y: -121}
+        - {x: -48, y: -137}
+        - {x: -78, y: -164}
+        - {x: -65, y: -184}
+        - {x: -33, y: -184}
+        - {x: 13, y: -179}
+        - {x: 20, y: -169}
+        - {x: 13, y: -144}
+        - {x: 23, y: -161}
+    - name: Melee Oni Idle_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 19, y: -172}
+        - {x: 26, y: -184}
+        - {x: 97, y: -184}
+        - {x: 107, y: -153}
+        - {x: 123, y: -139}
+        - {x: 123, y: -62}
+        - {x: 111, y: 22}
+        - {x: 118, y: 63}
+        - {x: 119, y: 106}
+        - {x: 102, y: 168}
+        - {x: 52, y: 184}
+        - {x: -85, y: 184}
+        - {x: -111, y: 160}
+        - {x: -110, y: 122}
+        - {x: -100, y: 50}
+        - {x: -115, y: 22}
+        - {x: -115, y: -18}
+        - {x: -93, y: -77}
+        - {x: -60, y: -138}
+        - {x: -80, y: -164}
+        - {x: -68, y: -184}
+        - {x: -30, y: -184}
+        - {x: 11, y: -179}
+        - {x: 18, y: -169}
+        - {x: 11, y: -144}
+        - {x: 21, y: -161}
+    - name: Melee Oni Idle_9
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 0
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 20, y: -172}
+        - {x: 27, y: -184}
+        - {x: 98, y: -184}
+        - {x: 108, y: -153}
+        - {x: 124, y: -139}
+        - {x: 124, y: -63}
+        - {x: 112, y: 22}
+        - {x: 122, y: 64}
+        - {x: 114, y: 169}
+        - {x: 77, y: 184}
+        - {x: -69, y: 184}
+        - {x: -98, y: 140}
+        - {x: -109, y: 113}
+        - {x: -99, y: 39}
+        - {x: -113, y: 18}
+        - {x: -113, y: -7}
+        - {x: -112, y: -10}
+        - {x: -97, y: -26}
+        - {x: -91, y: -75}
+        - {x: -78, y: -120}
+        - {x: -79, y: -164}
+        - {x: -67, y: -184}
+        - {x: -29, y: -184}
+        - {x: 12, y: -179}
+        - {x: 19, y: -169}
+        - {x: 12, y: -144}
+        - {x: 22, y: -161}
+    - name: Melee Oni Idle_10
+      rect:
+        serializedVersion: 2
+        x: 732
+        y: 0
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 19, y: -172}
+        - {x: 26, y: -184}
+        - {x: 97, y: -184}
+        - {x: 107, y: -153}
+        - {x: 123, y: -139}
+        - {x: 123, y: -55}
+        - {x: 114, y: 22}
+        - {x: 123, y: 98}
+        - {x: 123, y: 109}
+        - {x: 101, y: 175}
+        - {x: 67, y: 184}
+        - {x: -80, y: 184}
+        - {x: -101, y: 135}
+        - {x: -107, y: 93}
+        - {x: -99, y: 50}
+        - {x: -122, y: 18}
+        - {x: -122, y: -27}
+        - {x: -86, y: -82}
+        - {x: -71, y: -115}
+        - {x: -57, y: -132}
+        - {x: -80, y: -164}
+        - {x: -68, y: -184}
+        - {x: -30, y: -184}
+        - {x: 11, y: -179}
+        - {x: 18, y: -169}
+        - {x: 11, y: -144}
+        - {x: 21, y: -161}
+    - name: Melee Oni Idle_11
+      rect:
+        serializedVersion: 2
+        x: 1098
+        y: 0
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Melee Oni Idle_12
+      rect:
+        serializedVersion: 2
+        x: 1098
+        y: 0
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Melee Oni Idle_13
+      rect:
+        serializedVersion: 2
+        x: 1098
+        y: 0
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Melee Oni Idle_14
+      rect:
+        serializedVersion: 2
+        x: 1098
+        y: 0
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

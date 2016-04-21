@@ -7,6 +7,7 @@ public class EnemyBehavior : MonoBehaviour {
 	public MomotaroBehavior momo;
 	public int health;
 	public bool isDead;
+	public float timeSinceDeath;
 
 	public bool stunned;
 	public float stunDuration;
@@ -19,8 +20,12 @@ public class EnemyBehavior : MonoBehaviour {
 	protected bool movingRight;
 	protected bool jump = false;
 
+	public Animator anim;
+
 	// Use this for initialization
-	protected void StartP () {
+	protected void StartP () {		
+		anim = GetComponent<Animator> ();
+		
 		momo = MomoObject.GetComponent<MomotaroBehavior> ();
 		myRb = this.gameObject.GetComponent<Rigidbody> ();
 		stunned = false;
@@ -29,6 +34,10 @@ public class EnemyBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	protected void UpdateP () {
+
+		if (anim.GetCurrentAnimatorStateInfo (0).IsName ("poof")) {
+			anim.SetBool ("dead", false);
+		}
 		if (stunned) {
 			if (stunDuration > 0f) {
 				stunDuration -= Time.deltaTime;
@@ -43,7 +52,9 @@ public class EnemyBehavior : MonoBehaviour {
 			movingLeft = false;
 			movingRight = false;
 			jump = false;
-			transform.rotation = new Quaternion (0f, 0f, 90f, 0f);
+			if (!anim.GetBool ("dead") && !anim.GetCurrentAnimatorStateInfo (0).IsName ("poof")) {
+				Destroy (gameObject);
+			}
 		}
 
 	}
@@ -72,31 +83,40 @@ public class EnemyBehavior : MonoBehaviour {
 			jump = false;
 		}
 		if (!movingRight && !movingLeft && !stunned) {
-			Debug.Log (myRb);
+//			Debug.Log (myRb);
 			myRb.velocity = new Vector3(0f, myRb.velocity.y, myRb.velocity.z);
 		}
 		myRb.velocity = Vector3.ClampMagnitude (myRb.velocity, 20f);
 	}
 		
 	public void takeDamage (int dm) {
+		if (anim != null) {
+			Debug.Log ("set hurt to true");
+			anim.SetBool ("hurt", true);
+		}
 		if (health > 0) {
 			health -= dm;
 		}
 		if (health <= 0) {
 			isDead = true;
+			anim.SetBool ("dead", true);
 		}
 	}
 
 	public void knockBack (Vector3 force) {
 		if (!isDead) {
 			myRb.AddForce (force);
+			if (anim != null && !anim.GetBool("hurt")) {
+				Debug.Log ("set knockback to true");
+				anim.SetBool ("knockback", true);
+			}
 		}
 	}
 
 	public void stun (float duration) {
 		if (!isDead) {
 			stunned = true;
-			stunDuration = duration;
+			stunDuration += duration;
 		}
 	}
 }

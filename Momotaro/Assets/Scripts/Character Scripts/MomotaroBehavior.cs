@@ -36,9 +36,13 @@ public class MomotaroBehavior : MonoBehaviour {
 	private float attackDelay;
 	public bool isDead;
 
-	Animator anim;
+	public float invuln;
+
+	public Animator anim;
 
 	private Vector3 prevLoc;
+
+
 
 	// Use this for initialization
 	void Start () {
@@ -70,6 +74,9 @@ public class MomotaroBehavior : MonoBehaviour {
 	}
 
 	void Update() {
+		if (invuln > 0f) {
+			invuln -= Time.deltaTime;
+		}
 		if (attackCoolDown > 0f) {
 			attackCoolDown -= Time.deltaTime;
 		}
@@ -202,6 +209,7 @@ public class MomotaroBehavior : MonoBehaviour {
 		foreach (Collider enemyCol in enemyColliders) {
 			EnemyBehavior enemy = enemyCol.gameObject.GetComponent<EnemyBehavior> ();
 			enemy.takeDamage (1);
+			enemy.stun (0.5f);
 			enemy.knockBack (((Mathf.Sign(enemyCol.transform.position.x - transform.position.x)) * Vector3.right + Vector3.up * 2f).normalized * 500f);
 		}
 	}
@@ -211,6 +219,7 @@ public class MomotaroBehavior : MonoBehaviour {
 		if (health > 0) {
 			health -= dm;
 			anim.SetBool ("gettingHit", true);
+			invuln = 1f;
 
 		}
 		if (health <= 0) {

@@ -1,0 +1,267 @@
+fileFormatVersion: 2
+guid: 51d04c907fd6c4f17ade632badaff103
+timeCreated: 1461275697
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Derp Oni Walk_0
+    21300002: Derp Oni Walk_1
+    21300004: Derp Oni Walk_2
+    21300006: Derp Oni Walk_3
+    21300008: Derp Oni Walk_4
+    21300010: Derp Oni Walk_5
+    21300012: Derp Oni Walk_6
+    21300014: Derp Oni Walk_7
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Derp Oni Walk_0
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 378
+        width: 165
+        height: 242
+      alignment: 9
+      pivot: {x: 0.5193495, y: 0.72427845}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 12.307327, y: 66.72461}
+        - {x: -3.6926727, y: 66.72461}
+        - {x: -14.692673, y: 50.72461}
+        - {x: -46.692673, y: 46.72461}
+        - {x: -70.69267, y: 36.72461}
+        - {x: -85.69267, y: -17.27539}
+        - {x: -85.69267, y: -142.27539}
+        - {x: -82.69267, y: -163.27539}
+        - {x: -63.692673, y: -175.27539}
+        - {x: 79.30733, y: -175.27539}
+        - {x: 79.30733, y: 9.724609}
+        - {x: 63.307327, y: 25.72461}
+    - name: Derp Oni Walk_1
+      rect:
+        serializedVersion: 2
+        x: 459
+        y: 372
+        width: 175
+        height: 248
+      alignment: 9
+      pivot: {x: 0.5729754, y: 0.7381631}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 45.72931, y: 45.935547}
+        - {x: 18.72931, y: 64.93555}
+        - {x: -13.270691, y: 64.93555}
+        - {x: -59.27069, y: 40.935547}
+        - {x: -90.27069, y: -7.064453}
+        - {x: -95.27069, y: -43.064453}
+        - {x: -84.27069, y: -104.06445}
+        - {x: -100.27069, y: -129.06445}
+        - {x: -100.27069, y: -163.06445}
+        - {x: -70.27069, y: -182.06445}
+        - {x: -57.27069, y: -183.06445}
+        - {x: 47.72931, y: -183.06445}
+        - {x: 65.72931, y: -171.06445}
+        - {x: 74.72931, y: -114.06445}
+        - {x: 74.72931, y: -23.064453}
+    - name: Derp Oni Walk_2
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 368
+        width: 189
+        height: 249
+      alignment: 9
+      pivot: {x: 0.6266935, y: 0.7564393}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 33.55493, y: 60.646606}
+        - {x: -30.445068, y: 60.646606}
+        - {x: -38.44507, y: 57.646606}
+        - {x: -54.44507, y: 40.646606}
+        - {x: -104.44507, y: -3.3533936}
+        - {x: -101.44507, y: -110.35339}
+        - {x: -118.44507, y: -121.35339}
+        - {x: -118.44507, y: -140.3534}
+        - {x: -102.44507, y: -170.3534}
+        - {x: -38.44507, y: -188.3534}
+        - {x: 39.55493, y: -188.3534}
+        - {x: 60.55493, y: -159.3534}
+        - {x: 70.55493, y: -117.35339}
+        - {x: 70.55493, y: 12.646606}
+    - name: Derp Oni Walk_3
+      rect:
+        serializedVersion: 2
+        x: 1191
+        y: 372
+        width: 175
+        height: 248
+      alignment: 9
+      pivot: {x: 0.57297504, y: 0.7510366}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 45.72937, y: 42.74292}
+        - {x: 18.72937, y: 61.74292}
+        - {x: -13.27063, y: 61.74292}
+        - {x: -59.27063, y: 37.74292}
+        - {x: -90.27063, y: -10.25708}
+        - {x: -95.27063, y: -46.25708}
+        - {x: -84.27063, y: -107.25708}
+        - {x: -100.27063, y: -132.25708}
+        - {x: -100.27063, y: -166.25708}
+        - {x: -70.27063, y: -185.25708}
+        - {x: -57.27063, y: -186.25708}
+        - {x: 47.72937, y: -186.25708}
+        - {x: 65.72937, y: -174.25708}
+        - {x: 74.72937, y: -117.25708}
+        - {x: 74.72937, y: -26.25708}
+    - name: Derp Oni Walk_4
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 10
+        width: 165
+        height: 242
+      alignment: 9
+      pivot: {x: 0.5386991, y: 0.7374716}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 9.114655, y: 63.531876}
+        - {x: -6.8853455, y: 63.531876}
+        - {x: -17.885345, y: 47.531876}
+        - {x: -49.885345, y: 43.531876}
+        - {x: -73.885345, y: 33.531876}
+        - {x: -88.885345, y: -20.468124}
+        - {x: -88.885345, y: -145.46812}
+        - {x: -85.885345, y: -166.46812}
+        - {x: -66.885345, y: -178.46812}
+        - {x: 76.114655, y: -178.46812}
+        - {x: 76.114655, y: 6.5318756}
+        - {x: 60.114655, y: 22.531876}
+    - name: Derp Oni Walk_5
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 11
+        width: 170
+        height: 242
+      alignment: 9
+      pivot: {x: 0.53756106, y: 0.730875}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 77.614624, y: -20.87175}
+        - {x: 28.614624, y: 47.12825}
+        - {x: 3.614624, y: 65.12825}
+        - {x: -32.385376, y: 65.12825}
+        - {x: -73.385376, y: 33.12825}
+        - {x: -91.385376, y: -7.87175}
+        - {x: -91.385376, y: -61.87175}
+        - {x: -65.385376, y: -71.87175}
+        - {x: -83.385376, y: -170.87175}
+        - {x: -71.385376, y: -176.87175}
+        - {x: 70.614624, y: -176.87175}
+        - {x: 78.614624, y: -142.87175}
+        - {x: 78.614624, y: -33.87175}
+    - name: Derp Oni Walk_6
+      rect:
+        serializedVersion: 2
+        x: 831
+        y: 11
+        width: 173
+        height: 242
+      alignment: 9
+      pivot: {x: 0.49999964, y: 0.74406785}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 62.50006, y: 28.935577}
+        - {x: 21.500061, y: 61.935577}
+        - {x: -36.49994, y: 61.935577}
+        - {x: -66.49994, y: 28.935577}
+        - {x: -86.49994, y: -18.064423}
+        - {x: -86.49994, y: -61.064423}
+        - {x: -85.49994, y: -64.06442}
+        - {x: -76.49994, y: -119.06442}
+        - {x: -70.49994, y: -180.06442}
+        - {x: 53.50006, y: -180.06442}
+        - {x: 86.50006, y: -140.06442}
+        - {x: 86.50006, y: -58.064423}
+        - {x: 80.50006, y: -25.064423}
+      - - {x: 70.50006, y: -167.06442}
+        - {x: 65.50006, y: -173.06442}
+        - {x: 67.50006, y: -176.06442}
+        - {x: 73.50006, y: -176.06442}
+        - {x: 76.50006, y: -170.06442}
+        - {x: 76.50006, y: -166.06442}
+        - {x: 74.50006, y: -166.06442}
+    - name: Derp Oni Walk_7
+      rect:
+        serializedVersion: 2
+        x: 1198
+        y: 11
+        width: 170
+        height: 242
+      alignment: 9
+      pivot: {x: 0.5, y: 0.7374714}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 84, y: -22.468079}
+        - {x: 35, y: 45.53192}
+        - {x: 10, y: 63.53192}
+        - {x: -26, y: 63.53192}
+        - {x: -67, y: 31.531921}
+        - {x: -85, y: -9.468079}
+        - {x: -85, y: -63.46808}
+        - {x: -59, y: -73.46808}
+        - {x: -77, y: -172.46808}
+        - {x: -65, y: -178.46808}
+        - {x: 77, y: -178.46808}
+        - {x: 85, y: -144.46808}
+        - {x: 85, y: -35.46808}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
