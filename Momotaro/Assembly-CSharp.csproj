@@ -61,13 +61,13 @@
      <Compile Include="Assets\Scripts\Enemy Scripts\MeleeBehavior.cs" />
      <Compile Include="Assets\Scripts\Environment Scripts\AudioControl.cs" />
      <Compile Include="Assets\Scripts\Environment Scripts\CameraControl.cs" />
-     <Compile Include="Assets\Scripts\Environment Scripts\Dialogues\JerryDialogue.cs" />
-     <Compile Include="Assets\Scripts\Environment Scripts\Dialogues\KitchenSceneDialogue.cs" />
-     <Compile Include="Assets\Scripts\Environment Scripts\Dialogues\LevelOneDialogue.cs" />
      <Compile Include="Assets\Scripts\Environment Scripts\DigBehavior.cs" />
      <Compile Include="Assets\Scripts\Environment Scripts\DirtBehavior.cs" />
      <Compile Include="Assets\Scripts\Environment Scripts\InteractionControl.cs" />
      <Compile Include="Assets\Scripts\Environment Scripts\KitchenInteract.cs" />
+     <Compile Include="Assets\Scripts\Environment Scripts\Scenes\KitchenSceneDialogue.cs" />
+     <Compile Include="Assets\Scripts\Environment Scripts\Scenes\Level1Manager.cs" />
+     <Compile Include="Assets\Scripts\Environment Scripts\Scenes\LevelOneDialogue.cs" />
      <Compile Include="Assets\Scripts\Instructions.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
