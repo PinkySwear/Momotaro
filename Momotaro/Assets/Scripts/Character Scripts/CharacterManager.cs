@@ -18,6 +18,11 @@ public class CharacterManager : MonoBehaviour {
 
 	public bool holdSwitching;
 
+	public GameObject[] topLevel;
+	public GameObject[] withPheasant;
+	public GameObject[] withMonkey;
+	public GameObject[] withDog;
+
 
 	// Use this for initialization
 	void Start () {
@@ -39,6 +44,19 @@ public class CharacterManager : MonoBehaviour {
 		}
 		else {
 			characterSwitchPress ();
+		}
+		topLevel [0].SetActive (momo.controlling);
+		topLevel [1].SetActive (dog.controlling);
+		topLevel [2].SetActive (monkey.controlling);
+		topLevel [3].SetActive (pheasant.controlling);
+		foreach (GameObject g in withPheasant) {
+			g.SetActive (pheasantObject.activeInHierarchy);
+		}
+		foreach (GameObject g in withMonkey) {
+			g.SetActive (monkeyObject.activeInHierarchy);
+		}
+		foreach (GameObject g in withDog) {
+			g.SetActive (dogObject.activeInHierarchy);
 		}
 		if (Input.GetKeyDown (KeyCode.P)) {
 			SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
@@ -66,26 +84,29 @@ public class CharacterManager : MonoBehaviour {
 	}
 
 	void characterSwitchHold () {
-		if (Input.GetKey (KeyCode.D)) {
+		if (Input.GetKey (KeyCode.D) && dogObject.activeInHierarchy) {
 			momo.controlling = false;
 			dog.controlling = true;
 			dog.inParty = false;
 			monkey.controlling = false;
 			pheasant.controlling = false;
+
 		}
-		else if (Input.GetKey (KeyCode.S)) {
+		else if (Input.GetKey (KeyCode.S) && monkeyObject.activeInHierarchy) {
 			momo.controlling = false;
 			dog.controlling = false;
 			monkey.controlling = true;
 			monkey.inParty = false;
 			pheasant.controlling = false;
+
 		}
-		else if (Input.GetKey (KeyCode.A)) {
+		else if (Input.GetKey (KeyCode.A) && pheasantObject.activeInHierarchy) {
 			momo.controlling = false;
 			dog.controlling = false;
 			monkey.controlling = false;
 			pheasant.controlling = true;
 			pheasant.inParty = false;
+
 		}
 		else {
 			momo.controlling = true;
@@ -105,21 +126,21 @@ public class CharacterManager : MonoBehaviour {
 			monkey.controlling = false;
 			pheasant.controlling = false;
 		}
-		else if (Input.GetKeyDown (KeyCode.D)) {
+		else if (Input.GetKeyDown (KeyCode.D) && dogObject.activeInHierarchy) {
 			momo.controlling = false;
 			dog.controlling = true;
 			dog.inParty = false;
 			monkey.controlling = false;
 			pheasant.controlling = false;
 		}
-		else if (Input.GetKeyDown (KeyCode.S)) {
+		else if (Input.GetKeyDown (KeyCode.S) && monkeyObject.activeInHierarchy) {
 			momo.controlling = false;
 			dog.controlling = false;
 			monkey.controlling = true;
 			monkey.inParty = false;
 			pheasant.controlling = false;
 		}
-		else if (Input.GetKeyDown (KeyCode.A)) {
+		else if (Input.GetKeyDown (KeyCode.A) && pheasantObject.activeInHierarchy) {
 			momo.controlling = false;
 			dog.controlling = false;
 			monkey.controlling = false;
