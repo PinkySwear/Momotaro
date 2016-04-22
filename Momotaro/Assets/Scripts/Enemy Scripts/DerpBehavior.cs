@@ -29,10 +29,14 @@ public class DerpBehavior : EnemyBehavior {
 //		movingLeft = true;
 		nearPlayer = false;
 		state = 0;
-		idleTime = 0.1f;
+		idleTime = 0.1f;		
+		myRb.constraints = myRb.constraints | RigidbodyConstraints.FreezePositionZ;
+
 	}
 
 	void Update () {
+		myRb.constraints = myRb.constraints | RigidbodyConstraints.FreezePositionZ;
+
 		if (anim.GetCurrentAnimatorStateInfo (0).IsName ("derpHurt")) {
 			anim.SetBool ("hurt", false);
 		}
