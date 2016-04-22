@@ -31,7 +31,7 @@ public class MomotaroBehavior : MonoBehaviour {
 	private Vector3 right;
 	private Vector3 left;
 
-	public float health;
+	public int health;
 	private float attackCoolDown;
 	private float attackDelay;
 	public bool isDead;
@@ -42,12 +42,14 @@ public class MomotaroBehavior : MonoBehaviour {
 
 	private Vector3 prevLoc;
 
+	public GameObject[] healthNums;
+
 
 
 	// Use this for initialization
 	void Start () {
 		anim = GetComponent<Animator> ();
-		health = 6f;
+		health = 6;
 		isDead = false;
 		attackCoolDown = 0f;
 		followInfo = followInformationObject.GetComponent<FollowInformation> ();
@@ -56,9 +58,13 @@ public class MomotaroBehavior : MonoBehaviour {
 		followers = new CharacterBehavior[followerObjects.Length];
 		for (int i = 0; i < followerObjects.Length; i++) {
 			followers [i] = followerObjects [i].GetComponent<CharacterBehavior> ();
-			followers [i].commandDelay = 10 * (i + 1) + i;
+			followers [i].commandDelay = 15 * (i + 1) + i;
+		}
+		foreach (GameObject g in healthNums) {
+			g.SetActive (false);
 		}
 
+		healthNums [health].SetActive (true);
 
 		velocity = 10f;
 		jumpForce = 1500f;
@@ -216,10 +222,13 @@ public class MomotaroBehavior : MonoBehaviour {
 
 	public void takeDamage (int dm) {
 //		anim.SetBool ("gettingHit", true);
+
 		if (health > 0) {
+			healthNums[health].SetActive(false);
 			health -= dm;
 			anim.SetBool ("gettingHit", true);
 			invuln = 1f;
+			healthNums[health].SetActive(true);
 
 		}
 		if (health <= 0) {

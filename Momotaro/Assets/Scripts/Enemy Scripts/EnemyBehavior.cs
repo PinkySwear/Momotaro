@@ -39,12 +39,16 @@ public class EnemyBehavior : MonoBehaviour {
 			anim.SetBool ("dead", false);
 		}
 		if (stunned) {
+			transform.rotation = Quaternion.Euler (new Vector3(0f, stunDuration * 360f, 0f));
 			if (stunDuration > 0f) {
 				stunDuration -= Time.deltaTime;
 			}
 			if (stunDuration <= 0f) {
 				stunned = false;
 			}
+		}
+		else {
+			transform.rotation = Quaternion.Euler (Vector3.zero);
 		}
 		myRb.freezeRotation = true;
 		transform.position = new Vector3 (transform.position.x, transform.position.y, 0f);
@@ -116,7 +120,7 @@ public class EnemyBehavior : MonoBehaviour {
 	public void stun (float duration) {
 		if (!isDead) {
 			stunned = true;
-			stunDuration += duration;
+			stunDuration = Mathf.Max(duration, stunDuration);
 		}
 	}
 }

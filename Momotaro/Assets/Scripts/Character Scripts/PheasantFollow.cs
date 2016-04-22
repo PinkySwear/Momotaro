@@ -68,40 +68,42 @@ public class PheasantFollow : CharacterBehavior {
 			
 		specialMovement = false;
 
-		if (controlling && !onSomething){
+		if (controlling){
 			specialMovement = true;
 		}
 
-		if (controlling && !specialMovement) {
-			//			Camera.main.transform.position = new Vector3 (transform.position.x, transform.position.y, -10f);
-			if (Input.GetKey(KeyCode.LeftArrow)) {
-				movingLeft = true;
-				Vector3 s = transform.localScale;
-				s.x = -1;
-				transform.localScale = s;
-				inParty = false;
-			}
-			if (Input.GetKey(KeyCode.RightArrow)) {
-				movingRight = true;
-				Vector3 s = transform.localScale;
-				s.x = 1;
-				transform.localScale = s;
-				inParty = false;
-			}
-
-			if (Input.GetKeyDown(KeyCode.UpArrow) && onSomething) {
-				jump = true;
-//				specialMovement = true;
-//				movingUp = true;
-			}
-			if (Input.GetKeyDown (KeyCode.Space) && poopCoolDown <= 0f && poopDelay <= 0f) {
-				anim.SetBool ("pooping", true);
-				poopDelay = 0.1f;
-			}
-			else {
-				anim.SetBool ("pooping", false);
-			}
-		}
+//		if (controlling && !specialMovement) {
+//			//			Camera.main.transform.position = new Vector3 (transform.position.x, transform.position.y, -10f);
+//			myRb.useGravity = false;
+//
+//			if (Input.GetKey(KeyCode.LeftArrow)) {
+//				movingLeft = true;
+//				Vector3 s = transform.localScale;
+//				s.x = -1;
+//				transform.localScale = s;
+//				inParty = false;
+//			}
+//			if (Input.GetKey(KeyCode.RightArrow)) {
+//				movingRight = true;
+//				Vector3 s = transform.localScale;
+//				s.x = 1;
+//				transform.localScale = s;
+//				inParty = false;
+//			}
+//
+//			if (Input.GetKeyDown(KeyCode.UpArrow) && onSomething) {
+//				jump = true;
+////				specialMovement = true;
+////				movingUp = true;
+//			}
+//			if (Input.GetKeyDown (KeyCode.Space) && poopCoolDown <= 0f && poopDelay <= 0f) {
+//				anim.SetBool ("pooping", true);
+//				poopDelay = 0.1f;
+//			}
+//			else {
+//				anim.SetBool ("pooping", false);
+//			}
+//		}
 
 		if (controlling && specialMovement) {
 			//			Camera.main.transform.position = new Vector3 (transform.position.x, transform.position.y, -10f);

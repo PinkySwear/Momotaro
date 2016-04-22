@@ -34,6 +34,7 @@ public class CharacterManager : MonoBehaviour {
 		monkey.controlling = false;
 		pheasant = pheasantObject.GetComponent<PheasantFollow> ();
 		pheasant.controlling = false;
+		holdSwitching = false;
 
 	}
 	
@@ -68,20 +69,20 @@ public class CharacterManager : MonoBehaviour {
 		Application.targetFrameRate = 120;
 	}
 
-	void OnGUI () {
-		GUI.color = Color.black;
-		if (holdSwitching) {
-			GUI.Label (new Rect (500, 10, 400, 20), "SWITCH BY HOLDING");
-			GUI.Label (new Rect (500, 40, 400, 20), "SWITCH SWITCHING MODE WITH \"O\"");
-
-		}
-		else {
-			GUI.Label (new Rect (500, 10, 400, 20), "SWITCH BY PRESSING");
-			GUI.Label (new Rect (500, 40, 400, 20), "SWITCH SWITCHING MODE WITH \"O\"");
-
-		}
-	
-	}
+//	void OnGUI () {
+//		GUI.color = Color.black;
+//		if (holdSwitching) {
+//			GUI.Label (new Rect (500, 10, 400, 20), "SWITCH BY HOLDING");
+//			GUI.Label (new Rect (500, 40, 400, 20), "SWITCH SWITCHING MODE WITH \"O\"");
+//
+//		}
+//		else {
+//			GUI.Label (new Rect (500, 10, 400, 20), "SWITCH BY PRESSING");
+//			GUI.Label (new Rect (500, 40, 400, 20), "SWITCH SWITCHING MODE WITH \"O\"");
+//
+//		}
+//	
+//	}
 
 	void characterSwitchHold () {
 		if (Input.GetKey (KeyCode.D) && dogObject.activeInHierarchy) {
@@ -120,27 +121,27 @@ public class CharacterManager : MonoBehaviour {
 	}
 
 	void characterSwitchPress () {
-		if (Input.GetKeyDown (KeyCode.F)) {
+		if (Input.GetKeyDown (KeyCode.D)) {
 			momo.controlling = true;
 			dog.controlling = false;
 			monkey.controlling = false;
 			pheasant.controlling = false;
 		}
-		else if (Input.GetKeyDown (KeyCode.D) && dogObject.activeInHierarchy) {
+		else if (Input.GetKeyDown (KeyCode.S) && dogObject.activeInHierarchy) {
 			momo.controlling = false;
 			dog.controlling = true;
 			dog.inParty = false;
 			monkey.controlling = false;
 			pheasant.controlling = false;
 		}
-		else if (Input.GetKeyDown (KeyCode.S) && monkeyObject.activeInHierarchy) {
+		else if (Input.GetKeyDown (KeyCode.A) && monkeyObject.activeInHierarchy) {
 			momo.controlling = false;
 			dog.controlling = false;
 			monkey.controlling = true;
 			monkey.inParty = false;
 			pheasant.controlling = false;
 		}
-		else if (Input.GetKeyDown (KeyCode.A) && pheasantObject.activeInHierarchy) {
+		else if (Input.GetKeyDown (KeyCode.W) && pheasantObject.activeInHierarchy) {
 			momo.controlling = false;
 			dog.controlling = false;
 			monkey.controlling = false;
