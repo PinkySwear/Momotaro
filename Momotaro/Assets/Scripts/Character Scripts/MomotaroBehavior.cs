@@ -185,7 +185,7 @@ public class MomotaroBehavior : MonoBehaviour {
 		transform.localScale = new Vector3 (transform.localScale.x, 1f, 1f);
 		velocity = 10f;
 
-		if (jump && onSomething && Mathf.Abs (myRb.velocity.y) < 0.01f) {
+		if (jump && onSomething) {
 			anim.SetBool ("jumping", true);
 			myRb.AddForce (Vector3.up * jumpForce);
 			jump = false;

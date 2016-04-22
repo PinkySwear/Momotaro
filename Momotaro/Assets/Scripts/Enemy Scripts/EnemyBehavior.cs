@@ -57,7 +57,8 @@ public class EnemyBehavior : MonoBehaviour {
 			movingRight = false;
 			jump = false;
 			if (!anim.GetBool ("dead") && !anim.GetCurrentAnimatorStateInfo (0).IsName ("poof")) {
-				Destroy (gameObject);
+//				Destroy (gameObject);
+				transform.position = new Vector3(0f, 0f, 500f);
 			}
 		}
 

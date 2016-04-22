@@ -115,7 +115,7 @@ public class CharacterBehavior : MonoBehaviour {
 		transform.localScale = new Vector3 (transform.localScale.x, 1f, 1f);
 		velocity = 10f;
 
-		if (jump && onSomething && Mathf.Abs(myRb.velocity.y) < 0.01f) {
+		if (jump && onSomething) {
 			myRb.useGravity = true;
 			myRb.AddForce (Vector3.up * jumpForce);
 			jump = false;
