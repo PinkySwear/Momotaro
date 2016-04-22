@@ -8,6 +8,8 @@ public class CharacterManager : MonoBehaviour {
 	public GameObject dogObject;
 	public GameObject monkeyObject;
 	public GameObject pheasantObject;
+	
+	public bool beginScene;
 
 	public MomotaroBehavior momo;
 	public DogFollow dog;
@@ -85,7 +87,8 @@ public class CharacterManager : MonoBehaviour {
 //	}
 
 	void characterSwitchHold () {
-		if (Input.GetKey (KeyCode.D) && dogObject.activeInHierarchy) {
+		Debug.Log(beginScene);
+		if ((Input.GetKey (KeyCode.D) || beginScene) && dogObject.activeInHierarchy) {
 			momo.controlling = false;
 			dog.controlling = true;
 			dog.inParty = false;

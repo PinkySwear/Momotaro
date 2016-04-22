@@ -10,6 +10,8 @@ public class LevelOneDialogue : MonoBehaviour {
 	public GameObject momo;
 	public GameObject[] boxes;
 	public GameObject textbox;
+	public GameObject companion;
+	public GameObject manage;
 	public string[] messages;
 	public float refract = 0.5f;
 	
@@ -49,6 +51,13 @@ public class LevelOneDialogue : MonoBehaviour {
 		messages[12] = "Momo."; 
 		messages[13] = "Yes. Well, goodbye then, Dog!";
 		messages[14] = "Goodbye, Momo!";
+		messages[15] = "Hey! Dog!";
+		messages[16] = "Oh, hey! Momo! I, uh, didn’t see you there.";
+		messages[17] = "Are you following me?";
+		messages[18] = "What?? Following? You?? Me?? I… What?";
+		messages[19] = "Look… Just stop following me, Dog.";
+		messages[20] = "Hey! You! Oni! Get down from there!";
+		messages[21] = "Momo! I can help!";
 		boxes[0].SetActive(false);
 		boxes[1].SetActive(false);
 		startTime = Time.time;
@@ -82,10 +91,58 @@ public class LevelOneDialogue : MonoBehaviour {
 				count ++;
 				if(count >= 15){
 					scene ++;
+					boxes[1].SetActive(false);
+					boxes[0].SetActive(false);
 					momo.GetComponent<MomotaroBehavior> ().stop = false;
 				}
 			}
 		}
+		if(scene==3){
+			if((count % 2) ==0){
+				boxes[0].SetActive(true);
+				boxes[1].SetActive(false);
+			}
+			else{
+				boxes[1].SetActive(true);
+				boxes[0].SetActive(false);
+			}
+			textbox.GetComponent<Text>().text = messages[count];
+			if(Input.GetKey(KeyCode.Return) &&((Time.time-startTime) > refract)){
+				startTime = Time.time;
+				count ++;
+				if(count >= 20){
+					scene ++;
+					boxes[1].SetActive(false);
+					boxes[0].SetActive(false);
+					momo.GetComponent<MomotaroBehavior> ().stop = false;
+				}
+			}
+		}
+		
+		if(scene==5){
+			if((count % 2) ==1){
+				boxes[0].SetActive(true);
+				boxes[1].SetActive(false);
+			}
+			else{
+				boxes[1].SetActive(true);
+				boxes[0].SetActive(false);
+			}
+			textbox.GetComponent<Text>().text = messages[count];
+			if(Input.GetKey(KeyCode.Return) &&((Time.time-startTime) > refract)){
+				startTime = Time.time;
+				count ++;
+				if(count >= 22){
+					scene ++;
+					boxes[1].SetActive(false);
+					boxes[0].SetActive(false);
+					momo.GetComponent<MomotaroBehavior> ().stop = false;
+					companion.SetActive(true);
+					manage.GetComponent<CharacterManager> ().beginScene = true;
+				}
+			}
+		}
+		
 	}
 	
 	void FixedUpdate () {
