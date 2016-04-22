@@ -93,6 +93,7 @@ public class LevelOneDialogue : MonoBehaviour {
 					scene ++;
 					boxes[1].SetActive(false);
 					boxes[0].SetActive(false);
+					textbox.GetComponent<Text>().text = "";
 					momo.GetComponent<MomotaroBehavior> ().stop = false;
 				}
 			}
@@ -114,6 +115,7 @@ public class LevelOneDialogue : MonoBehaviour {
 					scene ++;
 					boxes[1].SetActive(false);
 					boxes[0].SetActive(false);
+					textbox.GetComponent<Text>().text = "";
 					momo.GetComponent<MomotaroBehavior> ().stop = false;
 				}
 			}
@@ -136,9 +138,11 @@ public class LevelOneDialogue : MonoBehaviour {
 					scene ++;
 					boxes[1].SetActive(false);
 					boxes[0].SetActive(false);
+					textbox.GetComponent<Text>().text = "";
 					momo.GetComponent<MomotaroBehavior> ().stop = false;
 					companion.SetActive(true);
 					manage.GetComponent<CharacterManager> ().beginScene = true;
+					gameObject.SetActive(false);
 				}
 			}
 		}

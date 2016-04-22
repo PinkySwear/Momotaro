@@ -88,7 +88,7 @@ public class CharacterManager : MonoBehaviour {
 
 	void characterSwitchHold () {
 		Debug.Log(beginScene);
-		if ((Input.GetKey (KeyCode.D) || beginScene) && dogObject.activeInHierarchy) {
+		if ((Input.GetKey (KeyCode.D)) && dogObject.activeInHierarchy) {
 			momo.controlling = false;
 			dog.controlling = true;
 			dog.inParty = false;

@@ -8,21 +8,29 @@ public class Level1Manager : MonoBehaviour {
 
 
 	public GameObject[] onis;
+	public GameObject[] goonSquad;
+	public GameObject pillaroni;
 	public GameObject dog;
 	public GameObject cam;
 	public GameObject momo;
+	public GameObject companion;
+	public GameObject textbox;
 	public int scene;
 	public bool[] onisKilled;
-	public AudioSource companionSong;
+	public AudioSource[] companionSong;
+	//public AudioSource fightSong;
 	
 	private bool move1;
 	private bool slowdown;
+	public int beginFight;
 	private float startTime;
+	private float beginTime;
 
 	// Use this for initialization
 	void Start () {
-		companionSong = gameObject.GetComponent<AudioSource>();
-		companionSong.volume = 0f;
+		companionSong = gameObject.GetComponents<AudioSource>();
+		companionSong[0].volume = 0f;
+		companionSong[1].volume = 0f;
 		startTime = Time.time;
 	}
 	
@@ -64,7 +72,109 @@ public class Level1Manager : MonoBehaviour {
 				scene ++;
 			}
 		}
+		if(dog.GetComponent<LevelOneDialogue> ().scene == 6){
+			scene = 6;
+			if(pillaroni.GetComponent<Transform> ().position.y < -30){
+				scene++;
+				textbox.GetComponent<Text>().text = "";
+				beginTime = Time.time;
+			}
+			else{
+				if(momo.GetComponent<MomotaroBehavior> ().controlling){
+					textbox.GetComponent<Text>().text = "Press 'S' to switch to control Dog";
+				}
+				else{
+					textbox.GetComponent<Text>().text = "You may press 'D' to switch back, press 'Space' to bark at the oni.";
+				}
+			}
+		}
+		if(scene == 7){
+			companionSong[0].volume = 0f;
+			if(momo.GetComponent<Transform> ().position.x <= 108f){
+				textbox.GetComponent<Text>().text = "Ugh, I guess you can come with me...";
+			}
+			else{
+				textbox.GetComponent<Text>().text = "";
+				scene ++;
+			}
+		}
 		
+		if(scene == 8 && momo.GetComponent<Transform> ().position.x < 130f){
+			if(companion.GetComponent<Transform> ().position.x >= 131f &&
+			   companion.GetComponent<Transform> ().position.y >= -16f){
+				textbox.GetComponent<Text>().text = "Good! Press 'Enter' to Let Momo through!";
+				if(Input.GetKey (KeyCode.Return)){
+					textbox.GetComponent<Text>().text = "";
+					Debug.Log(scene);
+					scene = 9;
+					momo.GetComponent<Transform> ().position = new Vector3 (130f,-15f,0f);
+					Debug.Log(scene);
+				}
+			}
+			else if(momo.GetComponent<Transform> ().position.x >= 122f && momo.GetComponent<Transform> ().position.x < 130f){
+				textbox.GetComponent<Text>().text = "You may press the 'Down Arrow' on colored dirt to dig with dog.";
+			}
+		}
+		else if(scene ==8 && momo.GetComponent<Transform> ().position.x < 145f && beginFight==0){
+			if(companion.GetComponent<Transform> ().position.x >= 146f &&
+			   companion.GetComponent<Transform> ().position.y >= -16f){
+				textbox.GetComponent<Text>().text = "Press 'Enter' to Let Momo through!";
+				if(Input.GetKey (KeyCode.Return)){
+					textbox.GetComponent<Text>().text = "";
+					scene = 10;
+					momo.GetComponent<Transform> ().position = new Vector3 (145f,-15f,0f);
+					scene = 10;
+					beginFight = 1;
+				}
+			}
+			else{
+				textbox.GetComponent<Text>().text = "";
+			}
+		}
+		else if(beginFight == 1 && scene ==8){
+			textbox.GetComponent<Text>().text = "Wait...this doesn't seem right... <Press R>";
+			if(Input.GetKey (KeyCode.R)){
+				textbox.GetComponent<Text>().text = "Oh no! It's an ambush!";
+				companionSong[1].volume = 1f;
+				scene = 11;
+				for (int i =0; i < goonSquad.Length; i++){
+					goonSquad[i].SetActive(true);
+				}
+				beginFight = 2;
+			}
+			cam.GetComponent<AudioSource> ().volume = 0f;
+		}
+		if(momo.GetComponent<Transform> ().position.x > 182f){
+			textbox.GetComponent<Text>().text = "Congrats! Press X to progress to the next level!";
+			if(Input.GetKey (KeyCode.X)){
+				SceneManager.LoadScene ("AlphaDemo");
+			}
+		}
+		
+		if(scene == 9){
+			if(companion.GetComponent<Transform> ().position.x >= 146f &&
+			   companion.GetComponent<Transform> ().position.y >= -16f){
+				textbox.GetComponent<Text>().text = "Press 'Enter' to Let Momo through!";
+				if(Input.GetKey (KeyCode.Return)){
+					textbox.GetComponent<Text>().text = "";
+					scene = 10;
+					momo.GetComponent<Transform> ().position = new Vector3 (145f,-15f,0f);
+				}
+			}
+			else{
+				textbox.GetComponent<Text>().text = "";
+			}
+		}
+		
+		if(scene == 10){
+			textbox.GetComponent<Text>().text = "Wait...this doesn't seem right... <Press Enter>";
+			if(Input.GetKey (KeyCode.Return)){
+				textbox.GetComponent<Text>().text = "Oh no! It's an ambush!";
+				companionSong[1].volume = 1f;
+				scene = 11;
+			}
+			cam.GetComponent<AudioSource> ().volume = 0f;
+		}
 		
 		if(move1){
 			slowdown = true;
@@ -76,7 +186,7 @@ public class Level1Manager : MonoBehaviour {
 			slowdown = true;
 		}
 		if(slowdown && ((Time.time - startTime) > 0.1f) && dog.GetComponent<LevelOneDialogue> ().seesMomo){
-			Debug.Log("wowza");
+			//Debug.Log("wowza");
 			startTime = Time.time;
 			cam.GetComponent<AudioSource> ().volume -= 0.1f;
 			if(cam.GetComponent<AudioSource> ().volume <= 0.01){
@@ -86,17 +196,17 @@ public class Level1Manager : MonoBehaviour {
 		//Debug.Log(dog.GetComponent<LevelOneDialogue> ().scene);
 		//Debug.Log(dog.GetComponent<LevelOneDialogue> ().scene);
 		if((dog.GetComponent<LevelOneDialogue> ().count >= 2) && ((Time.time - startTime) > 0.1f) &&
-		   (dog.GetComponent<LevelOneDialogue> ().scene % 2 == 1)){
-			Debug.Log("wowie");
+		   (dog.GetComponent<LevelOneDialogue> ().scene % 2 == 1) && (scene < 4)){
+			//Debug.Log("wowie");
 			startTime = Time.time;
-			companionSong.volume += 0.1f;
+			companionSong[0].volume += 0.1f;
 		}
 		else if((dog.GetComponent<LevelOneDialogue> ().scene % 2 == 0) && ((Time.time - startTime) > 0.1f) &&
-				cam.GetComponent<AudioSource> ().volume < 0.99f){
-				Debug.Log("bazinga");
+				cam.GetComponent<AudioSource> ().volume < 0.99f && scene < 5){
+				//Debug.Log("bazinga");
 				startTime = Time.time;
 				cam.GetComponent<AudioSource> ().volume += 0.1f;
-				companionSong.volume -= 0.1f;
+				companionSong[0].volume -= 0.1f;
 				if(dog.GetComponent<LevelOneDialogue> ().scene ==2){
 					scene = 2;
 				}
