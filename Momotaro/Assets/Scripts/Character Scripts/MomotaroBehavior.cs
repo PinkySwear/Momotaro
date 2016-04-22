@@ -69,6 +69,8 @@ public class MomotaroBehavior : MonoBehaviour {
 		velocity = 10f;
 		jumpForce = 1500f;
 		myRb = GetComponent<Rigidbody> ();
+		myRb.constraints = RigidbodyConstraints.FreezePositionZ;
+
 		myRb.freezeRotation = true;
 		Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Interactable"));
 		Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Player"));

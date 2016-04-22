@@ -19,6 +19,8 @@ public class PheasantFollow : CharacterBehavior {
 		velocity = 10f;
 		jumpForce = 1500f;
 		myRb = GetComponent<Rigidbody> ();
+		myRb.constraints = RigidbodyConstraints.FreezePositionZ;
+
 		myRb.freezeRotation = true;
 		inParty = true;
 		specialMovement = false;

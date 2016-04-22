@@ -28,12 +28,14 @@ public class EnemyBehavior : MonoBehaviour {
 		
 		momo = MomoObject.GetComponent<MomotaroBehavior> ();
 		myRb = this.gameObject.GetComponent<Rigidbody> ();
+		myRb.constraints = RigidbodyConstraints.FreezePositionZ;
 		stunned = false;
 		isDead = false;
 	}
 	
 	// Update is called once per frame
 	protected void UpdateP () {
+		myRb.constraints = myRb.constraints | RigidbodyConstraints.FreezePositionZ;
 
 		if (anim.GetCurrentAnimatorStateInfo (0).IsName ("poof")) {
 			anim.SetBool ("dead", false);
@@ -51,6 +53,7 @@ public class EnemyBehavior : MonoBehaviour {
 			transform.rotation = Quaternion.Euler (Vector3.zero);
 		}
 		myRb.freezeRotation = true;
+
 		transform.position = new Vector3 (transform.position.x, transform.position.y, 0f);
 		if (isDead) {
 			movingLeft = false;
