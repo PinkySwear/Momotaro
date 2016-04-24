@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class DogFollow : CharacterBehavior {
 
+	public bool hasBark;
 	public int dirtNum;
 	public bool touchingDirt;
 	public bool inDirt;
@@ -128,10 +129,12 @@ public class DogFollow : CharacterBehavior {
 			}
 			if (Input.GetKeyDown (KeyCode.Space) && barkCoolDown <= 0f) {
 				anim.SetBool ("barking", true);
+				hasBark = true;
 				bark ();
 			}
 			else {
 				anim.SetBool ("barking", false);
+				hasBark = false;
 			}
 //			transform.rotation = Quaternion.Euler (new Vector3 (0f, 0f, 0f));
 
@@ -170,10 +173,12 @@ public class DogFollow : CharacterBehavior {
 //			}
 			if (Input.GetKeyDown (KeyCode.Space) && barkCoolDown <= 0f) {
 				anim.SetBool ("barking", true);
+				hasBark = true;
 				bark ();
 			}
 			else {
 				anim.SetBool ("barking", false);
+				hasBark = false;
 			}
 //			transform.rotation = Quaternion.Euler (new Vector3 (0f, 0f, 0f));
 

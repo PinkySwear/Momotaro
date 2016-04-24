@@ -7,13 +7,14 @@ public class MomotaroBehavior : MonoBehaviour {
 	public float velocity;
 	public float jumpForce;
 	private Rigidbody myRb;
-	private bool onSomething = false;
+	public bool onSomething = false;
 //	private bool underSomething = false;
 	public bool movingLeft;
 	public bool movingRight;
 	public bool jump = false;
 	public int underNum;
 //	private bool crouching = false;
+	public bool justAttacked;
 
 	public bool controlling;
 	public bool stop;
@@ -33,7 +34,7 @@ public class MomotaroBehavior : MonoBehaviour {
 
 	public int health;
 	private float attackCoolDown;
-	private float attackDelay;
+	public float attackDelay;
 	public bool isDead;
 
 	public float invuln;
@@ -126,10 +127,12 @@ public class MomotaroBehavior : MonoBehaviour {
 			}
 			if (Input.GetKeyDown (KeyCode.Space) && attackDelay <= 0f && attackCoolDown <= 0f) {
 				anim.SetBool ("attacking", true);
+				justAttacked = true;
 				attackDelay = 0.2f;
 			}
 			else {
 				anim.SetBool ("attacking", false);
+				justAttacked = false;
 			}
 
 		}
