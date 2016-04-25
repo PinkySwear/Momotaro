@@ -66,6 +66,7 @@
      <Compile Include="Assets\Scripts\Environment Scripts\InteractionControl.cs" />
      <Compile Include="Assets\Scripts\Environment Scripts\KitchenInteract.cs" />
      <Compile Include="Assets\Scripts\Environment Scripts\Scenes\KitchenSceneDialogue.cs" />
+     <Compile Include="Assets\Scripts\Environment Scripts\Scenes\Level0Manager.cs" />
      <Compile Include="Assets\Scripts\Environment Scripts\Scenes\Level1Manager.cs" />
      <Compile Include="Assets\Scripts\Environment Scripts\Scenes\LevelOneDialogue.cs" />
      <Compile Include="Assets\Scripts\Instructions.cs" />

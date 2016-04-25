@@ -23,7 +23,7 @@ public class AudioControl : MonoBehaviour {
 		aSources = gameObject.GetComponents<AudioSource>();
 		health = 6;
 		for (int i=0;i < damages.Length; i++){
-			damages[i] = 2;
+			damages[i] = badies[i].GetComponent<EnemyBehavior> ().health;
 		}
 	}
 	

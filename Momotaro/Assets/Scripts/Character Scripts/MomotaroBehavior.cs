@@ -3,6 +3,7 @@ using System.Collections;
 
 public class MomotaroBehavior : MonoBehaviour {
 
+	public bool noSword;
 
 	public float velocity;
 	public float jumpForce;
@@ -125,7 +126,7 @@ public class MomotaroBehavior : MonoBehaviour {
 			if (Input.GetKeyDown(KeyCode.UpArrow) && onSomething && !inAttackState) {
 				jump = true;
 			}
-			if (Input.GetKeyDown (KeyCode.Space) && attackDelay <= 0f && attackCoolDown <= 0f) {
+			if (Input.GetKeyDown (KeyCode.Space) && attackDelay <= 0f && attackCoolDown <= 0f && !noSword) {
 				anim.SetBool ("attacking", true);
 				justAttacked = true;
 				attackDelay = 0.2f;
