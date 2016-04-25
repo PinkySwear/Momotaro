@@ -4,7 +4,7 @@ using System.Collections;
 public class BarkObject : MonoBehaviour {
 
 	private Rigidbody myRb;
-	public float barkForce = 20f;
+	public float barkForce = 10f;
 
 	// Use this for initialization
 	void Start () {
