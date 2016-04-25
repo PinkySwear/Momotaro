@@ -60,6 +60,7 @@
      <Compile Include="Assets\Scripts\Enemy Scripts\EnemyBehavior.cs" />
      <Compile Include="Assets\Scripts\Enemy Scripts\MeleeBehavior.cs" />
      <Compile Include="Assets\Scripts\Environment Scripts\AudioControl.cs" />
+     <Compile Include="Assets\Scripts\Environment Scripts\BarkObject.cs" />
      <Compile Include="Assets\Scripts\Environment Scripts\CameraControl.cs" />
      <Compile Include="Assets\Scripts\Environment Scripts\DigBehavior.cs" />
      <Compile Include="Assets\Scripts\Environment Scripts\DirtBehavior.cs" />

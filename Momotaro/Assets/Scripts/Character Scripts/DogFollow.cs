@@ -282,6 +282,16 @@ public class DogFollow : CharacterBehavior {
 
 			enemy.stun (1f);
 		}
+		// Object bark/knockBack
+		Collider[] objectColliders = Physics.OverlapSphere(transform.position, 10f, 1 << LayerMask.NameToLayer ("Barkable"));
+		foreach (Collider objectCol in objectColliders) {
+			Debug.Log("Bark!");
+			float dist = Vector3.Distance (objectCol.transform.position, transform.position);
+			BarkObject barkable = objectCol.gameObject.GetComponent<BarkObject> ();
+//			enemy.knockBack (((Mathf.Sign(enemyCol.transform.position.x - transform.position.x))*Vector3.right + Vector3.up * 2f).normalized * (((1f - (dist / 10f)) * 1000f)));
+			barkable.knockBack (((Mathf.Sign(objectCol.transform.position.x - transform.position.x))*Vector3.right + Vector3.up * 2f).normalized * (1000f + Random.value * 200f));
+
+		}
 	}
 
 	void OnDrawGizmos() {
