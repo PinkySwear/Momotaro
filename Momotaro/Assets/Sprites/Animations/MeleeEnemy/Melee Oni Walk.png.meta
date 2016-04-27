@@ -1,0 +1,433 @@
+fileFormatVersion: 2
+guid: 60cba919d89ef4311b05a73066af1661
+timeCreated: 1461773385
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Melee Oni Walk_0
+    21300002: Melee Oni Walk_1
+    21300004: Melee Oni Walk_2
+    21300006: Melee Oni Walk_3
+    21300008: Melee Oni Walk_4
+    21300010: Melee Oni Walk_5
+    21300012: Melee Oni Walk_6
+    21300014: Melee Oni Walk_7
+    21300016: Melee Oni Walk_8
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Melee Oni Walk_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 736
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 12, y: -172}
+        - {x: 19, y: -184}
+        - {x: 90, y: -184}
+        - {x: 100, y: -153}
+        - {x: 116, y: -139}
+        - {x: 116, y: -55}
+        - {x: 107, y: 22}
+        - {x: 116, y: 98}
+        - {x: 116, y: 109}
+        - {x: 94, y: 175}
+        - {x: 60, y: 184}
+        - {x: -87, y: 184}
+        - {x: -108, y: 135}
+        - {x: -114, y: 93}
+        - {x: -106, y: 50}
+        - {x: -129, y: 17}
+        - {x: -134, y: 0}
+        - {x: -134, y: -25}
+        - {x: -124, y: -39}
+        - {x: -93, y: -81}
+        - {x: -89, y: -122}
+        - {x: -96, y: -164}
+        - {x: -75, y: -184}
+        - {x: -42, y: -184}
+        - {x: 4, y: -179}
+        - {x: 11, y: -169}
+        - {x: 4, y: -144}
+        - {x: 14, y: -161}
+    - name: Melee Oni Walk_1
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 736
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 116, y: -55}
+        - {x: 107, y: 22}
+        - {x: 116, y: 98}
+        - {x: 116, y: 109}
+        - {x: 94, y: 175}
+        - {x: 60, y: 184}
+        - {x: -87, y: 184}
+        - {x: -108, y: 135}
+        - {x: -114, y: 93}
+        - {x: -113, y: 49}
+        - {x: -134, y: 6}
+        - {x: -134, y: -33}
+        - {x: -93, y: -82}
+        - {x: -67, y: -138}
+        - {x: -88, y: -152}
+        - {x: -89, y: -175}
+        - {x: -53, y: -184}
+        - {x: -44, y: -184}
+        - {x: -13, y: -173}
+        - {x: 0, y: -163}
+        - {x: -3, y: -129}
+        - {x: 32, y: -137}
+        - {x: 6, y: -172}
+        - {x: 18, y: -184}
+        - {x: 90, y: -184}
+        - {x: 100, y: -153}
+        - {x: 116, y: -139}
+      - - {x: 5, y: -161}
+        - {x: 2, y: -161}
+        - {x: 1, y: -164}
+        - {x: 1, y: -171}
+        - {x: 5, y: -171}
+        - {x: 7, y: -168}
+        - {x: 7, y: -162}
+    - name: Melee Oni Walk_2
+      rect:
+        serializedVersion: 2
+        x: 732
+        y: 736
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 116, y: -55}
+        - {x: 107, y: 22}
+        - {x: 116, y: 98}
+        - {x: 116, y: 109}
+        - {x: 94, y: 175}
+        - {x: 60, y: 184}
+        - {x: -87, y: 184}
+        - {x: -108, y: 135}
+        - {x: -114, y: 93}
+        - {x: -113, y: 49}
+        - {x: -134, y: 6}
+        - {x: -134, y: -33}
+        - {x: -93, y: -81}
+        - {x: -70, y: -125}
+        - {x: -66, y: -129}
+        - {x: -71, y: -126}
+        - {x: -80, y: -126}
+        - {x: -86, y: -135}
+        - {x: -90, y: -155}
+        - {x: -77, y: -167}
+        - {x: -22, y: -184}
+        - {x: -19, y: -184}
+        - {x: 0, y: -128}
+        - {x: 34, y: -138}
+        - {x: 2, y: -173}
+        - {x: 17, y: -184}
+        - {x: 90, y: -184}
+        - {x: 100, y: -153}
+        - {x: 116, y: -139}
+      - - {x: 5, y: -161}
+        - {x: 2, y: -161}
+        - {x: 1, y: -164}
+        - {x: 1, y: -171}
+        - {x: 5, y: -171}
+        - {x: 7, y: -168}
+        - {x: 7, y: -162}
+    - name: Melee Oni Walk_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 368
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 116, y: -55}
+        - {x: 107, y: 22}
+        - {x: 116, y: 98}
+        - {x: 116, y: 109}
+        - {x: 94, y: 175}
+        - {x: 60, y: 184}
+        - {x: -87, y: 184}
+        - {x: -108, y: 135}
+        - {x: -114, y: 93}
+        - {x: -113, y: 49}
+        - {x: -134, y: 6}
+        - {x: -134, y: -33}
+        - {x: -93, y: -82}
+        - {x: -67, y: -138}
+        - {x: -88, y: -152}
+        - {x: -89, y: -175}
+        - {x: -53, y: -184}
+        - {x: -44, y: -184}
+        - {x: -13, y: -173}
+        - {x: 0, y: -163}
+        - {x: -3, y: -129}
+        - {x: 32, y: -137}
+        - {x: 6, y: -172}
+        - {x: 18, y: -184}
+        - {x: 90, y: -184}
+        - {x: 100, y: -153}
+        - {x: 116, y: -139}
+      - - {x: 5, y: -161}
+        - {x: 2, y: -161}
+        - {x: 1, y: -164}
+        - {x: 1, y: -171}
+        - {x: 5, y: -171}
+        - {x: 7, y: -168}
+        - {x: 7, y: -162}
+    - name: Melee Oni Walk_4
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 368
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 12, y: -172}
+        - {x: 19, y: -184}
+        - {x: 90, y: -184}
+        - {x: 100, y: -153}
+        - {x: 116, y: -139}
+        - {x: 116, y: -55}
+        - {x: 107, y: 22}
+        - {x: 116, y: 98}
+        - {x: 116, y: 109}
+        - {x: 94, y: 175}
+        - {x: 60, y: 184}
+        - {x: -87, y: 184}
+        - {x: -108, y: 135}
+        - {x: -114, y: 93}
+        - {x: -106, y: 50}
+        - {x: -129, y: 17}
+        - {x: -134, y: 0}
+        - {x: -134, y: -25}
+        - {x: -124, y: -39}
+        - {x: -93, y: -81}
+        - {x: -89, y: -122}
+        - {x: -96, y: -164}
+        - {x: -75, y: -184}
+        - {x: -42, y: -184}
+        - {x: 4, y: -179}
+        - {x: 11, y: -169}
+        - {x: 4, y: -144}
+        - {x: 14, y: -161}
+    - name: Melee Oni Walk_5
+      rect:
+        serializedVersion: 2
+        x: 732
+        y: 368
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 116, y: -127}
+        - {x: 116, y: -77}
+        - {x: 104, y: 22}
+        - {x: 111, y: 55}
+        - {x: 113, y: 106}
+        - {x: 94, y: 175}
+        - {x: 63, y: 173}
+        - {x: 45, y: 184}
+        - {x: -86, y: 184}
+        - {x: -88, y: 149}
+        - {x: -108, y: 135}
+        - {x: -114, y: 93}
+        - {x: -106, y: 50}
+        - {x: -129, y: 17}
+        - {x: -134, y: 0}
+        - {x: -134, y: -25}
+        - {x: -124, y: -39}
+        - {x: -93, y: -81}
+        - {x: -78, y: -115}
+        - {x: -64, y: -132}
+        - {x: -46, y: -134}
+        - {x: -87, y: -164}
+        - {x: -75, y: -184}
+        - {x: 91, y: -184}
+        - {x: 85, y: -147}
+        - {x: 114, y: -137}
+    - name: Melee Oni Walk_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 114, y: -137}
+        - {x: 116, y: -128}
+        - {x: 116, y: -77}
+        - {x: 104, y: 22}
+        - {x: 111, y: 55}
+        - {x: 113, y: 106}
+        - {x: 94, y: 175}
+        - {x: 63, y: 173}
+        - {x: 45, y: 184}
+        - {x: -87, y: 184}
+        - {x: -108, y: 135}
+        - {x: -114, y: 93}
+        - {x: -106, y: 50}
+        - {x: -129, y: 17}
+        - {x: -134, y: 0}
+        - {x: -134, y: -25}
+        - {x: -124, y: -39}
+        - {x: -93, y: -81}
+        - {x: -78, y: -115}
+        - {x: -64, y: -132}
+        - {x: -83, y: -164}
+        - {x: -73, y: -184}
+        - {x: -36, y: -184}
+        - {x: -20, y: -182}
+        - {x: 1, y: -184}
+        - {x: 62, y: -184}
+        - {x: 73, y: -140}
+        - {x: 85, y: -141}
+    - name: Melee Oni Walk_7
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 0
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 116, y: -127}
+        - {x: 116, y: -77}
+        - {x: 104, y: 22}
+        - {x: 111, y: 55}
+        - {x: 113, y: 106}
+        - {x: 94, y: 175}
+        - {x: 63, y: 173}
+        - {x: 45, y: 184}
+        - {x: -86, y: 184}
+        - {x: -88, y: 149}
+        - {x: -108, y: 135}
+        - {x: -114, y: 93}
+        - {x: -106, y: 50}
+        - {x: -129, y: 17}
+        - {x: -134, y: 0}
+        - {x: -134, y: -25}
+        - {x: -124, y: -39}
+        - {x: -93, y: -81}
+        - {x: -78, y: -115}
+        - {x: -64, y: -132}
+        - {x: -46, y: -134}
+        - {x: -87, y: -164}
+        - {x: -75, y: -184}
+        - {x: 91, y: -184}
+        - {x: 85, y: -147}
+        - {x: 114, y: -137}
+    - name: Melee Oni Walk_8
+      rect:
+        serializedVersion: 2
+        x: 732
+        y: 0
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 12, y: -172}
+        - {x: 19, y: -184}
+        - {x: 90, y: -184}
+        - {x: 100, y: -153}
+        - {x: 116, y: -139}
+        - {x: 116, y: -55}
+        - {x: 107, y: 22}
+        - {x: 116, y: 98}
+        - {x: 116, y: 109}
+        - {x: 94, y: 175}
+        - {x: 60, y: 184}
+        - {x: -87, y: 184}
+        - {x: -108, y: 135}
+        - {x: -114, y: 93}
+        - {x: -106, y: 50}
+        - {x: -129, y: 17}
+        - {x: -134, y: 0}
+        - {x: -134, y: -25}
+        - {x: -124, y: -39}
+        - {x: -93, y: -81}
+        - {x: -89, y: -122}
+        - {x: -96, y: -164}
+        - {x: -75, y: -184}
+        - {x: -42, y: -184}
+        - {x: 4, y: -179}
+        - {x: 11, y: -169}
+        - {x: 4, y: -144}
+        - {x: 14, y: -161}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

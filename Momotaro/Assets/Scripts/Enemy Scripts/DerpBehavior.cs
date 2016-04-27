@@ -39,10 +39,21 @@ public class DerpBehavior : EnemyBehavior {
 
 		if (anim.GetCurrentAnimatorStateInfo (0).IsName ("derpHurt")) {
 			anim.SetBool ("hurt", false);
+			anim.SetBool ("walking", false);
 		}
 		if (anim.GetCurrentAnimatorStateInfo (0).IsName ("derpKnockBack")) {
 			anim.SetBool ("knockback", false);
-
+			anim.SetBool ("walking", false);
+		}
+		if (anim.GetCurrentAnimatorStateInfo (0).IsName ("derpPoopedOn")) {
+			anim.SetBool ("poopedOn", false);
+			anim.SetBool ("knockback", false);
+			anim.SetBool ("walking", false);
+		}
+		if (anim.GetCurrentAnimatorStateInfo (0).IsName ("derpSlip")) {
+			anim.SetBool ("slip", false);
+			anim.SetBool ("knockback", false);
+			anim.SetBool ("walking", false);
 		}
 
 		if (attackCoolDown > 0f) {

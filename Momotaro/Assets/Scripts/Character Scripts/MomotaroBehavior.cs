@@ -216,7 +216,7 @@ public class MomotaroBehavior : MonoBehaviour {
 
 
 	public void attack() {
-		attackCoolDown = 0.5f;
+		attackCoolDown = 0.25f;
 		Collider[] enemyColliders = Physics.OverlapSphere(transform.position + Vector3.right * Mathf.Sign(transform.localScale.x) * 1f, 2f, 1 << LayerMask.NameToLayer ("Enemy"));
 		foreach (Collider enemyCol in enemyColliders) {
 			EnemyBehavior enemy = enemyCol.gameObject.GetComponent<EnemyBehavior> ();

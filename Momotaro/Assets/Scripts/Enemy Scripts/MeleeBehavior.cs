@@ -35,10 +35,21 @@ public class MeleeBehavior : EnemyBehavior {
 	void Update () {
 		if (anim.GetCurrentAnimatorStateInfo (0).IsName ("meleeHurt")) {
 			anim.SetBool ("hurt", false);
+			anim.SetBool ("walking", false);
 		}
 		if (anim.GetCurrentAnimatorStateInfo (0).IsName ("meleeKnockBack")) {
 			anim.SetBool ("knockback", false);
-
+			anim.SetBool ("walking", false);
+		}
+		if (anim.GetCurrentAnimatorStateInfo (0).IsName ("meleePoopedOn")) {
+			anim.SetBool ("poopedOn", false);
+			anim.SetBool ("knockback", false);
+			anim.SetBool ("walking", false);
+		}
+		if (anim.GetCurrentAnimatorStateInfo (0).IsName ("meleeSlip")) {
+			anim.SetBool ("slip", false);
+			anim.SetBool ("knockback", false);
+			anim.SetBool ("walking", false);
 		}
 
 		if (attackCoolDown > 0f) {
