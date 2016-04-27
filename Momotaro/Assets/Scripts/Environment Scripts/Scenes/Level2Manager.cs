@@ -28,23 +28,6 @@ public class Level2Manager : MonoBehaviour {
 		messages[1] = "Sounds like somebody in trouble! ";
 		messages[2] = "I smell Oni, Momo--lots of them.";
 		messages[3] = "It doesn’t matter how many of them there are! We’ve got to help whoever’s in trouble!";
-		// Scene 2
-		messages[4] = "Are you okay?";
-		//MONKEY: 👌! 🙏🏼 😊. 
-		messages[5] = "O… kay. You… don’t talk?";
-		//MONKEY: 🙊
-		messages[6] = "Got it.";
-		
-		// Scene 3
-		//MONKEY: 🐩!
-		messages[7] = "Er… yes?"; //dog
-		//MONKEY: 🍌, 👇.
-		messages[8] = "You… want a banana?"; //dog
-		//MONKEY: ! // Oni appears
-
-		// Scene 4
-		//messages[] Don’t worry, he’s not coming with us anyway. Goodbye, little fella!
-
 		bubbles[0].SetActive(false);
 		bubbles[1].SetActive(false);
 	}
@@ -92,9 +75,7 @@ public class Level2Manager : MonoBehaviour {
 			}
 			else if(door[0].GetComponent<Transform> ().position.y <= -21.5f){
 				for(int i = 0; i < 6; i++){
-					if(baddies[i] != null){
-						baddies[i].SetActive(true);
-					}
+					baddies[i].SetActive(true);
 				}
 				scene = 3;
 				momo.GetComponent<MomotaroBehavior> ().stop = false;
@@ -103,7 +84,7 @@ public class Level2Manager : MonoBehaviour {
 		if(scene == 3){
 			bool canProgress = true;
 			for(int i = 0; i < 6; i++){
-				canProgress = canProgress && (baddies[i] == null);
+				canProgress = canProgress && (baddies[i].GetComponent<EnemyBehavior> ().health == 0);
 			}
 			if(canProgress){
 				scene = 4;
@@ -132,9 +113,7 @@ public class Level2Manager : MonoBehaviour {
 			}
 			else if(door[2].GetComponent<Transform> ().position.y <= -21.5f){
 				for(int i = 6; i < 13; i++){
-					if(baddies[i] != null){
-						baddies[i].SetActive(true);
-					}
+					baddies[i].SetActive(true);
 				}
 				scene = 6;
 				momo.GetComponent<MomotaroBehavior> ().stop = false;
@@ -143,14 +122,14 @@ public class Level2Manager : MonoBehaviour {
 		if(scene == 6){
 			bool canProgress = true;
 			for(int i = 6; i < 13; i++){
-				canProgress = canProgress && (baddies[i] == null);
+				canProgress = canProgress && (baddies[i].GetComponent<EnemyBehavior> ().health == 0);
 			}
 			if(canProgress){
 				scene = 7;
 			}
 			else{
 				door[4].GetComponent<Transform> ().position = new Vector3(door[4].GetComponent<Transform> ().position.x,door[4].GetComponent<Transform> ().position.y -0.001f,door[4].GetComponent<Transform> ().position.z);
-				if(door[4].GetComponent<Transform> ().position.y <= -19f){
+				if(door[4].GetComponent<Transform> ().position.y <= 21.5f){
 					scene = 69;
 					textbox.GetComponent<Text>().text = "Game Over!";
 				}
@@ -162,15 +141,8 @@ public class Level2Manager : MonoBehaviour {
 				door[3].GetComponent<Transform> ().position = new Vector3(door[3].GetComponent<Transform> ().position.x,door[3].GetComponent<Transform> ().position.y +0.5f,door[3].GetComponent<Transform> ().position.z);
 			}
 			else if(door[3].GetComponent<Transform> ().position.y >= -17f){
-				textbox.GetComponent<Text>().text = "Press <Enter> to get the Monkey out of the cage";
-				if(Input.GetKey(KeyCode.Return)){
-					scene = 8;
-					monkey.SetActive(true);
-				}
+				scene = 8;
 			}
-		}
-		if(scene == 8){
-			
 		}
 	}
 }
