@@ -64,12 +64,14 @@ public class CharacterManager : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.P)) {
 			SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
 		}
+
 	}
 
 	void Awake() {
 		QualitySettings.vSyncCount = 0;
 		Application.targetFrameRate = 120;
 	}
+
 
 //	void OnGUI () {
 //		GUI.color = Color.black;
@@ -88,7 +90,7 @@ public class CharacterManager : MonoBehaviour {
 
 	void characterSwitchHold () {
 		Debug.Log(beginScene);
-		if ((Input.GetKey (KeyCode.D)) && dogObject.activeInHierarchy) {
+		if ((Input.GetKey (KeyCode.S)) && dogObject.activeInHierarchy) {
 			momo.controlling = false;
 			dog.controlling = true;
 			dog.inParty = false;
@@ -96,7 +98,7 @@ public class CharacterManager : MonoBehaviour {
 			pheasant.controlling = false;
 
 		}
-		else if (Input.GetKey (KeyCode.S) && monkeyObject.activeInHierarchy) {
+		else if (Input.GetKey (KeyCode.A) && monkeyObject.activeInHierarchy) {
 			momo.controlling = false;
 			dog.controlling = false;
 			monkey.controlling = true;
@@ -104,7 +106,7 @@ public class CharacterManager : MonoBehaviour {
 			pheasant.controlling = false;
 
 		}
-		else if (Input.GetKey (KeyCode.A) && pheasantObject.activeInHierarchy) {
+		else if (Input.GetKey (KeyCode.W) && pheasantObject.activeInHierarchy) {
 			momo.controlling = false;
 			dog.controlling = false;
 			monkey.controlling = false;

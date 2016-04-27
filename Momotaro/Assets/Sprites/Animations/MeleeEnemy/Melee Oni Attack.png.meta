@@ -1,0 +1,261 @@
+fileFormatVersion: 2
+guid: 4d815652472e34f3491004eb19de16f5
+timeCreated: 1461773279
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Melee Oni Attack_0
+    21300002: Melee Oni Attack_1
+    21300004: Melee Oni Attack_2
+    21300006: Melee Oni Attack_3
+    21300008: Melee Oni Attack_4
+    21300010: Melee Oni Attack_5
+    21300012: Melee Oni Attack_6
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Melee Oni Attack_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -81.5, y: 147}
+        - {x: -108.5, y: 80}
+        - {x: -108.5, y: -29}
+        - {x: -100.5, y: -35}
+        - {x: -68.5, y: -133}
+        - {x: -57.5, y: -147}
+        - {x: -22.5, y: -147}
+        - {x: 0.5, y: -143}
+        - {x: 7.5, y: -135}
+        - {x: 6.5, y: -124}
+        - {x: 4.5, y: -121}
+        - {x: 14.5, y: -107}
+        - {x: 7.5, y: -130}
+        - {x: 11.5, y: -144}
+        - {x: 15.5, y: -147}
+        - {x: 74.5, y: -147}
+        - {x: 93.5, y: -126}
+        - {x: 93.5, y: 108}
+        - {x: 91.5, y: 147}
+    - name: Melee Oni Attack_1
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 0
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 41.90219, y: 147}
+        - {x: -67.09781, y: 147}
+        - {x: -100.09781, y: 94}
+        - {x: -101.09781, y: 73}
+        - {x: -101.09781, y: -16}
+        - {x: -57.09781, y: -111}
+        - {x: -68.09781, y: -136}
+        - {x: -56.09781, y: -147}
+        - {x: -19.097809, y: -147}
+        - {x: -2.0978088, y: -145}
+        - {x: 9.902191, y: -136}
+        - {x: 6.902191, y: -120}
+        - {x: 10.902191, y: -128}
+        - {x: 8.902191, y: -138}
+        - {x: 9.902191, y: -147}
+        - {x: 75.90219, y: -147}
+        - {x: 92.90219, y: -144}
+        - {x: 93.90219, y: -142}
+        - {x: 93.90219, y: 112}
+        - {x: 79.90219, y: 144}
+    - name: Melee Oni Attack_2
+      rect:
+        serializedVersion: 2
+        x: 732
+        y: 0
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 92.80438, y: 86}
+        - {x: 76.80438, y: 139}
+        - {x: 50.804382, y: 147}
+        - {x: -67.19562, y: 147}
+        - {x: -88.19562, y: 93}
+        - {x: -88.19562, y: 46}
+        - {x: -76.19562, y: 18}
+        - {x: -77.19562, y: -63}
+        - {x: -56.195618, y: -103}
+        - {x: -68.19562, y: -130}
+        - {x: -56.195618, y: -147}
+        - {x: 85.80438, y: -147}
+        - {x: 94.80438, y: -125}
+        - {x: 94.80438, y: -6}
+        - {x: 91.80438, y: 44}
+    - name: Melee Oni Attack_3
+      rect:
+        serializedVersion: 2
+        x: 1098
+        y: 0
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 94.70654, y: 84}
+        - {x: 86.70654, y: 147}
+        - {x: -80.29346, y: 147}
+        - {x: -88.29346, y: 129}
+        - {x: -88.29346, y: -70}
+        - {x: -68.29346, y: -135}
+        - {x: -62.293457, y: -147}
+        - {x: 5.706543, y: -147}
+        - {x: 7.706543, y: -135}
+        - {x: 7.706543, y: -123}
+        - {x: 8.706543, y: -146}
+        - {x: 12.706543, y: -147}
+        - {x: 73.70654, y: -147}
+        - {x: 80.70654, y: -121}
+        - {x: 94.70654, y: -103}
+    - name: Melee Oni Attack_4
+      rect:
+        serializedVersion: 2
+        x: 1464
+        y: 0
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 76.608765, y: 138}
+        - {x: 44.608765, y: 147}
+        - {x: -68.391235, y: 147}
+        - {x: -87.391235, y: 91}
+        - {x: -87.391235, y: -95}
+        - {x: -81.391235, y: -133}
+        - {x: -62.391235, y: -147}
+        - {x: -7.3912354, y: -147}
+        - {x: 5.6087646, y: -145}
+        - {x: 10.608765, y: -123}
+        - {x: 8.608765, y: -138}
+        - {x: 14.608765, y: -147}
+        - {x: 73.608765, y: -147}
+        - {x: 94.608765, y: -112}
+        - {x: 94.608765, y: 77}
+        - {x: 93.608765, y: 97}
+    - name: Melee Oni Attack_5
+      rect:
+        serializedVersion: 2
+        x: 1830
+        y: 0
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 72.510864, y: 147}
+        - {x: -72.489136, y: 147}
+        - {x: -91.489136, y: 92}
+        - {x: -98.489136, y: 77}
+        - {x: -98.489136, y: -20}
+        - {x: -82.489136, y: -94}
+        - {x: -65.489136, y: -147}
+        - {x: -0.48913574, y: -147}
+        - {x: 8.510864, y: -135}
+        - {x: 7.5108643, y: -124}
+        - {x: 5.5108643, y: -121}
+        - {x: 28.510864, y: -109}
+        - {x: 7.5108643, y: -127}
+        - {x: 12.510864, y: -147}
+        - {x: 83.510864, y: -147}
+        - {x: 94.510864, y: -104}
+        - {x: 94.510864, y: 104}
+        - {x: 86.510864, y: 145}
+    - name: Melee Oni Attack_6
+      rect:
+        serializedVersion: 2
+        x: 2196
+        y: 0
+        width: 366
+        height: 368
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 76.913086, y: 141}
+        - {x: 46.913086, y: 147}
+        - {x: -61.086914, y: 147}
+        - {x: -83.086914, y: 109}
+        - {x: -91.086914, y: 74}
+        - {x: -87.086914, y: 31}
+        - {x: -101.086914, y: 6}
+        - {x: -104.086914, y: 0}
+        - {x: -104.086914, y: -28}
+        - {x: -83.086914, y: -62}
+        - {x: -73.086914, y: -100}
+        - {x: -73.086914, y: -122}
+        - {x: -55.086914, y: -147}
+        - {x: 78.913086, y: -147}
+        - {x: 94.913086, y: -111}
+        - {x: 94.913086, y: 47}
+        - {x: 93.913086, y: 97}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

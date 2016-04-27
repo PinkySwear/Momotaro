@@ -22,6 +22,7 @@ public class PoopBehavior: MonoBehaviour {
 			EnemyBehavior enemy = other.GetComponent<EnemyBehavior> ();
 			enemy.knockBack (Vector3.up * 100f);
 			enemy.stun (5f);
+			enemy.setAnimBool ("poopedOn", true);
 			this.gameObject.GetComponent<Rigidbody> ().AddForce (Vector3.up * 500f);
 			Destroy (this.gameObject);
 		}

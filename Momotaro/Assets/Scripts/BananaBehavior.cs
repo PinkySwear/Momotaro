@@ -33,6 +33,7 @@ public class BananaBehavior : MonoBehaviour {
 			EnemyBehavior enemy = other.GetComponent<EnemyBehavior> ();
 			enemy.knockBack (Vector3.up * 700f);
 			enemy.stun (5f);
+			enemy.setAnimBool ("slip", true);
 			slippedOn = true;
 			this.gameObject.GetComponent<Rigidbody> ().AddForce (Vector3.up * 500f);
 		}

@@ -41,7 +41,7 @@ public class EnemyBehavior : MonoBehaviour {
 			anim.SetBool ("dead", false);
 		}
 		if (stunned) {
-			transform.rotation = Quaternion.Euler (new Vector3(0f, stunDuration * 360f, 0f));
+//			transform.rotation = Quaternion.Euler (new Vector3(0f, stunDuration * 360f, 0f));
 			if (stunDuration > 0f) {
 				stunDuration -= Time.deltaTime;
 			}
@@ -62,6 +62,7 @@ public class EnemyBehavior : MonoBehaviour {
 			if (!anim.GetBool ("dead") && !anim.GetCurrentAnimatorStateInfo (0).IsName ("poof")) {
 //				Destroy (gameObject);
 				transform.position = new Vector3(0f, 0f, 500f);
+				Destroy (gameObject);
 			}
 		}
 
@@ -126,5 +127,9 @@ public class EnemyBehavior : MonoBehaviour {
 			stunned = true;
 			stunDuration = Mathf.Max(duration, stunDuration);
 		}
+	}
+
+	public void setAnimBool(string bName, bool bVal) {
+		anim.SetBool (bName, bVal);
 	}
 }
