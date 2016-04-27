@@ -65,7 +65,7 @@ public class AudioControl : MonoBehaviour {
 			aSources[7].Play();
 		}
 		for (int i=0;i < badies.Length; i++){
-			if(badies[i].GetComponent<EnemyBehavior> ().health == 0 && badies[i].GetComponent<EnemyBehavior> ().health != damages[i]){
+			if(badies[i] != null && badies[i].GetComponent<EnemyBehavior> ().health == 0 && badies[i].GetComponent<EnemyBehavior> ().health != damages[i]){
 				if(identity[i] == 0){
 					aSources[9].Play();
 				}
@@ -74,7 +74,7 @@ public class AudioControl : MonoBehaviour {
 				}
 				damages[i] = badies[i].GetComponent<EnemyBehavior> ().health;
 			}
-			else if(badies[i].GetComponent<EnemyBehavior> ().health != damages[i]){
+			else if(badies[i] != null && badies[i].GetComponent<EnemyBehavior> ().health != damages[i]){
 				if(identity[i] == 0){
 					aSources[8].Play();
 				}
