@@ -23,7 +23,9 @@ public class Level0Manager : MonoBehaviour {
 	private Rigidbody momRb;
 	
 	private bool nearSword;
+	private bool swordTaken;
 	private bool nearMom;
+	private bool postMom;
 	private int swordScene;
 	private int count;
 	private float startTime;
@@ -34,6 +36,8 @@ public class Level0Manager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		postMom = false;
+		swordTaken = false;
 		dadRb = dad.GetComponent<Rigidbody> ();
 		dadRb.freezeRotation = true;
 		momRb = mom.GetComponent<Rigidbody> ();
@@ -62,9 +66,9 @@ public class Level0Manager : MonoBehaviour {
 		messages[15] = "Absolutely not. This is for adults. You stay here, and don’t leave the house.";
 		// Sword Scene
 		messages[16] = "Through the darkness of future's past...";
-		messages[17] = "The magician longs to see.";
-		messages[18] = "One chants out between two worlds...";
-		messages[19] = "'Fire... walk with me.'";
+		messages[17] = "Dad's sword... I shouldn't...";
+		messages[18] = "But somebody's got to do something about those Oni!";
+		messages[19] = "Press 'Enter' to take Dad's sword";
 		
 		bubbles[0].SetActive(false);
 		bubbles[1].SetActive(false);
@@ -74,21 +78,40 @@ public class Level0Manager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(momo.GetComponent<Transform> ().position.x <= 27f){
-			textbox.GetComponent<Text>().text = "Press 'Enter' to Examine Dad's Sword";
-			nearSword = true;
-			nearMom = false;
-		}
-		else if(momo.GetComponent<Transform> ().position.x >= 34f){
-			textbox.GetComponent<Text>().text = "Press 'Enter' to Talk with Mom";
-			nearMom = true;
-			nearSword = false;
-		}
-		else{
-			textbox.GetComponent<Text>().text = "";
-			nearMom = false;
-			nearSword = false;
-		}
+
+			if(momo.GetComponent<Transform> ().position.x <= 27f){
+				if(!postMom){
+					textbox.GetComponent<Text>().text = "Press 'Enter' to Examine Dad's Sword";
+					nearSword = true;
+					nearMom = false;
+					}
+				else {
+					if (!swordTaken){
+						textbox.GetComponent<Text>().text = "Press 'Enter' to take Dad's Sword";
+						nearSword = true;
+						nearMom = false;
+						}
+					else {
+						textbox.GetComponent<Text>().text = "";
+						nearSword = true;
+						nearMom = false;
+						}
+					}
+				}
+			else if(momo.GetComponent<Transform> ().position.x >= 34f){
+				if (!postMom){
+					textbox.GetComponent<Text>().text = "Press 'Enter' to Talk with Mom";
+					nearMom = true;
+					nearSword = false;
+					}
+			else {
+				textbox.GetComponent<Text>().text = "";
+				nearMom = true;
+				nearSword = false;
+				}
+			}
+	
+		
 		
 		// Conversation Interaction
 		if(nearMom && Input.GetKey(KeyCode.Return) && enterConvo==0){
@@ -140,6 +163,9 @@ public class Level0Manager : MonoBehaviour {
 				startTime = Time.time;
 				count ++;
 			}
+				if(count > 5){
+				postMom = true;
+			}
 			if(count > 11){
 				enterConvo = 4;
 			}
@@ -173,6 +199,9 @@ public class Level0Manager : MonoBehaviour {
 				bubbles[2].SetActive(false);
 				moveBoth = true;
 			}
+				if(count > 18){
+				swordTaken = true;
+			}
 		}
 		
 		// Sword Interaction
@@ -185,7 +214,7 @@ public class Level0Manager : MonoBehaviour {
 			}
 		}
 		if(nearSword && swordScene == 1){
-			textbox.GetComponent<Text>().text = "Momotaro! Come eat your breakfast!";
+			textbox.GetComponent<Text>().text = "Momotaro! Come and eat your breakfast!";
 			bubbles[0].SetActive(true);
 		}
 		else if(nearSword && swordScene == 2 && count < 20){
@@ -195,6 +224,7 @@ public class Level0Manager : MonoBehaviour {
 				count ++;
 				if(count >= 20){
 					wall.SetActive(false);
+					chest.SetActive(false);
 				}
 			}
 		}
@@ -204,7 +234,7 @@ public class Level0Manager : MonoBehaviour {
 		}
 		if(momo.GetComponent<Transform> ().position.x >=58f){
 			momo.GetComponent<MomotaroBehavior> ().stop = false;
-			textbox.GetComponent<Text>().text = "You are leaving the comfort of your home. Press <Enter> to begin your journey.";
+			textbox.GetComponent<Text>().text = "You are leaving the comfort of your home. Press 'Enter' to begin your journey.";
 			theEnd = true;
 		}
 		if(theEnd && Input.GetKey(KeyCode.Return)){
