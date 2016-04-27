@@ -55,6 +55,9 @@ public class DerpBehavior : EnemyBehavior {
 			anim.SetBool ("knockback", false);
 			anim.SetBool ("walking", false);
 		}
+		if (anim.GetCurrentAnimatorStateInfo (0).IsName ("derpAttack")) {
+			anim.SetBool ("attacking", false);
+		}
 
 		if (attackCoolDown > 0f) {
 			attackCoolDown -= Time.deltaTime;
@@ -98,8 +101,13 @@ public class DerpBehavior : EnemyBehavior {
 					}
 				}
 				if (numThingsInTheWay > 0) {
-					movingLeft = !movingLeft;
-					movingRight = !movingRight;
+					if (Random.value > 0.5f) {
+						movingLeft = !movingLeft;
+						movingRight = !movingRight;
+					}
+					else {
+						jump = true;
+					}
 				}
 			}
 		}
@@ -142,7 +150,7 @@ public class DerpBehavior : EnemyBehavior {
 	void attack () {
 		momo.takeDamage (1);
 		attackCoolDown = 2f;
-
+		anim.SetBool ("attacking", true);
 	}
 
 	void OnTriggerEnter (Collider other) {

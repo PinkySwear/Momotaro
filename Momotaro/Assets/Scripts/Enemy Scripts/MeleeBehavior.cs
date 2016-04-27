@@ -51,6 +51,9 @@ public class MeleeBehavior : EnemyBehavior {
 			anim.SetBool ("knockback", false);
 			anim.SetBool ("walking", false);
 		}
+		if (anim.GetCurrentAnimatorStateInfo (0).IsName ("meleeAttack")) {
+			anim.SetBool ("attacking", false);
+		}
 
 		if (attackCoolDown > 0f) {
 			attackCoolDown -= Time.deltaTime;
@@ -138,6 +141,7 @@ public class MeleeBehavior : EnemyBehavior {
 	void attack () {
 		momo.takeDamage (1);
 		attackCoolDown = 2f;
+		anim.SetBool ("attacking", true);
 
 	}
 

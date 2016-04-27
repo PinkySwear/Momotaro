@@ -76,11 +76,21 @@ public class MomotaroBehavior : MonoBehaviour {
 		myRb.freezeRotation = true;
 		Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Interactable"));
 		Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Player"));
+//		Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("PlayerDetector"));
+//		Physics.IgnoreLayerCollision(LayerMask.NameToLayer("PlayerDetector"), LayerMask.NameToLayer("PlayerDetector"));
+
+
 		Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Enemy"), LayerMask.NameToLayer("Enemy"));
 		Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Enemy"), LayerMask.NameToLayer("Player"));
+//		Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Enemy"), LayerMask.NameToLayer("PlayerDetector"));
+
 		Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Enemy"), LayerMask.NameToLayer("Interactable"));
 		Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Detector"), LayerMask.NameToLayer("Interactable"));
 		Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Detector"), LayerMask.NameToLayer("Detector"));
+//		Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Detector"), LayerMask.NameToLayer("PlayerDetector"));
+
+
+
 	}
 
 	void Update() {
@@ -248,10 +258,14 @@ public class MomotaroBehavior : MonoBehaviour {
 	}
 
 	void OnTriggerEnter (Collider other) {
-		underNum++;
+		if (other.gameObject.layer == LayerMask.NameToLayer ("Obstacle")) {
+			underNum++;
+		}
 	}
 
 	void OnTriggerExit (Collider other) {
-		underNum--;
+		if (other.gameObject.layer == LayerMask.NameToLayer ("Obstacle")) {
+			underNum--;
+		}
 	}
 }
