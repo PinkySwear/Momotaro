@@ -178,10 +178,14 @@ public class CharacterBehavior : MonoBehaviour {
 	}
 
 	protected void OnTriggerEnter (Collider other) {
-		underNum++;
+		if (other.gameObject.layer == LayerMask.NameToLayer ("Obstacle")) {
+			underNum++;
+		}
 	}
 
 	protected void OnTriggerExit (Collider other) {
-		underNum--;
+		if (other.gameObject.layer == LayerMask.NameToLayer ("Obstacle")) {
+			underNum--;
+		}
 	}
 }
