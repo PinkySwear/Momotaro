@@ -53,6 +53,8 @@ public class MeleeBehavior : EnemyBehavior {
 		}
 		if (anim.GetCurrentAnimatorStateInfo (0).IsName ("meleeAttack")) {
 			anim.SetBool ("attacking", false);
+//			anim.SetBool ("walking", false);
+
 		}
 
 		if (attackCoolDown > 0f) {
@@ -90,10 +92,12 @@ public class MeleeBehavior : EnemyBehavior {
 					if (Random.value > 0.5f) {
 						movingLeft = true;
 						movingRight = false;
+						anim.SetBool ("walking", true);
 					}
 					else {
 						movingLeft = false;
 						movingRight = true;
+						anim.SetBool ("walking", true);
 					}
 				}
 				if (numThingsInTheWay > 0) {
@@ -106,6 +110,7 @@ public class MeleeBehavior : EnemyBehavior {
 		if (state == 1) {
 			movingLeft = false;
 			movingRight = false;
+			anim.SetBool ("walking", false);
 			Debug.Log ("IN STATE 1");
 			Debug.Log (attackCoolDown);
 			Debug.Log (!momo.anim.GetCurrentAnimatorStateInfo (0).IsName ("momoHurt"));

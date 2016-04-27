@@ -59,6 +59,7 @@
      <Compile Include="Assets\Scripts\Enemy Scripts\DerpBehavior.cs" />
      <Compile Include="Assets\Scripts\Enemy Scripts\EnemyBehavior.cs" />
      <Compile Include="Assets\Scripts\Enemy Scripts\MeleeBehavior.cs" />
+     <Compile Include="Assets\Scripts\Enemy Scripts\SpitterBehavior.cs" />
      <Compile Include="Assets\Scripts\Environment Scripts\AudioControl.cs" />
      <Compile Include="Assets\Scripts\Environment Scripts\BarkObject.cs" />
      <Compile Include="Assets\Scripts\Environment Scripts\CameraControl.cs" />
@@ -71,6 +72,7 @@
      <Compile Include="Assets\Scripts\Environment Scripts\Scenes\Level1Manager.cs" />
      <Compile Include="Assets\Scripts\Environment Scripts\Scenes\Level2Manager.cs" />
      <Compile Include="Assets\Scripts\Environment Scripts\Scenes\LevelOneDialogue.cs" />
+     <Compile Include="Assets\Scripts\GooBehavior.cs" />
      <Compile Include="Assets\Scripts\Instructions.cs" />
      <Compile Include="Assets\Scripts\PoopBehavior.cs" />
  <Reference Include="UnityEngine.UI">
