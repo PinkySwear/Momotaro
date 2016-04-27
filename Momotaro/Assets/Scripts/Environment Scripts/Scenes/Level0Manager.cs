@@ -75,7 +75,7 @@ public class Level0Manager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(momo.GetComponent<Transform> ().position.x <= 27f){
-			textbox.GetComponent<Text>().text = "Press 'Enter' to Examine Dad's Sword-Chest";
+			textbox.GetComponent<Text>().text = "Press 'Enter' to Examine Dad's Sword";
 			nearSword = true;
 			nearMom = false;
 		}
@@ -185,7 +185,7 @@ public class Level0Manager : MonoBehaviour {
 			}
 		}
 		if(nearSword && swordScene == 1){
-			textbox.GetComponent<Text>().text = "Please don't touch that, honey!";
+			textbox.GetComponent<Text>().text = "Momotaro! Come eat your breakfast!";
 			bubbles[0].SetActive(true);
 		}
 		else if(nearSword && swordScene == 2 && count < 20){

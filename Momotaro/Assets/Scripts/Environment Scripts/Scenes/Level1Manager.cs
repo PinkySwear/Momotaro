@@ -99,30 +99,30 @@ public class Level1Manager : MonoBehaviour {
 			}
 		}
 		
-		if(scene == 8 && momo.GetComponent<Transform> ().position.x < 130f){
-			if(companion.GetComponent<Transform> ().position.x >= 131f &&
-			   companion.GetComponent<Transform> ().position.y >= -16f){
+		if(scene == 8 && momo.GetComponent<Transform> ().position.x < 140f){
+			if(companion.GetComponent<Transform> ().position.x >= 139f &&
+			   companion.GetComponent<Transform> ().position.y >= -19f){
 				textbox.GetComponent<Text>().text = "Good! Press 'Enter' to Let Momo through!";
 				if(Input.GetKey (KeyCode.Return)){
 					textbox.GetComponent<Text>().text = "";
 					Debug.Log(scene);
 					scene = 9;
-					momo.GetComponent<Transform> ().position = new Vector3 (130f,-15f,0f);
+					momo.GetComponent<Transform> ().position = new Vector3 (140f,-18f,0f);
 					Debug.Log(scene);
 				}
 			}
-			else if(momo.GetComponent<Transform> ().position.x >= 122f && momo.GetComponent<Transform> ().position.x < 130f){
+			else if(momo.GetComponent<Transform> ().position.x >= 133f && momo.GetComponent<Transform> ().position.x < 140f){
 				textbox.GetComponent<Text>().text = "You may press the 'Down Arrow' on colored dirt to dig with dog.";
 			}
 		}
-		else if(scene ==8 && momo.GetComponent<Transform> ().position.x < 145f && beginFight==0){
-			if(companion.GetComponent<Transform> ().position.x >= 146f &&
-			   companion.GetComponent<Transform> ().position.y >= -16f){
+		else if(scene ==8 && momo.GetComponent<Transform> ().position.x < 154f && beginFight==0){
+			if(companion.GetComponent<Transform> ().position.x >= 154f &&
+			   companion.GetComponent<Transform> ().position.y >= -19f){
 				textbox.GetComponent<Text>().text = "Press 'Enter' to Let Momo through!";
 				if(Input.GetKey (KeyCode.Return)){
 					textbox.GetComponent<Text>().text = "";
 					scene = 10;
-					momo.GetComponent<Transform> ().position = new Vector3 (145f,-15f,0f);
+					momo.GetComponent<Transform> ().position = new Vector3 (154f,-15f,0f);
 					scene = 10;
 					beginFight = 1;
 				}
@@ -144,7 +144,7 @@ public class Level1Manager : MonoBehaviour {
 			}
 			cam.GetComponent<AudioSource> ().volume = 0f;
 		}
-		if(momo.GetComponent<Transform> ().position.x > 182f){
+		if(momo.GetComponent<Transform> ().position.x > 190f){
 			textbox.GetComponent<Text>().text = "Congrats! Press X to progress to the next level!";
 			if(Input.GetKey (KeyCode.X)){
 				SceneManager.LoadScene ("AlphaDemo");
@@ -158,7 +158,7 @@ public class Level1Manager : MonoBehaviour {
 				if(Input.GetKey (KeyCode.Return)){
 					textbox.GetComponent<Text>().text = "";
 					scene = 10;
-					momo.GetComponent<Transform> ().position = new Vector3 (145f,-15f,0f);
+					momo.GetComponent<Transform> ().position = new Vector3 (154f,-15f,0f);
 				}
 			}
 			else{
