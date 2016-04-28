@@ -14,6 +14,7 @@ public class Level0Manager : MonoBehaviour {
 	public GameObject chest;
 	public GameObject[] bubbles;
 	public GameObject wall;
+	public GameObject scaredMom;
 	public string[] messages;
 	
 	public float velocity;
@@ -21,6 +22,7 @@ public class Level0Manager : MonoBehaviour {
 	public bool moveBoth;
 	private Rigidbody dadRb;
 	private Rigidbody momRb;
+	private SpriteRenderer momSprite;
 	
 	private bool nearSword;
 	private bool swordTaken;
@@ -38,6 +40,7 @@ public class Level0Manager : MonoBehaviour {
 	void Start () {
 		postMom = false;
 		swordTaken = false;
+		momSprite = mom.GetComponent<SpriteRenderer> ();
 		dadRb = dad.GetComponent<Rigidbody> ();
 		dadRb.freezeRotation = true;
 		momRb = mom.GetComponent<Rigidbody> ();
@@ -116,6 +119,7 @@ public class Level0Manager : MonoBehaviour {
 		// Conversation Interaction
 		if(nearMom && Input.GetKey(KeyCode.Return) && enterConvo==0){
 			enterConvo = 1;
+			postMom = true;
 		}
 		Debug.Log(enterConvo);
 		if(enterConvo == 1){
@@ -163,14 +167,13 @@ public class Level0Manager : MonoBehaviour {
 				startTime = Time.time;
 				count ++;
 			}
-				if(count > 5){
-				postMom = true;
-			}
 			if(count > 11){
 				enterConvo = 4;
 			}
 		}
 		else if(enterConvo == 4){
+			momSprite.enabled = false;
+			scaredMom.SetActive(true);
 			if((count % 2) ==0){
 				bubbles[1].SetActive(true);
 				bubbles[2].SetActive(false);
@@ -269,7 +272,7 @@ public class Level0Manager : MonoBehaviour {
 			dad.GetComponent<Transform>().localScale = s;
 			transform.localScale = t;
 			dad.GetComponent<Transform> ().rotation = new Quaternion (0f, 0f, 0f, 0f);
-			//mom.GetComponent<Transform> ().rotation = new Quaternion (0f, 180f, 0f, 0f);
+			mom.GetComponent<Transform> ().rotation = new Quaternion (0f, 180f, 0f, 0f);
 			if(mom.GetComponent<Transform> ().position.x >= 54f){
 				isDone = true;
 				mom.SetActive(false);
