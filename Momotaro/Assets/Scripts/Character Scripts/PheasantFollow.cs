@@ -68,10 +68,14 @@ public class PheasantFollow : CharacterBehavior {
 		movingUp = false;
 		movingDown = false;
 			
+		bool wasSpecialBefore = specialMovement;
 		specialMovement = false;
 
 		if (controlling){
 			specialMovement = true;
+		}
+		if (!specialMovement && wasSpecialBefore) {
+			myRb.velocity = new Vector3 (myRb.velocity.x, 0f, 0f);
 		}
 
 //		if (controlling && !specialMovement) {

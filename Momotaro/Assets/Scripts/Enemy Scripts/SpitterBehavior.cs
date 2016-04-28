@@ -3,7 +3,7 @@ using System.Collections;
 
 public class SpitterBehavior: EnemyBehavior {
 
-	float attackCoolDown;
+//	float attackCoolDown;
 	bool nearPlayer;
 
 	private float idleTime;
@@ -14,6 +14,7 @@ public class SpitterBehavior: EnemyBehavior {
 
 	public GameObject gooPrefab;
 
+	float spitVelocity;
 
 
 	//current enemy state 0:default, 1:chasing, 2:in combat
@@ -78,10 +79,16 @@ public class SpitterBehavior: EnemyBehavior {
 
 		state = 0;
 
-		if (nearPlayer && !stunned && !isDead) {
+//		if (nearPlayer && !stunned && !isDead) {
+//			state = 1;
+//		}
+
+		if(Vector3.Distance(transform.position, momo.transform.position) < 20f 
+			&& transform.localScale.x * (momo.transform.position.x - transform.position.x) > 0f
+			&& Physics.Raycast(transform.position, momo.transform.position - transform.position, 20f, 1 << LayerMask.NameToLayer("Player") | 1 << LayerMask.NameToLayer("Interactable") | 1 << LayerMask.NameToLayer("Enemy")) 
+			&& !stunned && !isDead) {
 			state = 1;
 		}
-		state = 1;
 
 		if (state == 0) {
 
@@ -110,6 +117,9 @@ public class SpitterBehavior: EnemyBehavior {
 		}
 
 		if (state == 1) {
+			Vector3 s = transform.localScale;
+			s.x = Mathf.Sign(momo.transform.position.x - transform.position.x);
+			transform.localScale = s;
 			movingLeft = false;
 			movingRight = false;
 			anim.SetBool ("walking", false);
@@ -120,43 +130,31 @@ public class SpitterBehavior: EnemyBehavior {
 			if (attackCoolDown <= 0f && !momo.anim.GetCurrentAnimatorStateInfo (0).IsName ("momoHurt") && momo.invuln <= 0f) {
 				attack ();
 			}
-		}
 
-		//		if (attackCoolDown > 0f) {
-		//			attackCoolDown -= Time.deltaTime;
-		//		}
-		//
-		//		if (numThingsInTheWay > 0) {
-		//			movingLeft = !movingLeft;
-		//			movingRight = !movingRight;
-		//		}
-		//		if (nearPlayer && !stunned) {
-		//			movingLeft = false;
-		//			movingRight = false;
-		//			if (attackCoolDown <= 0f) {
-		//				attack ();
-		//			}
-		//		}
-		//		else {
-		//			movingLeft = true;
-		//		}
-		//
+		}
+			
 		UpdateP ();
 
 	}
 
 	void attack () {
 //		momo.takeDamage (1);
-		attackCoolDown = 1f;
+		attackCoolDown = 3f;
 		anim.SetBool ("attacking", true);
 		GameObject spawnedGoo = (GameObject) Instantiate (gooPrefab, transform.position + Vector3.up * 0.2f, Quaternion.identity);
 		Rigidbody gooRB = spawnedGoo.GetComponent<Rigidbody> ();
-		Vector3 positionDif = momo.transform.position - spawnedGoo.transform.position;
-		Debug.Log (Mathf.Sign (positionDif.x));
-		float dy = positionDif.y;
-		float angle = 0.5f * Mathf.Acos (100f * dy / Mathf.Pow (30f, 2f));
-
-		gooRB.velocity = (Mathf.Sign(positionDif.x) * Mathf.Cos(angle) * Vector3.right + Mathf.Sin(angle) * Vector3.up).normalized * 30f;
+		Vector3 diff = momo.transform.position - spawnedGoo.transform.position;
+		spitVelocity = 35f;
+//		spitVelocity = Mathf.Pow(Mathf.Abs(diff.x), 1.5f);
+//		Debug.Log ("SPIT IS THIS FAST " + spitVelocity);
+//		float ss = spitVelocity * spitVelocity;
+//		float top = spitVelocity - Mathf.Sqrt ((ss + 100f * (diff.y - (25f / ss) * Mathf.Pow (diff.x, 2))));
+//		Debug.Log ("UNDER SQRT" + (ss + 100f * (diff.y - (25f / ss) * Mathf.Pow (diff.x, 2))));
+//		float bot = (-50f / spitVelocity) * diff.x;
+//		float angle = Mathf.Atan (top / bot);
+//		Debug.Log (angle);
+		float angle = 0.5f * Mathf.Asin((50f) * Mathf.Abs(diff.x) / (spitVelocity * spitVelocity));
+		gooRB.velocity = (Mathf.Sign(diff.x) * Mathf.Cos(angle) * Vector3.right + Mathf.Sin(angle) * Vector3.up).normalized * spitVelocity;
 		//		bananaRB.AddForce (new Vector3 (((500f * transform.localScale.x) + (400f * (myRb.velocity.x / 10f))), 750f, 0f));
 		//		bananaRB.velocity = myRb.velocity;
 		spawnedGoo.GetComponent<GooBehavior> ().momo = this.momo;

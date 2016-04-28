@@ -19,6 +19,7 @@ public class EnemyBehavior : MonoBehaviour {
 	protected bool movingLeft;
 	protected bool movingRight;
 	protected bool jump = false;
+	protected float attackCoolDown;
 
 	public Animator anim;
 
@@ -46,6 +47,7 @@ public class EnemyBehavior : MonoBehaviour {
 				stunDuration -= Time.deltaTime;
 			}
 			if (stunDuration <= 0f) {
+				attackCoolDown = 3f;
 				stunned = false;
 			}
 		}

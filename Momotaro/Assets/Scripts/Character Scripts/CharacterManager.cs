@@ -16,6 +16,8 @@ public class CharacterManager : MonoBehaviour {
 	public MonkeyFollow monkey;
 	public PheasantFollow pheasant;
 
+	public GameObject triangleThing;
+	public Vector3 trianglePos;
 	public GameObject[] characterObjects;
 
 	public bool holdSwitching;
@@ -24,6 +26,8 @@ public class CharacterManager : MonoBehaviour {
 	public GameObject[] withPheasant;
 	public GameObject[] withMonkey;
 	public GameObject[] withDog;
+
+
 
 
 	// Use this for initialization
@@ -37,11 +41,23 @@ public class CharacterManager : MonoBehaviour {
 		pheasant = pheasantObject.GetComponent<PheasantFollow> ();
 		pheasant.controlling = false;
 		holdSwitching = false;
+		trianglePos = momo.transform.position + Vector3.up * 2.5f;
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+		if (momo.controlling)
+			trianglePos = momo.transform.position + Vector3.up * 2.5f;
+		else if (dog.controlling)
+			trianglePos = dog.transform.position + Vector3.up * 1.5f;
+		else if (monkey.controlling)
+			trianglePos = monkey.transform.position + Vector3.up * 1.5f;
+		else if (pheasant.controlling)
+			trianglePos = pheasant.transform.position + Vector3.up * 2f;
+
+
 		if (holdSwitching) {
 			characterSwitchHold ();
 		}
@@ -64,6 +80,7 @@ public class CharacterManager : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.P)) {
 			SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
 		}
+		triangleThing.transform.position = trianglePos;
 
 	}
 

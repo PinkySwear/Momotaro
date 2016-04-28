@@ -3,7 +3,7 @@ using System.Collections;
 
 public class DerpBehavior : EnemyBehavior {
 
-	float attackCoolDown;
+//	float attackCoolDown;
 	bool nearPlayer;
 
 	private float idleTime;
