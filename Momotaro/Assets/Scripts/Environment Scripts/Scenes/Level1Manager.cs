@@ -15,6 +15,8 @@ public class Level1Manager : MonoBehaviour {
 	public GameObject momo;
 	public GameObject companion;
 	public GameObject textbox;
+	public GameObject pillar;
+	public GameObject pillar2;
 	public int scene;
 	public bool[] onisKilled;
 	public AudioSource[] companionSong;
@@ -25,6 +27,7 @@ public class Level1Manager : MonoBehaviour {
 	public int beginFight;
 	private float startTime;
 	private float beginTime;
+	public bool moveBlock;
 
 	// Use this for initialization
 	void Start () {
@@ -102,33 +105,35 @@ public class Level1Manager : MonoBehaviour {
 		if(scene == 8 && momo.GetComponent<Transform> ().position.x < 140f){
 			if(companion.GetComponent<Transform> ().position.x >= 141f &&
 			   companion.GetComponent<Transform> ().position.y >= -18f){
-				textbox.GetComponent<Text>().text = "Good! Press 'Enter' to Let Momo through!";
-				if(Input.GetKey (KeyCode.Return)){
-					textbox.GetComponent<Text>().text = "";
-					Debug.Log(scene);
-					scene = 9;
-					momo.GetComponent<Transform> ().position = new Vector3 (140f,-18f,0f);
-					Debug.Log(scene);
-				}
+				moveBlock = true;
 			}
 			else if(momo.GetComponent<Transform> ().position.x >= 132f && momo.GetComponent<Transform> ().position.x < 140f){
 				textbox.GetComponent<Text>().text = "You may press the 'Down Arrow' on colored dirt to dig with dog.";
+			}
+			if(moveBlock && pillar.GetComponent<Transform> ().position.y >= -3f && (Time.time - startTime) >= 0.01f){
+				startTime = Time.time;
+				pillar.GetComponent<Transform> ().position = new Vector3 (pillar.GetComponent<Transform> ().position.x,pillar.GetComponent<Transform> ().position.y-0.05f,pillar.GetComponent<Transform> ().position.z);
+			}
+			else{
+				moveBlock = false;
 			}
 		}
 		else if(scene ==8 && momo.GetComponent<Transform> ().position.x < 155f && beginFight==0){
 			if(companion.GetComponent<Transform> ().position.x >= 156f &&
 			   companion.GetComponent<Transform> ().position.y >= -18f){
-				textbox.GetComponent<Text>().text = "Press 'Enter' to Let Momo through!";
-				if(Input.GetKey (KeyCode.Return)){
-					textbox.GetComponent<Text>().text = "";
-					scene = 10;
-					momo.GetComponent<Transform> ().position = new Vector3 (155f,-18f,0f);
-					scene = 10;
-					beginFight = 1;
-				}
+				moveBlock = true;
 			}
 			else{
+				moveBlock = false;
 				textbox.GetComponent<Text>().text = "";
+			}
+			if(moveBlock && pillar2.GetComponent<Transform> ().position.y >= -22f && (Time.time - startTime) >= 0.01f){
+				startTime = Time.time;
+				pillar2.GetComponent<Transform> ().position = new Vector3 (pillar2.GetComponent<Transform> ().position.x,pillar2.GetComponent<Transform> ().position.y-0.05f,pillar2.GetComponent<Transform> ().position.z);
+			}
+			else if(moveBlock && pillar2.GetComponent<Transform> ().position.y < -22f){
+				moveBlock = false;
+				beginFight = 1;
 			}
 		}
 		else if(beginFight == 1 && scene ==8){
@@ -145,8 +150,8 @@ public class Level1Manager : MonoBehaviour {
 			cam.GetComponent<AudioSource> ().volume = 0f;
 		}
 		if(momo.GetComponent<Transform> ().position.x > 182f){
-			textbox.GetComponent<Text>().text = "Congrats! Press X to progress to the next level!";
-			if(Input.GetKey (KeyCode.X)){
+			textbox.GetComponent<Text>().text = "The smell of Oni fades... the land has been cleansed. Press 'Enter' to continue.";
+			if(Input.GetKey (KeyCode.Return)){
 				SceneManager.LoadScene ("FinalLevel2");
 			}
 		}
