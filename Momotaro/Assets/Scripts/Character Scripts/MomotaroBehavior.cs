@@ -242,8 +242,13 @@ public class MomotaroBehavior : MonoBehaviour {
 		if (health > 0) {
 			healthNums[health].SetActive(false);
 			health -= dm;
-			anim.SetBool ("gettingHit", true);
-			invuln = 1f;
+			if (dm > 0) {
+				anim.SetBool ("gettingHit", true);
+				invuln = 1f;
+			}
+			if (health > 6) {
+				health = 6;
+			}
 			healthNums[health].SetActive(true);
 
 		}
@@ -258,13 +263,15 @@ public class MomotaroBehavior : MonoBehaviour {
 	}
 
 	void OnTriggerEnter (Collider other) {
-		if (other.gameObject.layer == LayerMask.NameToLayer ("Obstacle")) {
+		if (other.gameObject.layer == LayerMask.NameToLayer ("Obstacle")
+			|| other.gameObject.layer == LayerMask.NameToLayer ("Barkable")) {
 			underNum++;
 		}
 	}
 
 	void OnTriggerExit (Collider other) {
-		if (other.gameObject.layer == LayerMask.NameToLayer ("Obstacle")) {
+		if (other.gameObject.layer == LayerMask.NameToLayer ("Obstacle")
+			|| other.gameObject.layer == LayerMask.NameToLayer ("Barkable")) {
 			underNum--;
 		}
 	}

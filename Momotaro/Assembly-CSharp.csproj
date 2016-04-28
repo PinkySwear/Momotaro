@@ -56,6 +56,7 @@
      <Compile Include="Assets\Scripts\Character Scripts\MomotaroBehavior.cs" />
      <Compile Include="Assets\Scripts\Character Scripts\MonkeyFollow.cs" />
      <Compile Include="Assets\Scripts\Character Scripts\PheasantFollow.cs" />
+     <Compile Include="Assets\Scripts\DeathBox.cs" />
      <Compile Include="Assets\Scripts\DontDestroy.cs" />
      <Compile Include="Assets\Scripts\Enemy Scripts\DerpBehavior.cs" />
      <Compile Include="Assets\Scripts\Enemy Scripts\EnemyBehavior.cs" />
@@ -78,6 +79,7 @@
      <Compile Include="Assets\Scripts\Instructions.cs" />
      <Compile Include="Assets\Scripts\PoopBehavior.cs" />
      <Compile Include="Assets\Scripts\RealLevelManager.cs" />
+     <Compile Include="Assets\Scripts\RiceBallBehavior.cs" />
      <Compile Include="Assets\Scripts\SoundMurder.cs" />
      <Compile Include="Assets\Scripts\Timer.cs" />
  <Reference Include="UnityEngine.UI">

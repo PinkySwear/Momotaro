@@ -111,10 +111,10 @@ public class MeleeBehavior : EnemyBehavior {
 			movingLeft = false;
 			movingRight = false;
 			anim.SetBool ("walking", false);
-			Debug.Log ("IN STATE 1");
-			Debug.Log (attackCoolDown);
-			Debug.Log (!momo.anim.GetCurrentAnimatorStateInfo (0).IsName ("momoHurt"));
-			Debug.Log (momo.invuln <= 0f);
+//			Debug.Log ("IN STATE 1");
+//			Debug.Log (attackCoolDown);
+//			Debug.Log (!momo.anim.GetCurrentAnimatorStateInfo (0).IsName ("momoHurt"));
+//			Debug.Log (momo.invuln <= 0f);
 			if (attackCoolDown <= 0f && !momo.anim.GetCurrentAnimatorStateInfo (0).IsName ("momoHurt") && momo.invuln <= 0f) {
 				attack ();
 			}
