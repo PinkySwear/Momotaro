@@ -89,10 +89,11 @@ public class CameraControl : MonoBehaviour {
 //		transform.position = new Vector3 (focusCharacter.transform.position.x, focusCharacter.transform.position.y + 3f, -10f);
 
 		Vector3 diff = transform.position - prevPos;
+		diff.y = 0f;
 		foreach (GameObject l in parallaxLayers) {
 			l.transform.position += diff;
-			diff.y = 0f;
-			l.transform.position -= diff * ((50f - (l.transform.position.z - momo.transform.position.z)) / 50f);	
+
+			l.transform.position -= diff * ((120f - (l.transform.position.z)) / 120f);	
 		}
 
 
