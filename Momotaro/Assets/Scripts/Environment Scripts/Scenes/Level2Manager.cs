@@ -37,6 +37,10 @@ public class Level2Manager : MonoBehaviour {
 		messages[1] = "Sounds like somebody in trouble! ";
 		messages[2] = "I smell Oni, Momo--lots of them.";
 		messages[3] = "It doesn’t matter how many of them there are! We’ve got to help whoever’s in trouble!";
+		messages[4] = "Momo, do you hear that?";
+		messages[5] = "Sounds like somebody in trouble! ";
+		messages[6] = "I smell Oni, Momo--lots of them.";
+		messages[7] = "It doesn’t matter how many of them there are! We’ve got to help whoever’s in trouble!";
 		bubbles[0].SetActive(false);
 		bubbles[1].SetActive(false);
 	}
@@ -116,7 +120,7 @@ public class Level2Manager : MonoBehaviour {
 			scene = 5;
 		}
 		
-		if(scene == 5){
+		if(scene == 5 && moveOn < 1){
 			momo.GetComponent<MomotaroBehavior> ().stop = true;
 			if(door[2].GetComponent<Transform> ().position.y >= -21.5f && (Time.time-startTime) > 0.1f){
 				startTime = Time.time;
@@ -134,7 +138,7 @@ public class Level2Manager : MonoBehaviour {
 				momo.GetComponent<MomotaroBehavior> ().stop = false;
 			}
 		}
-		if(scene == 6){
+		if(scene == 6 && moveOn < 1){
 			bool canProgress = true;
 			for(int i = 6; i < 13; i++){
 				canProgress = canProgress && (baddies[i] == null);
@@ -157,23 +161,66 @@ public class Level2Manager : MonoBehaviour {
 				}
 			}
 		}
+		Debug.Log(songs[0].volume);
 		if(moveOn == 1){
-			Debug.Log("Done!");
+			//Debug.Log("Done!");
 			if(door[3].GetComponent<Transform> ().position.y <= -17f && (Time.time-startTime) > 0.1f){
 				startTime = Time.time;
 				songs[0].volume -= 0.1f;
-				door[3].GetComponent<Transform> ().position = new Vector3(door[3].GetComponent<Transform> ().position.x,door[3].GetComponent<Transform> ().position.y +0.5f,door[3].GetComponent<Transform> ().position.z);
+				door[3].GetComponent<Transform> ().position = new Vector3(door[3].GetComponent<Transform> ().position.x,door[3].GetComponent<Transform> ().position.y +0.1f,door[3].GetComponent<Transform> ().position.z);
 			}
 			else if(door[3].GetComponent<Transform> ().position.y >= -17f){
 				moveOn = 2;
 			}
 		}
 		else if(moveOn == 2){
+			cam.GetComponent<AudioSource> ().volume = 0f;
+			songs[0].volume = 0f;
 			songs[1].volume = 1f;
 			caged.SetActive(false);
 			monkey.SetActive(true);
 			momo.GetComponent<MomotaroBehavior> ().stop = true;
 			Debug.Log("Test!");
+			if((count % 2) ==0){
+				bubbles[0].SetActive(true);
+				bubbles[1].SetActive(false);
+			}
+			else{
+				bubbles[1].SetActive(true);
+				bubbles[0].SetActive(false);
+			}
+			textbox.GetComponent<Text>().text = messages[count];
+			if(Input.GetKey(KeyCode.Return) &&((Time.time-startTime) > 0.5f)){
+				startTime = Time.time;
+				count ++;
+			}
+			if(count > 7){
+				moveOn = 3;
+				momo.GetComponent<MomotaroBehavior> ().stop = false;
+				songs[1].volume = 0f;
+				cam.GetComponent<AudioSource> ().volume = 1f;
+			}
+		}
+		else if(moveOn == 3){
+			if(dog.GetComponent<Transform> ().position.x >= 185f && momo.GetComponent<Transform> ().position.x >= 185f && monkey.GetComponent<Transform> ().position.x >= 185f){
+				moveOn = 4;
+			}
+		}
+		
+		else if(moveOn == 4){
+			if(door[5].GetComponent<Transform> ().position.y >= -24f && (Time.time-startTime) > 0.1f){
+				startTime = Time.time;
+				cam.GetComponent<AudioSource> ().volume -= 0.1f;
+				door[5].GetComponent<Transform> ().position = new Vector3(door[5].GetComponent<Transform> ().position.x,door[5].GetComponent<Transform> ().position.y -0.5f,door[5].GetComponent<Transform> ().position.z);
+			}
+			else if(door[5].GetComponent<Transform> ().position.y <= -24f){
+				for(int i = 13; i < 20; i++){
+					if(baddies[i] != null){
+						baddies[i].SetActive(true);
+					}
+				}
+				moveOn = 5;
+			}
 		}
 	}
 }
