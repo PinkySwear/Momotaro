@@ -178,13 +178,15 @@ public class CharacterBehavior : MonoBehaviour {
 	}
 
 	protected void OnTriggerEnter (Collider other) {
-		if (other.gameObject.layer == LayerMask.NameToLayer ("Obstacle")) {
+		if (other.gameObject.layer == LayerMask.NameToLayer ("Obstacle")
+			|| other.gameObject.layer == LayerMask.NameToLayer ("Barkable")) {
 			underNum++;
 		}
 	}
 
 	protected void OnTriggerExit (Collider other) {
-		if (other.gameObject.layer == LayerMask.NameToLayer ("Obstacle")) {
+		if (other.gameObject.layer == LayerMask.NameToLayer ("Obstacle")
+			|| other.gameObject.layer == LayerMask.NameToLayer ("Barkable")) {
 			underNum--;
 		}
 	}

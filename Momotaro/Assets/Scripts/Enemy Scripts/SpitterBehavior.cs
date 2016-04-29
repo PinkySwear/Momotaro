@@ -14,7 +14,7 @@ public class SpitterBehavior: EnemyBehavior {
 
 	public GameObject gooPrefab;
 
-	float spitVelocity;
+	public float spitVelocity;
 
 
 	//current enemy state 0:default, 1:chasing, 2:in combat
@@ -144,7 +144,7 @@ public class SpitterBehavior: EnemyBehavior {
 		GameObject spawnedGoo = (GameObject) Instantiate (gooPrefab, transform.position + Vector3.up * 0.2f, Quaternion.identity);
 		Rigidbody gooRB = spawnedGoo.GetComponent<Rigidbody> ();
 		Vector3 diff = momo.transform.position - spawnedGoo.transform.position;
-		spitVelocity = 35f;
+		spitVelocity = 2f * Mathf.Abs (diff.x) / 3f + 20f;
 //		spitVelocity = Mathf.Pow(Mathf.Abs(diff.x), 1.5f);
 //		Debug.Log ("SPIT IS THIS FAST " + spitVelocity);
 //		float ss = spitVelocity * spitVelocity;
@@ -153,7 +153,7 @@ public class SpitterBehavior: EnemyBehavior {
 //		float bot = (-50f / spitVelocity) * diff.x;
 //		float angle = Mathf.Atan (top / bot);
 //		Debug.Log (angle);
-		float angle = 0.5f * Mathf.Asin((50f) * Mathf.Abs(diff.x) / (spitVelocity * spitVelocity));
+		float angle = 0.5f * Mathf.Asin((-50f) * Mathf.Abs(diff.x) / (spitVelocity * spitVelocity)) + Mathf.PI/2f;
 		gooRB.velocity = (Mathf.Sign(diff.x) * Mathf.Cos(angle) * Vector3.right + Mathf.Sin(angle) * Vector3.up).normalized * spitVelocity;
 		//		bananaRB.AddForce (new Vector3 (((500f * transform.localScale.x) + (400f * (myRb.velocity.x / 10f))), 750f, 0f));
 		//		bananaRB.velocity = myRb.velocity;
