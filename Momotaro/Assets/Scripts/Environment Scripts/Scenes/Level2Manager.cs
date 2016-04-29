@@ -11,6 +11,9 @@ public class Level2Manager : MonoBehaviour {
 	public GameObject dog;
 	public GameObject monkey;
 	public GameObject textbox;
+	public GameObject cam;
+	
+	public AudioSource[] songs;
 	
 	public string[] messages;
 	public GameObject[] bubbles;
@@ -20,9 +23,12 @@ public class Level2Manager : MonoBehaviour {
 	public int count;
 	public int scene;
 	private float startTime;
+	public float counter = 75f;
 
 	// Use this for initialization
 	void Start () {
+		songs = gameObject.GetComponents<AudioSource>();
+		songs[0].volume = 0f;
 		// Scene 1
 		messages[0] = "Momo, do you hear that?";
 		messages[1] = "Sounds like somebody in trouble! ";
@@ -75,7 +81,9 @@ public class Level2Manager : MonoBehaviour {
 			}
 			else if(door[0].GetComponent<Transform> ().position.y <= -21.5f){
 				for(int i = 0; i < 6; i++){
-					baddies[i].SetActive(true);
+					if(baddies[i] != null){
+						baddies[i].SetActive(true);
+					}
 				}
 				scene = 3;
 				momo.GetComponent<MomotaroBehavior> ().stop = false;
@@ -84,7 +92,7 @@ public class Level2Manager : MonoBehaviour {
 		if(scene == 3){
 			bool canProgress = true;
 			for(int i = 0; i < 6; i++){
-				canProgress = canProgress && (baddies[i].GetComponent<EnemyBehavior> ().health == 0);
+				canProgress = canProgress && (baddies[i] == null);
 			}
 			if(canProgress){
 				scene = 4;
@@ -109,29 +117,40 @@ public class Level2Manager : MonoBehaviour {
 			momo.GetComponent<MomotaroBehavior> ().stop = true;
 			if(door[2].GetComponent<Transform> ().position.y >= -21.5f && (Time.time-startTime) > 0.1f){
 				startTime = Time.time;
+				cam.GetComponent<AudioSource> ().volume -= 0.1f;
 				door[2].GetComponent<Transform> ().position = new Vector3(door[2].GetComponent<Transform> ().position.x,door[2].GetComponent<Transform> ().position.y -0.5f,door[2].GetComponent<Transform> ().position.z);
 			}
 			else if(door[2].GetComponent<Transform> ().position.y <= -21.5f){
 				for(int i = 6; i < 13; i++){
-					baddies[i].SetActive(true);
+					if(baddies[i] != null){
+						baddies[i].SetActive(true);
+					}
 				}
 				scene = 6;
+				songs[0].volume = 1f;
 				momo.GetComponent<MomotaroBehavior> ().stop = false;
 			}
 		}
 		if(scene == 6){
 			bool canProgress = true;
 			for(int i = 6; i < 13; i++){
-				canProgress = canProgress && (baddies[i].GetComponent<EnemyBehavior> ().health == 0);
+				canProgress = canProgress && (baddies[i] == null);
 			}
 			if(canProgress){
 				scene = 7;
 			}
 			else{
-				door[4].GetComponent<Transform> ().position = new Vector3(door[4].GetComponent<Transform> ().position.x,door[4].GetComponent<Transform> ().position.y -0.001f,door[4].GetComponent<Transform> ().position.z);
-				if(door[4].GetComponent<Transform> ().position.y <= 21.5f){
+				if((Time.time - startTime) >= 0.1f){
+					startTime = Time.time;
+					counter -= 0.1f;
+					door[4].GetComponent<Transform> ().position = new Vector3(door[4].GetComponent<Transform> ().position.x,door[4].GetComponent<Transform> ().position.y -0.01f,door[4].GetComponent<Transform> ().position.z);
+				}
+				if(door[4].GetComponent<Transform> ().position.y <= -19.5f){
 					scene = 69;
 					textbox.GetComponent<Text>().text = "Game Over!";
+				}
+				else{
+					textbox.GetComponent<Text>().text = counter +"seconds";
 				}
 			}
 		}
