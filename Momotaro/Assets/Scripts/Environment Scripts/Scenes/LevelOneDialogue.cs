@@ -66,9 +66,9 @@ public class LevelOneDialogue : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKey(KeyCode.X)){
-			SceneManager.LoadScene ("AlphaDemo");
-		}
+//		if(Input.GetKey(KeyCode.X)){
+//			SceneManager.LoadScene ("AlphaDemo");
+//		}
 		if((momo.GetComponent<Transform>().position.x <= transform.position.x) &&
 		   (momo.GetComponent<Transform>().position.x + 2 >= transform.position.x)){
 			seesMomo = true;
