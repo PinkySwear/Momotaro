@@ -27,6 +27,11 @@ public class CharacterManager : MonoBehaviour {
 	public GameObject[] withMonkey;
 	public GameObject[] withDog;
 
+	public Texture2D pauseTex;
+	public Color initialColor;
+	public Color finalColor;
+
+
 
 
 
@@ -42,6 +47,12 @@ public class CharacterManager : MonoBehaviour {
 		pheasant.controlling = false;
 		holdSwitching = false;
 		//trianglePos = momo.transform.position + Vector3.up * 2.5f;
+
+		pauseTex = new Texture2D(1, 1);
+		initialColor = new Color (0f, 0f, 0f, 0f);
+		finalColor = Color.black;
+		pauseTex.SetPixel(0,0,initialColor);
+		pauseTex.Apply();
 
 	}
 	
@@ -81,6 +92,14 @@ public class CharacterManager : MonoBehaviour {
 			SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
 		}
 		//triangleThing.transform.position = trianglePos;
+		if (momo.timeSinceDeath > 3f) {
+			if (Input.GetKeyDown (KeyCode.Space)) {
+				SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
+
+			}
+
+		}
+			
 
 	}
 
@@ -173,5 +192,15 @@ public class CharacterManager : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.O)) {
 			holdSwitching = true;
 		}
+	}
+
+	void OnGUI () {
+		if (momo.isDead) {
+			GUI.DrawTexture (new Rect (0, 0, Screen.width, Screen.height), pauseTex);
+			Color nC = Color.Lerp (initialColor, finalColor, momo.timeSinceDeath / 2f);
+			pauseTex.SetPixel(0,0,nC);
+			pauseTex.Apply();
+		}
+	
 	}
 }

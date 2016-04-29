@@ -15,6 +15,8 @@ public class SpitterBehavior: EnemyBehavior {
 	public GameObject gooPrefab;
 
 	public float spitVelocity;
+	public int derpsSpawned;
+	public bool frantic;
 
 
 	//current enemy state 0:default, 1:chasing, 2:in combat
@@ -24,8 +26,10 @@ public class SpitterBehavior: EnemyBehavior {
 	void Start () {
 
 		StartP ();
-
-		health = 3;
+		derpsSpawned = 0;
+		if (health == 0) {
+			health = 3;
+		}
 		velocity = 4f;
 		jumpForce = 1000f;
 		//		movingLeft = true;
@@ -35,6 +39,10 @@ public class SpitterBehavior: EnemyBehavior {
 	}
 
 	void Update () {
+		if (frantic) {
+			stunDuration = Mathf.Min (stunDuration, 0.5f);
+//			attackCoolDown = Mathf.Min (attackCoolDown, 2f);
+		}
 		if (anim.GetCurrentAnimatorStateInfo (0).IsName ("spitterHurt")) {
 			anim.SetBool ("hurt", false);
 			anim.SetBool ("walking", false);
@@ -118,7 +126,7 @@ public class SpitterBehavior: EnemyBehavior {
 
 		if (state == 1) {
 			Vector3 s = transform.localScale;
-			s.x = Mathf.Sign(momo.transform.position.x - transform.position.x);
+			s.x = Mathf.Sign(momo.transform.position.x - transform.position.x) * originalXScale;
 			transform.localScale = s;
 			movingLeft = false;
 			movingRight = false;
@@ -127,7 +135,7 @@ public class SpitterBehavior: EnemyBehavior {
 //			Debug.Log (attackCoolDown);
 //			Debug.Log (!momo.anim.GetCurrentAnimatorStateInfo (0).IsName ("momoHurt"));
 //			Debug.Log (momo.invuln <= 0f);
-			if (attackCoolDown <= 0f && !momo.anim.GetCurrentAnimatorStateInfo (0).IsName ("momoHurt") && momo.invuln <= 0f) {
+			if (attackCoolDown <= 0f && !momo.anim.GetCurrentAnimatorStateInfo (0).IsName ("momoHurt")  && derpsSpawned < 10) {
 				attack ();
 			}
 
@@ -139,27 +147,53 @@ public class SpitterBehavior: EnemyBehavior {
 
 	void attack () {
 //		momo.takeDamage (1);
-		attackCoolDown = 3f;
+		if (frantic) {
+			attackCoolDown = ((Vector3.Distance (transform.position, momo.transform.position) / 20f) * Random.value * 2f) + 0.5f;
+		}
+		else {
+			attackCoolDown = 2f;
+		}
+		Debug.Log ("CoolDown: " + attackCoolDown);
 		anim.SetBool ("attacking", true);
-		GameObject spawnedGoo = (GameObject) Instantiate (gooPrefab, transform.position + Vector3.up * 0.2f, Quaternion.identity);
+		GameObject spawnedGoo = (GameObject) Instantiate (gooPrefab, transform.position + Vector3.up * 0.4f * transform.localScale.y, Quaternion.identity);
 		Rigidbody gooRB = spawnedGoo.GetComponent<Rigidbody> ();
+		int attempts = 0;
+//		while (!gooRB && attempts < 100) {
+//			Debug.Log (attempts);
+//			gooRB = spawnedGoo.GetComponent<Rigidbody> ();
+//			attempts++;
+//		}
 		Vector3 diff = momo.transform.position - spawnedGoo.transform.position;
 		spitVelocity = 2f * Mathf.Abs (diff.x) / 3f + 20f;
-//		spitVelocity = Mathf.Pow(Mathf.Abs(diff.x), 1.5f);
-//		Debug.Log ("SPIT IS THIS FAST " + spitVelocity);
-//		float ss = spitVelocity * spitVelocity;
-//		float top = spitVelocity - Mathf.Sqrt ((ss + 100f * (diff.y - (25f / ss) * Mathf.Pow (diff.x, 2))));
-//		Debug.Log ("UNDER SQRT" + (ss + 100f * (diff.y - (25f / ss) * Mathf.Pow (diff.x, 2))));
-//		float bot = (-50f / spitVelocity) * diff.x;
-//		float angle = Mathf.Atan (top / bot);
-//		Debug.Log (angle);
+
 		float angle = 0.5f * Mathf.Asin((-50f) * Mathf.Abs(diff.x) / (spitVelocity * spitVelocity)) + Mathf.PI/2f;
+		angle -= Mathf.Sign(diff.y) * (Random.value * 0.1f + 0.05f);
 		gooRB.velocity = (Mathf.Sign(diff.x) * Mathf.Cos(angle) * Vector3.right + Mathf.Sin(angle) * Vector3.up).normalized * spitVelocity;
+
 		//		bananaRB.AddForce (new Vector3 (((500f * transform.localScale.x) + (400f * (myRb.velocity.x / 10f))), 750f, 0f));
 		//		bananaRB.velocity = myRb.velocity;
-		spawnedGoo.GetComponent<GooBehavior> ().momo = this.momo;
+		GooBehavior gb = spawnedGoo.GetComponent<GooBehavior> ();
+
+		if (gb) {
+			gb.momo = this.momo;
+		}
+		else {
+			DerpBehavior db = spawnedGoo.GetComponent<DerpBehavior> ();
+			db.mother = this;
+			derpsSpawned++;
+			if (db) {
+				db.MomoObject = this.momo.gameObject;
+			}
+		}
 		gooRB.constraints = RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationX;
 
+
+
+
+	}
+
+	public void decrementDerps () {
+		derpsSpawned--;
 	}
 
 	void OnTriggerEnter (Collider other) {

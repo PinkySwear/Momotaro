@@ -1,0 +1,172 @@
+fileFormatVersion: 2
+guid: 893437a7601084395a470961d191e6e4
+timeCreated: 1461887684
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Monkey - climb sheet_2
+    21300002: Monkey - climb sheet_0
+    21300004: Monkey - climb sheet_3
+    21300006: Monkey - climb sheet_1
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Monkey - climb sheet_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 434
+        width: 366
+        height: 300
+      alignment: 9
+      pivot: {x: 0.2580433, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 51.556152, y: -59}
+        - {x: 87.55615, y: -58}
+        - {x: 95.55615, y: -51}
+        - {x: 99.55615, y: -46}
+        - {x: 100.55615, y: -52}
+        - {x: 115.55615, y: -66}
+        - {x: 141.55615, y: -62}
+        - {x: 141.55615, y: 73}
+        - {x: 119.55615, y: 99}
+        - {x: -11.443848, y: 99}
+        - {x: -53.443848, y: 91}
+        - {x: -85.44385, y: 31}
+        - {x: -67.44385, y: 22}
+        - {x: -94.44385, y: 1}
+        - {x: -94.44385, y: -62}
+        - {x: -70.44385, y: -85}
+        - {x: -59.443848, y: -96}
+        - {x: -8.443848, y: -113}
+        - {x: 17.556152, y: -121}
+        - {x: 79.55615, y: -121}
+        - {x: 101.55615, y: -102}
+        - {x: 90.55615, y: -79}
+        - {x: 74.55615, y: -64}
+        - {x: 53.556152, y: -58}
+    - name: Monkey - climb sheet_0
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 436
+        width: 366
+        height: 300
+      alignment: 9
+      pivot: {x: 0.2580433, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 32.556152, y: -74}
+        - {x: 34.556152, y: -60}
+        - {x: 68.55615, y: -62}
+        - {x: 114.55615, y: -71}
+        - {x: 141.55615, y: -67}
+        - {x: 141.55615, y: 75}
+        - {x: 129.55615, y: 97}
+        - {x: -94.44385, y: 97}
+        - {x: -94.44385, y: -102}
+        - {x: -25.443848, y: -123}
+        - {x: 87.55615, y: -123}
+        - {x: 89.55615, y: -121}
+        - {x: 95.55615, y: -79}
+        - {x: 74.55615, y: -66}
+        - {x: 53.556152, y: -64}
+    - name: Monkey - climb sheet_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 68
+        width: 366
+        height: 300
+      alignment: 9
+      pivot: {x: 0.2580433, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 41.556152, y: -91}
+        - {x: 132.55615, y: -54}
+        - {x: 132.55615, y: 78}
+        - {x: 89.55615, y: 111}
+        - {x: 12.556152, y: 111}
+        - {x: -66.44385, y: 84}
+        - {x: -91.44385, y: 61}
+        - {x: -94.44385, y: 43}
+        - {x: -94.44385, y: -107}
+        - {x: 26.556152, y: -150}
+        - {x: 83.55615, y: -150}
+        - {x: 88.55615, y: -127}
+        - {x: 87.55615, y: -107}
+        - {x: 59.556152, y: -86}
+    - name: Monkey - climb sheet_1
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 68
+        width: 366
+        height: 300
+      alignment: 9
+      pivot: {x: 0.2580433, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 150.55615, y: -27}
+        - {x: 139.55615, y: 52}
+        - {x: 106.55615, y: 94}
+        - {x: 45.556152, y: 94}
+        - {x: 6.5561523, y: 55}
+        - {x: -82.44385, y: 28}
+        - {x: -94.44385, y: 18}
+        - {x: -94.44385, y: -73}
+        - {x: -44.443848, y: -106}
+        - {x: -5.4438477, y: -114}
+        - {x: 91.55615, y: -114}
+        - {x: 118.55615, y: -79}
+        - {x: 138.55615, y: -61}
+        - {x: 150.55615, y: -40}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
