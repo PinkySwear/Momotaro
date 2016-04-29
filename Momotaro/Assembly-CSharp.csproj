@@ -73,6 +73,7 @@
      <Compile Include="Assets\Scripts\Environment Scripts\Scenes\Level0Manager.cs" />
      <Compile Include="Assets\Scripts\Environment Scripts\Scenes\Level1Manager.cs" />
      <Compile Include="Assets\Scripts\Environment Scripts\Scenes\Level2Manager.cs" />
+     <Compile Include="Assets\Scripts\Environment Scripts\Scenes\Level4Manager.cs" />
      <Compile Include="Assets\Scripts\Environment Scripts\Scenes\LevelOneDialogue.cs" />
      <Compile Include="Assets\Scripts\Environment Scripts\Scenes\LevelSelect.cs" />
      <Compile Include="Assets\Scripts\GooBehavior.cs" />

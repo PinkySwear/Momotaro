@@ -12,6 +12,7 @@ public class Level2Manager : MonoBehaviour {
 	public GameObject monkey;
 	public GameObject textbox;
 	public GameObject cam;
+	public GameObject caged;
 	
 	public AudioSource[] songs;
 	
@@ -19,6 +20,7 @@ public class Level2Manager : MonoBehaviour {
 	public GameObject[] bubbles;
 	public GameObject[] baddies;
 	public GameObject[] door;
+	public int moveOn;
 	
 	public int count;
 	public int scene;
@@ -29,6 +31,7 @@ public class Level2Manager : MonoBehaviour {
 	void Start () {
 		songs = gameObject.GetComponents<AudioSource>();
 		songs[0].volume = 0f;
+		songs[1].volume = 0f;
 		// Scene 1
 		messages[0] = "Momo, do you hear that?";
 		messages[1] = "Sounds like somebody in trouble! ";
@@ -137,7 +140,7 @@ public class Level2Manager : MonoBehaviour {
 				canProgress = canProgress && (baddies[i] == null);
 			}
 			if(canProgress){
-				scene = 7;
+				moveOn = 1;
 			}
 			else{
 				if((Time.time - startTime) >= 0.1f){
@@ -154,15 +157,23 @@ public class Level2Manager : MonoBehaviour {
 				}
 			}
 		}
-		if(scene == 7){
+		if(moveOn == 1){
 			Debug.Log("Done!");
 			if(door[3].GetComponent<Transform> ().position.y <= -17f && (Time.time-startTime) > 0.1f){
 				startTime = Time.time;
+				songs[0].volume -= 0.1f;
 				door[3].GetComponent<Transform> ().position = new Vector3(door[3].GetComponent<Transform> ().position.x,door[3].GetComponent<Transform> ().position.y +0.5f,door[3].GetComponent<Transform> ().position.z);
 			}
 			else if(door[3].GetComponent<Transform> ().position.y >= -17f){
-				scene = 8;
+				moveOn = 2;
 			}
+		}
+		else if(moveOn == 2){
+			songs[1].volume = 1f;
+			caged.SetActive(false);
+			monkey.SetActive(true);
+			momo.GetComponent<MomotaroBehavior> ().stop = true;
+			Debug.Log("Test!");
 		}
 	}
 }
