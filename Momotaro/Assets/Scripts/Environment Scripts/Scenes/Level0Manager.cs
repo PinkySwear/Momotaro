@@ -255,10 +255,14 @@ public class Level0Manager : MonoBehaviour {
 			s.x = -1;
 			dad.GetComponent<Transform>().localScale = s;
 			dad.GetComponent<Transform> ().rotation = new Quaternion (0f, 180f, 0f, 0f);
-			if(dad.GetComponent<Transform>().position.x <= 48f){
+			if(dad.GetComponent<Transform>().position.x <= 45f){
 				moveDad = false;
 			}
+
 		}
+		//else {
+		//	dad.GetComponent<Transform>().position = new Vector3 (45f, dad.GetComponent<Transform>().position.y, 0f);
+		//	}
 		
 		if(moveBoth){
 			dad.GetComponent<Transform>().position = new Vector3 (dad.GetComponent<Transform>().position.x, dad.GetComponent<Transform>().position.y, 0f);
