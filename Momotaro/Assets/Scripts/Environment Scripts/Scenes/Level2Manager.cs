@@ -41,6 +41,10 @@ public class Level2Manager : MonoBehaviour {
 		messages[5] = "Sounds like somebody in trouble! ";
 		messages[6] = "I smell Oni, Momo--lots of them.";
 		messages[7] = "It doesn’t matter how many of them there are! We’ve got to help whoever’s in trouble!";
+		messages[8] = "Momo, do you hear that?";
+		messages[9] = "Sounds like somebody in trouble! ";
+		messages[10] = "I smell Oni, Momo--lots of them.";
+		messages[11] = "It doesn’t matter how many of them there are! We’ve got to help whoever’s in trouble!";
 		bubbles[0].SetActive(false);
 		bubbles[1].SetActive(false);
 	}
@@ -210,7 +214,6 @@ public class Level2Manager : MonoBehaviour {
 		else if(moveOn == 4){
 			if(door[5].GetComponent<Transform> ().position.y >= -24f && (Time.time-startTime) > 0.1f){
 				startTime = Time.time;
-				cam.GetComponent<AudioSource> ().volume -= 0.1f;
 				door[5].GetComponent<Transform> ().position = new Vector3(door[5].GetComponent<Transform> ().position.x,door[5].GetComponent<Transform> ().position.y -0.5f,door[5].GetComponent<Transform> ().position.z);
 			}
 			else if(door[5].GetComponent<Transform> ().position.y <= -24f){
@@ -220,6 +223,52 @@ public class Level2Manager : MonoBehaviour {
 					}
 				}
 				moveOn = 5;
+			}
+		}
+		else if(moveOn == 5){
+			bool canProgress = true;
+			for(int i = 13; i < 20; i++){
+				canProgress = canProgress && (baddies[i] == null);
+			}
+			if(canProgress){
+				if(door[6].GetComponent<Transform> ().position.y <= -19f && (Time.time-startTime) > 0.1f){
+					startTime = Time.time;
+					door[6].GetComponent<Transform> ().position = new Vector3(door[6].GetComponent<Transform> ().position.x,door[6].GetComponent<Transform> ().position.y +0.1f,door[6].GetComponent<Transform> ().position.z);
+				}
+				else if(door[6].GetComponent<Transform> ().position.y >= -19f){
+					moveOn = 6;
+				}
+			}
+		}
+		else if(moveOn == 6){
+			momo.GetComponent<MomotaroBehavior> ().stop = true;
+			Debug.Log("Test!");
+			if((count % 2) ==0){
+				bubbles[0].SetActive(true);
+				bubbles[1].SetActive(false);
+			}
+			else{
+				bubbles[1].SetActive(true);
+				bubbles[0].SetActive(false);
+			}
+			textbox.GetComponent<Text>().text = messages[count];
+			if(Input.GetKey(KeyCode.Return) &&((Time.time-startTime) > 0.5f)){
+				startTime = Time.time;
+				count ++;
+			}
+			if(count > 11){
+				moveOn = 7;
+				momo.GetComponent<MomotaroBehavior> ().stop = false;
+				songs[1].volume = 0f;
+				cam.GetComponent<AudioSource> ().volume = 1f;
+			}
+		}
+		else if(moveOn ==7){
+			if(momo.GetComponent<Transform>().position.x > 210f){
+				textbox.GetComponent<Text>().text = "Press 'Enter' to progress to next level!";
+				if(Input.GetKey (KeyCode.Return)){
+					SceneManager.LoadScene ("FinalLevel3");
+				}
 			}
 		}
 	}
