@@ -155,6 +155,7 @@ public class Level2Manager : MonoBehaviour {
 			}
 		}
 		if(scene == 7){
+			Debug.Log("Done!");
 			if(door[3].GetComponent<Transform> ().position.y <= -17f && (Time.time-startTime) > 0.1f){
 				startTime = Time.time;
 				door[3].GetComponent<Transform> ().position = new Vector3(door[3].GetComponent<Transform> ().position.x,door[3].GetComponent<Transform> ().position.y +0.5f,door[3].GetComponent<Transform> ().position.z);
