@@ -8,6 +8,7 @@ public class EnemyBehavior : MonoBehaviour {
 	public int health;
 	public bool isDead;
 	public float timeSinceDeath;
+	public bool active;
 
 	public bool stunned;
 	public float stunDuration;
@@ -20,22 +21,37 @@ public class EnemyBehavior : MonoBehaviour {
 	protected bool movingRight;
 	protected bool jump = false;
 	protected float attackCoolDown;
+	protected float originalXScale;
 
 	public Animator anim;
 
 	// Use this for initialization
 	protected void StartP () {		
 		anim = GetComponent<Animator> ();
-		
+		active = false;
 		momo = MomoObject.GetComponent<MomotaroBehavior> ();
 		myRb = this.gameObject.GetComponent<Rigidbody> ();
 		myRb.constraints = RigidbodyConstraints.FreezePositionZ;
 		stunned = false;
 		isDead = false;
+		originalXScale = transform.localScale.x;
 	}
 	
 	// Update is called once per frame
 	protected void UpdateP () {
+
+//		if (Vector3.Distance (momo.transform.position, transform.position) < 7f) {
+//			Vector3 s = transform.localScale;
+//			s.x = Mathf.Sign(momo.transform.position.x - transform.position.x) * originalXScale;
+//			movingRight = false;
+//			movingLeft = true;
+//			if (s.x >= 0) {
+//				movingRight = true;
+//				movingLeft = false;
+//			}
+//			transform.localScale = s;
+//
+//		}
 		myRb.constraints = myRb.constraints | RigidbodyConstraints.FreezePositionZ;
 
 		if (anim.GetCurrentAnimatorStateInfo (0).IsName ("poof")) {
@@ -47,7 +63,7 @@ public class EnemyBehavior : MonoBehaviour {
 				stunDuration -= Time.deltaTime;
 			}
 			if (stunDuration <= 0f) {
-				attackCoolDown = 3f;
+				attackCoolDown = Mathf.Max(attackCoolDown, 1f);
 				stunned = false;
 			}
 		}
@@ -71,19 +87,25 @@ public class EnemyBehavior : MonoBehaviour {
 	}
 		
 	void FixedUpdate () {
+		if (!active) {
+			return;
+		}
+		if (!myRb) {
+			myRb = GetComponent <Rigidbody> ();
+		}
 		if (movingLeft && !isDead && !stunned) {
 			//restrict movement to one plane
 			transform.position = new Vector3 (transform.position.x, transform.position.y, 0f);
 			myRb.velocity = new Vector3 (-1 * velocity, myRb.velocity.y, myRb.velocity.z);
 			Vector3 s = transform.localScale;
-			s.x = -1;
+			s.x = -1 * originalXScale;
 			transform.localScale = s;
 		}
 		if (movingRight && !isDead && !stunned) {
 			transform.position = new Vector3 (transform.position.x, transform.position.y, 0f);
 			myRb.velocity = new Vector3 (velocity, myRb.velocity.y, myRb.velocity.z);
 			Vector3 s = transform.localScale;
-			s.x = 1;
+			s.x = 1 * originalXScale;
 			transform.localScale = s;
 		}
 
@@ -105,6 +127,17 @@ public class EnemyBehavior : MonoBehaviour {
 			Debug.Log ("set hurt to true");
 			anim.SetBool ("hurt", true);
 		}
+
+		Vector3 s = transform.localScale;
+		s.x = Mathf.Sign(momo.transform.position.x - transform.position.x) * originalXScale;
+		movingRight = false;
+		movingLeft = true;
+		if (s.x >= 0) {
+			movingRight = true;
+			movingLeft = false;
+		}
+		transform.localScale = s;
+
 		if (health > 0) {
 			health -= dm;
 		}
@@ -127,11 +160,16 @@ public class EnemyBehavior : MonoBehaviour {
 	public void stun (float duration) {
 		if (!isDead) {
 			stunned = true;
-			stunDuration = Mathf.Max(duration, stunDuration);
+			stunDuration = duration;
+//			stunDuration = Mathf.Max(duration, stunDuration);
 		}
 	}
 
 	public void setAnimBool(string bName, bool bVal) {
 		anim.SetBool (bName, bVal);
+	}
+
+	public void OnCollisionEnter (Collision collision) {
+		active = true;
 	}
 }

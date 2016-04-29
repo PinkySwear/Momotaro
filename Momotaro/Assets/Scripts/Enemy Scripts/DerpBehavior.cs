@@ -12,6 +12,8 @@ public class DerpBehavior : EnemyBehavior {
 	int numThingsInTheWay;
 	bool somethingInTheWay;
 
+	public SpitterBehavior mother;
+	bool calledDec;
 
 
 
@@ -31,10 +33,20 @@ public class DerpBehavior : EnemyBehavior {
 		state = 0;
 		idleTime = 0.1f;		
 		myRb.constraints = myRb.constraints | RigidbodyConstraints.FreezePositionZ;
+		if (!myRb) {
+			myRb = GetComponent <Rigidbody> ();
+		}
 
 	}
 
 	void Update () {
+		if (isDead && mother != null && !calledDec) {
+			mother.decrementDerps ();
+			calledDec = true;
+		}
+		if (!myRb) {
+			myRb = GetComponent <Rigidbody> ();
+		}
 		myRb.constraints = myRb.constraints | RigidbodyConstraints.FreezePositionZ;
 
 		if (anim.GetCurrentAnimatorStateInfo (0).IsName ("derpHurt")) {
@@ -117,13 +129,13 @@ public class DerpBehavior : EnemyBehavior {
 		}
 
 		if (state == 1) {
-			movingLeft = false;
-			movingRight = false;
-			anim.SetBool ("walking", false);
-			Debug.Log ("IN STATE 1");
-			Debug.Log (attackCoolDown);
-			Debug.Log (!momo.anim.GetCurrentAnimatorStateInfo (0).IsName ("momoHurt"));
-			Debug.Log (momo.invuln <= 0f);
+//			movingLeft = false;
+//			movingRight = false;
+//			anim.SetBool ("walking", false);
+//			Debug.Log ("IN STATE 1");
+//			Debug.Log (attackCoolDown);
+//			Debug.Log (!momo.anim.GetCurrentAnimatorStateInfo (0).IsName ("momoHurt"));
+//			Debug.Log (momo.invuln <= 0f);
 			if (attackCoolDown <= 0f && !momo.anim.GetCurrentAnimatorStateInfo (0).IsName ("momoHurt") && momo.invuln <= 0f) {
 				attack ();
 			}

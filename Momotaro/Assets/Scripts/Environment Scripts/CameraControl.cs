@@ -24,7 +24,7 @@ public class CameraControl : MonoBehaviour {
 		momo = focusCharacter.GetComponent<MomotaroBehavior> ();
 		leftPos = new Vector3 (focusCharacter.transform.position.x - 5f, focusCharacter.transform.position.y + 3f, -10f);
 		rightPos = new Vector3 (focusCharacter.transform.position.x + 5f, focusCharacter.transform.position.y + 3f, -10f);
-		limitX = leftPos.x;
+		limitX = rightPos.x;
 		lastDirectionSwitch = momo.transform.position.x;
 		lastDirectionSwitch = focusCharacter.transform.position.x;
 		cameraRightBefore = false;

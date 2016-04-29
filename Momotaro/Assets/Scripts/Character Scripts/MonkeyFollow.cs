@@ -52,11 +52,18 @@ public class MonkeyFollow : CharacterBehavior {
 			}
 		}
 
-		if (!controlling && !inParty && Vector3.Distance (leader.transform.position, transform.position) < 1f) {
+		if (!controlling && !inParty && Vector3.Distance (leader.transform.position, transform.position) < 1.5f) {
 			transform.position = leader.transform.position;
 			inParty = true;
+			specialMovement = false;
+			anim.SetBool ("climbing", false);
+			anim.speed = 1f;
 //			infoQueue.Clear ();
 		}
+
+//		if (myRb.velocity.magnitude < 0.05f && momo.myRb.velocity.magnitude < 0.05f && inParty) {
+//			transform.position = leader.transform.position;
+//		}
 //		if (!controlling && Vector3.Distance (leader.transform.position, transform.position) < 0.1f) {
 //			transform.position = leader.transform.position;
 //			Debug.Log ("QUEUE CLEARED");
@@ -72,12 +79,13 @@ public class MonkeyFollow : CharacterBehavior {
 		movingDown = false;
 		movingLeft = false;
 		movingRight = false;
-		somethingOnLeft = false;
-		somethingOnRight = false;
+
 
 		myRb.useGravity = true;
 
 		if (controlling && !specialMovement) {
+			anim.SetBool ("climbing", false);
+			anim.speed = 1f;
 			//			Camera.main.transform.position = new Vector3 (transform.position.x, transform.position.y, -10f);
 			if (Input.GetKey(KeyCode.LeftArrow)) {
 				movingLeft = true;
@@ -112,11 +120,21 @@ public class MonkeyFollow : CharacterBehavior {
 			else {
 				anim.SetBool ("throwing", false);
 			}
+			if ((somethingOnLeft && movingLeft) || (somethingOnRight && movingRight)) {
+				anim.SetBool ("climbing", true);
+
+				specialMovement = true;
+				//			Debug.Log ("fucking bullshit");
+			}
+			else {
+				specialMovement = false;
+			}
 
 		}
 		if (controlling && specialMovement) {
+			anim.SetBool ("climbing", true);
 			myRb.velocity = new Vector3 (myRb.velocity.x, 0f, 0f);	
-			specialMovement = false;
+//			specialMovement = false;
 			myRb.useGravity = false;
 			if (Input.GetKey (KeyCode.LeftArrow)) {
 				movingLeft = true;
@@ -151,12 +169,14 @@ public class MonkeyFollow : CharacterBehavior {
 //			else {
 //				specialMovement = false;
 //			}
-
+			anim.speed = 0f;
 			if (Input.GetKey(KeyCode.UpArrow)) {
+				anim.speed = 1f;
 				specialVelocity = 5f;
 				movingUp = true;
 			}
 			if (Input.GetKey(KeyCode.DownArrow)) {
+				anim.speed = 1f;
 				specialVelocity = 5f;
 				movingDown = true;
 			}
@@ -165,18 +185,22 @@ public class MonkeyFollow : CharacterBehavior {
 		}
 //		somethingOnLeft = false;
 //		somethingOnRight = false;
-		if (somethingOnLeft || somethingOnRight) {
+		if ((somethingOnLeft && movingLeft) || (somethingOnRight && movingRight)) {
+			anim.SetBool ("climbing", true);
+
 			specialMovement = true;
 //			Debug.Log ("fucking bullshit");
 		}
 		else {
 			specialMovement = false;
 		}
-		somethingOnRight = false;
-		somethingOnLeft = false;
+//		somethingOnRight = false;
+//		somethingOnLeft = false;
 		if (!inParty && infoQueue.Count != 0) {
 			infoQueue.Clear ();
 		}
+		somethingOnLeft = false;
+		somethingOnRight = false;
 
 	}
 		
@@ -194,6 +218,8 @@ public class MonkeyFollow : CharacterBehavior {
 
 	void OnCollisionStay(Collision collisionInfo) {
 		if (!specialMovement) {
+			float minY = 100f;
+			float maxY = -100f;
 			bool left = false;
 			bool right = false;
 			if (collisionInfo.collider.tag == "Obstacle") {
@@ -202,16 +228,25 @@ public class MonkeyFollow : CharacterBehavior {
 					left = true;
 					right = true;
 					foreach (ContactPoint c in collisionInfo.contacts) {
+						if (c.point.y < minY)
+							minY = c.point.y;
+						if (c.point.y > maxY)
+							maxY = c.point.y;
 						left = left && (c.point.x - transform.position.x < 0f);
 						right = right && (c.point.x - transform.position.x > 0f);
 					}
+					float minRY = transform.position.y - 0.25f;
+					float maxRY = transform.position.y + 0.25f;
+					bool overlap = (minY > minRY && minY < maxRY) || (maxY > minRY && maxY < maxRY) || (maxRY < maxY && minRY > minY);
+					left = left && overlap;
+					right = right && overlap;
 				}
 			}
 			somethingOnLeft = left;
 			somethingOnRight = right;
-			if (somethingOnLeft || somethingOnRight) {
-				specialMovement = true;
-			}
+//			if (somethingOnLeft || somethingOnRight) {
+//				specialMovement = true;
+//			}
 		}
 	}
 

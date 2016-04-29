@@ -7,7 +7,7 @@ public class MomotaroBehavior : MonoBehaviour {
 
 	public float velocity;
 	public float jumpForce;
-	private Rigidbody myRb;
+	public Rigidbody myRb;
 	public bool onSomething = false;
 //	private bool underSomething = false;
 	public bool movingLeft;
@@ -46,10 +46,13 @@ public class MomotaroBehavior : MonoBehaviour {
 
 	public GameObject[] healthNums;
 
+	public float timeSinceDeath;
+
 
 
 	// Use this for initialization
 	void Start () {
+		timeSinceDeath = 0f;
 		anim = GetComponent<Animator> ();
 		health = 6;
 		isDead = false;
@@ -94,6 +97,12 @@ public class MomotaroBehavior : MonoBehaviour {
 	}
 
 	void Update() {
+		if (isDead) {
+			transform.rotation = Quaternion.Euler (new Vector3 (0f, 0f, 90f));
+			timeSinceDeath += Time.deltaTime;
+			return;
+
+		}
 		if (invuln > 0f) {
 			invuln -= Time.deltaTime;
 		}
@@ -156,6 +165,9 @@ public class MomotaroBehavior : MonoBehaviour {
 
 	// Update is called once per frame
 	void FixedUpdate () {
+		if (isDead) {
+			return;
+		}
 		transform.position = new Vector3 (transform.position.x, transform.position.y, 0f);
 
 //		if (Mathf.Abs(prevLoc.x - transform.position.x) > 0.001f || jump) {
@@ -230,9 +242,11 @@ public class MomotaroBehavior : MonoBehaviour {
 		Collider[] enemyColliders = Physics.OverlapSphere(transform.position + Vector3.right * Mathf.Sign(transform.localScale.x) * 1f, 2f, 1 << LayerMask.NameToLayer ("Enemy"));
 		foreach (Collider enemyCol in enemyColliders) {
 			EnemyBehavior enemy = enemyCol.gameObject.GetComponent<EnemyBehavior> ();
-			enemy.takeDamage (1);
-			enemy.stun (0.5f);
-			enemy.knockBack (((Mathf.Sign(enemyCol.transform.position.x - transform.position.x)) * Vector3.right + Vector3.up * 2f).normalized * 500f);
+			if (!enemy.isDead) {
+				enemy.takeDamage (1);
+				enemy.stun (0.5f);
+				enemy.knockBack (((Mathf.Sign (enemyCol.transform.position.x - transform.position.x)) * Vector3.right + Vector3.up * 2f).normalized * 750f);
+			}
 		}
 	}
 

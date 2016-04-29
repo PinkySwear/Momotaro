@@ -46,7 +46,7 @@ public class PheasantFollow : CharacterBehavior {
 		//			inParty = false;
 		//		}
 
-		if (!controlling && !inParty && Vector3.Distance (leader.transform.position, transform.position) < 1f) {
+		if (!controlling && !inParty && Vector3.Distance (leader.transform.position, transform.position) < 1.5f) {
 			transform.position = leader.transform.position;
 			specialMovement = false;
 			myRb.useGravity = true;
@@ -54,6 +54,10 @@ public class PheasantFollow : CharacterBehavior {
 			inParty = true;
 //			infoQueue.Clear ();
 		}
+
+//		if (myRb.velocity.magnitude < 0.05f && momo.myRb.velocity.magnitude < 0.05f && inParty) {
+//			transform.position = leader.transform.position;
+//		}
 //		if (!controlling && Vector3.Distance (leader.transform.position, transform.position) < 0.1f) {
 //			transform.position = leader.transform.position;
 //			Debug.Log ("QUEUE CLEARED");
