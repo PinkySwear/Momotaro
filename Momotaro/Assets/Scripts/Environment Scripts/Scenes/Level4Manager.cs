@@ -9,18 +9,27 @@ public class Level4Manager : MonoBehaviour {
 	public GameObject momo;
 	public GameObject dog;
 	public GameObject monkey;
+	public GameObject nest;
+	public GameObject bird;
 	public GameObject textbox;
 	public GameObject lift;
+	public GameObject cam;
+	public AudioSource[] songs;
+	
 	public float incr;
 	public string[] messages;
 	public GameObject[] bubbles;
 	public int count;
 	
 	public bool isOn;
+	
+	// 198, -48
 
 	// Use this for initialization
 	void Start () {
 		messages[0] = "Hey momo, look at the lift. I wonder if Monkey could climb up there and tun it on...";
+		songs = gameObject.GetComponents<AudioSource>();
+		songs[0].volume = 0f;
 	}
 	
 	// Update is called once per frame
@@ -46,7 +55,18 @@ public class Level4Manager : MonoBehaviour {
 				incr = 0.05f;
 			}
 			lift.GetComponent<Transform>().position = new Vector3 (lift.GetComponent<Transform>().position.x,lift.GetComponent<Transform>().position.y+incr,lift.GetComponent<Transform>().position.z);
-			
+			if(momo.GetComponent<Transform> ().position.x >= 199f && monkey.GetComponent<Transform> ().position.x >= 199f && dog.GetComponent<Transform> ().position.x >= 199f){
+				nest.SetActive(false);
+				bird.SetActive(true);
+				cam.GetComponent<AudioSource> ().volume -= 0.01f;
+				songs[0].volume += 0.01f;
+			}
+		}
+		if(Input.GetKey (KeyCode.Q)){
+			momo.GetComponent<Transform> ().position = new Vector3 (198f,-48f,0f);
+			dog.GetComponent<Transform> ().position = new Vector3 (198f,-48f,0f);
+			monkey.GetComponent<Transform> ().position = new Vector3 (198f,-48f,0f);
+			isOn = true;
 		}
 	}
 }
