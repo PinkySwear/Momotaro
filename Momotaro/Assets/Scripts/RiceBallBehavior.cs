@@ -18,7 +18,7 @@ public class RiceBallBehavior : MonoBehaviour {
 		if (active && other.tag == "Player") {
 			MomotaroBehavior mb = other.gameObject.GetComponent<MomotaroBehavior> ();
 			if (mb) {
-				mb.takeDamage (-2);
+				mb.takeDamage (-3);
 				Destroy (this.gameObject);
 			}
 		}

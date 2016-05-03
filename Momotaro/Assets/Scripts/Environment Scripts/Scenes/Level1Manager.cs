@@ -118,7 +118,7 @@ public class Level1Manager : MonoBehaviour {
 				moveBlock = false;
 			}
 		}
-		else if(scene ==8 && momo.GetComponent<Transform> ().position.x < 155f && beginFight==0){
+		else if(scene ==8 && beginFight==0){
 			if(companion.GetComponent<Transform> ().position.x >= 156f &&
 			   companion.GetComponent<Transform> ().position.y >= -18f){
 				moveBlock = true;
@@ -137,8 +137,6 @@ public class Level1Manager : MonoBehaviour {
 			}
 		}
 		else if(beginFight == 1 && scene ==8){
-			textbox.GetComponent<Text>().text = "Wait...this doesn't seem right... <Press R>";
-			if(Input.GetKey (KeyCode.R)){
 				textbox.GetComponent<Text>().text = "Oh no! It's an ambush!";
 				companionSong[1].volume = 1f;
 				scene = 11;
@@ -146,7 +144,6 @@ public class Level1Manager : MonoBehaviour {
 					goonSquad[i].SetActive(true);
 				}
 				beginFight = 2;
-			}
 			cam.GetComponent<AudioSource> ().volume = 0f;
 		}
 		if(momo.GetComponent<Transform> ().position.x > 182f){
