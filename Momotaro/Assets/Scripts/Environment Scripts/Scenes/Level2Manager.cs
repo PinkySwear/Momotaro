@@ -37,14 +37,16 @@ public class Level2Manager : MonoBehaviour {
 		messages[1] = "Sounds like somebody in trouble! ";
 		messages[2] = "I smell Oni, Momo--lots of them.";
 		messages[3] = "It doesn’t matter how many of them there are! We’ve got to help whoever’s in trouble!";
-		messages[4] = "Momo, do you hear that?";
-		messages[5] = "Sounds like somebody in trouble! ";
-		messages[6] = "I smell Oni, Momo--lots of them.";
-		messages[7] = "It doesn’t matter how many of them there are! We’ve got to help whoever’s in trouble!";
-		messages[8] = "Momo, do you hear that?";
-		messages[9] = "Sounds like somebody in trouble! ";
-		messages[10] = "I smell Oni, Momo--lots of them.";
-		messages[11] = "It doesn’t matter how many of them there are! We’ve got to help whoever’s in trouble!";
+
+		messages[4] = "Momo, look, a Monkey!";
+		messages[5] = "Hey there little guy! We got here just in time! ";
+		messages[6] = "Maybe he wants to come with us?";
+		messages[7] = "Well...I suppose....he might be useful, I guess.";
+
+		messages[8] = "Wow, that was a lot of Oni!";
+		messages[9] = "It means we're getting closer to where they're coming from!";
+		messages[10] = "Yes! We need to move quickly, though, lest someone else gets hurt!";
+		messages[11] = "Agreed!  Come along guys, we have work to do!";
 		bubbles[0].SetActive(false);
 		bubbles[1].SetActive(false);
 	}
@@ -161,7 +163,7 @@ public class Level2Manager : MonoBehaviour {
 					textbox.GetComponent<Text>().text = "Game Over!";
 				}
 				else{
-					textbox.GetComponent<Text>().text = counter +"seconds";
+				//	textbox.GetComponent<Text>().text = Mathf.Round(counter) +" seconds";
 				}
 			}
 		}
